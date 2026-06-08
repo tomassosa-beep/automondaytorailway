@@ -379,7 +379,7 @@ def monday_upload_to_column(api_key, item_id, column_id, pdf_data, pdf_name):
         return (b'--'+bnd+b'\r\nContent-Disposition: form-data; name="'+n.encode()+
                 b'"; filename="'+fn.encode()+b'"\r\nContent-Type: application/octet-stream\r\n\r\n'+d+b'\r\n')
     body = (tp('query',q)+tp('variables',json.dumps({"item_id":item_id,"column_id":column_id}))+
-            tp('map',json.dumps({"image":["variables.file"]}))+fp('image',pdf_data,pdf_name)+
+            tp('map',json.dumps({"image":"variables.file"}))+fp('image',pdf_data,pdf_name)+
             b'--'+bnd+b'--\r\n')
     req = urllib.request.Request('https://api.monday.com/v2/file', data=body,
         headers={'Authorization':api_key,

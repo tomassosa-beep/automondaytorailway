@@ -7,23 +7,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    TOKENS
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 :root {
-  /* â”€â”€ UalÃ¡ Azul marino â”€â”€ */
-  --blue:       #1A1F71;   /* azul marino UalÃ¡ (texto del logo) */
+  /* ── Ualá Azul marino ── */
+  --blue:       #1A1F71;   /* azul marino Ualá (texto del logo) */
   --blue-mid:   #252B99;
   --blue-light: #4A52CC;
   --blue-pale:  #EEEFFE;
 
-  /* â”€â”€ UalÃ¡ Coral â”€â”€ */
-  --coral:      #F5365C;   /* coral/rosa vibrante UalÃ¡ (la "u" del logo) */
+  /* ── Ualá Coral ── */
+  --coral:      #F5365C;   /* coral/rosa vibrante Ualá (la "u" del logo) */
   --coral-dim:  rgba(245,54,92,.12);
   --violet:     #2D3494;
   --violet-dim: rgba(45,52,148,.08);
 
-  /* â”€â”€ SemÃ¡nticos â”€â”€ */
+  /* ── Semánticos ── */
   --green:      #00C48C;
   --green-dim:  rgba(0,196,140,.12);
   --amber:      #F59E0B;
@@ -31,13 +31,13 @@
   --red:        #F5365C;
   --red-dim:    rgba(245,54,92,.12);
 
-  /* â”€â”€ Neutrals â”€â”€ */
-  --bg:         #F4F5FB;   /* fondo UalÃ¡: blanco con toque azul */
+  /* ── Neutrals ── */
+  --bg:         #F4F5FB;   /* fondo Ualá: blanco con toque azul */
   --surface:    #FFFFFF;
   --surface2:   #F0F1FA;
   --border:     rgba(26,31,113,.1);
   --border-mid: rgba(26,31,113,.18);
-  --text:       #0F1240;   /* casi negro azulado UalÃ¡ */
+  --text:       #0F1240;   /* casi negro azulado Ualá */
   --text-mid:   #4A5080;
   --text-dim:   #9096C0;
 
@@ -52,18 +52,18 @@
   --mono:  'DM Mono', monospace;
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    RESET
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;min-height:100vh;line-height:1.5}
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    HEADER
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 header {
-  background: #1A1F71;   /* azul marino UalÃ¡ */
+  background: #1A1F71;   /* azul marino Ualá */
   padding: 0 28px;
   position: sticky;
   top: 0;
@@ -163,9 +163,9 @@ header {
   0%,100%{opacity:1} 50%{opacity:.5}
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    MAIN LAYOUT
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 .app {
   max-width: 1280px;
   margin: 0 auto;
@@ -174,9 +174,9 @@ header {
 .panel { display: none; }
 .panel.active { display: block; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    DASHBOARD
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 .dash-header {
   display: flex;
   align-items: center;
@@ -390,9 +390,9 @@ header {
   flex-shrink: 0;
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    FILTROS + TABLA
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 .filters-bar {
   background: var(--surface);
   border-radius: var(--r);
@@ -424,7 +424,7 @@ header {
 }
 .filter-search input:focus { border-color: var(--blue); }
 .filter-search::before {
-  content: 'ðŸ”';
+  content: '🔍';
   position: absolute;
   left: 10px;
   top: 50%;
@@ -604,9 +604,9 @@ tbody tr.row-drive  { border-left: 3px solid var(--violet); }
 .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
 .empty-state p { font-size: 13px; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    GENERAL COMPONENTS
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 .card {
   background: var(--surface);
   border-radius: var(--r-lg);
@@ -710,9 +710,9 @@ tbody tr.row-drive  { border-left: 3px solid var(--violet); }
 .alert-green { background: var(--green-dim); color: #065f46; border: 1px solid rgba(0,196,140,.3); }
 .alert-red { background: var(--red-dim); color: #991b1b; border: 1px solid rgba(239,68,68,.3); }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    PROCESAR PANEL
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 .upload-zone {
   border: 2px dashed var(--border-mid);
   border-radius: var(--r-lg);
@@ -754,9 +754,9 @@ tbody tr.row-drive  { border-left: 3px solid var(--violet); }
 .result-field-val { font-size: 12px; font-weight: 600; }
 .result-card-footer { display: flex; gap: 6px; justify-content: flex-end; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    DRIVE PANEL
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 .ddot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .ddot.idle { background: var(--text-dim); }
 .ddot.ok { background: var(--green); box-shadow: 0 0 6px var(--green); }
@@ -810,9 +810,9 @@ tbody tr.row-drive  { border-left: 3px solid var(--violet); }
 .step-body p { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
 .step-body code { background: var(--surface2); padding: 1px 5px; border-radius: 4px; font-family: var(--mono); font-size: 11px; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    MODAL
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 /* Modal XL */
 .modal-xl {
   max-width: 860px !important;
@@ -895,16 +895,16 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
 .row-checkbox { width: 36px; }
 .row-cb { width: 16px; height: 16px; cursor: pointer; accent-color: var(--red); }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    SCROLLBAR
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 10px; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ─────────────────────────────────────────────────────────
    RESPONSIVE
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+───────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .kpi-grid { grid-template-columns: repeat(4, 1fr); }
   .chart-row { grid-template-columns: 1fr 1fr; }
@@ -922,7 +922,7 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
 <body>
 
 <div id="no-key-banner" style="display:none;background:#e53935;color:white;padding:10px 16px;font-size:13px;font-weight:600;text-align:center">
-  âš ï¸ Sin API key configurada â€” andÃ¡ a <b>ConfiguraciÃ³n â†’ OpenAI API Key</b> e ingresÃ¡ tu key sk-...
+  ?? Sin API key configurada — andá a <b>Configuración → OpenAI API Key</b> e ingresá tu key sk-...
 </div>
 
 <!-- HEADER -->
@@ -939,11 +939,11 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
 
     <nav class="main-nav">
       <nav class="main-nav">
-        <button class="nav-tab active" onclick="showTab('dashboard',this)">ðŸ“Š Dashboard</button>
-        <button class="nav-tab" onclick="showTab('gmail',this)">ðŸ“§ Gmail</button>
-        <button class="nav-tab" onclick="showTab('procesar',this)">ðŸ“„ Procesar PDFs</button>
-        <button class="nav-tab" onclick="showTab('drive',this)">â˜ï¸ Drive / Sheet</button>
-        <button class="nav-tab nav-tab-sm" onclick="showTab('configurar',this)">âš™ Config</button>
+        <button class="nav-tab active" onclick="showTab('dashboard',this)">📊 Dashboard</button>
+        <button class="nav-tab" onclick="showTab('gmail',this)">📧 Gmail</button>
+        <button class="nav-tab" onclick="showTab('procesar',this)">📄 Procesar PDFs</button>
+        <button class="nav-tab" onclick="showTab('drive',this)">☁️ Drive / Sheet</button>
+        <button class="nav-tab nav-tab-sm" onclick="showTab('configurar',this)">⚙ Config</button>
       </nav>
     <div class="header-right">
       <div class="status-dot" id="serverStatus">
@@ -956,18 +956,18 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
 
 <div class="app">
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ══════════════════════════════════════════════════════
      DASHBOARD
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+══════════════════════════════════════════════════════ -->
 <div id="tab-dashboard" class="panel active">
 
   <div class="dash-header">
     <div>
       <div class="dash-title">Dashboard</div>
-      <div class="dash-subtitle" id="dash-updated">Sin datos todavÃ­a</div>
+      <div class="dash-subtitle" id="dash-updated">Sin datos todavía</div>
     </div>
     <div class="btn-row">
-      <button class="btn btn-ghost btn-sm" onclick="exportarCSV()">â¬‡ Exportar CSV</button>
+      <button class="btn btn-ghost btn-sm" onclick="exportarCSV()">⬇ Exportar CSV</button>
       <button class="btn btn-primary btn-sm" onclick="showTab('procesar', document.querySelectorAll('.nav-tab')[1])">+ Procesar PDFs</button>
     </div>
   </div>
@@ -975,40 +975,40 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
   <!-- KPIs -->
   <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
     <div class="kpi" style="--kpi-color:var(--blue)">
-      <div class="kpi-icon">ðŸ“‹</div>
+      <div class="kpi-icon">📋</div>
       <div class="kpi-label">Total Facturas</div>
       <div class="kpi-val" id="kpi-total">0</div>
       <div class="kpi-sub">registros totales</div>
     </div>
     <div class="kpi" style="--kpi-color:var(--green)">
-      <div class="kpi-icon">âœ…</div>
+      <div class="kpi-icon">✅</div>
       <div class="kpi-label">Procesadas</div>
       <div class="kpi-val" id="kpi-procesadas">0</div>
       <div class="kpi-sub">en Monday</div>
     </div>
     <div class="kpi" style="--kpi-color:var(--amber)">
-      <div class="kpi-icon">â³</div>
+      <div class="kpi-icon">⏳</div>
       <div class="kpi-label">Pendientes</div>
       <div class="kpi-val" id="kpi-pendientes">0</div>
       <div class="kpi-sub">para revisar</div>
     </div>
     <div class="kpi" style="--kpi-color:var(--violet)">
-      <div class="kpi-icon">â˜</div>
+      <div class="kpi-icon">☁</div>
       <div class="kpi-label">Via Drive</div>
       <div class="kpi-val" id="kpi-drive">0</div>
       <div class="kpi-sub">auto sincronizadas</div>
     </div>
     <div class="kpi" style="--kpi-color:var(--red)">
-      <div class="kpi-icon">â†©</div>
+      <div class="kpi-icon">↩</div>
       <div class="kpi-label">NC / ND</div>
       <div class="kpi-val" id="kpi-nc">0</div>
-      <div class="kpi-sub">notas de crÃ©dito/dÃ©bito</div>
+      <div class="kpi-sub">notas de crédito/débito</div>
     </div>
     <div class="kpi" style="--kpi-color:#F59E0B;cursor:pointer" onclick="showDuplicados()">
-      <div class="kpi-icon">ðŸ”</div>
+      <div class="kpi-icon">🔁</div>
       <div class="kpi-label">Duplicadas</div>
       <div class="kpi-val" id="kpi-dup" style="color:#F59E0B">0</div>
-      <div class="kpi-sub">no subidas Â· click para ver</div>
+      <div class="kpi-sub">no subidas · click para ver</div>
     </div>
   </div>
 
@@ -1018,25 +1018,25 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
     <div class="chart-card" style="padding:18px 22px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
         <div style="font-family:var(--head);font-size:13px;font-weight:700">Neto ARS procesado</div>
-        <span style="font-size:10px;font-family:var(--mono);color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:100px">Facturas âˆ’ NC + ND</span>
+        <span style="font-size:10px;font-family:var(--mono);color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:100px">Facturas − NC + ND</span>
       </div>
       <div style="font-family:var(--head);font-size:32px;font-weight:800;color:var(--blue);letter-spacing:-1px" id="total-ars-neto">$0</div>
       <div style="display:flex;gap:16px;margin-top:10px;font-size:12px;font-family:var(--mono)">
-        <span style="color:var(--green)">â–² FC <span id="total-ars-fc">$0</span></span>
-        <span style="color:var(--red)">â–¼ NC <span id="total-ars-nc">$0</span></span>
-        <span style="color:var(--amber)">â–² ND <span id="total-ars-nd">$0</span></span>
+        <span style="color:var(--green)">▲ FC <span id="total-ars-fc">$0</span></span>
+        <span style="color:var(--red)">▼ NC <span id="total-ars-nc">$0</span></span>
+        <span style="color:var(--amber)">▲ ND <span id="total-ars-nd">$0</span></span>
       </div>
     </div>
     <div class="chart-card" style="padding:18px 22px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
         <div style="font-family:var(--head);font-size:13px;font-weight:700">Neto USD procesado</div>
-        <span style="font-size:10px;font-family:var(--mono);color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:100px">Facturas âˆ’ NC + ND</span>
+        <span style="font-size:10px;font-family:var(--mono);color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:100px">Facturas − NC + ND</span>
       </div>
       <div style="font-family:var(--head);font-size:32px;font-weight:800;color:var(--green);letter-spacing:-1px" id="total-usd-neto">U$S 0</div>
       <div style="display:flex;gap:16px;margin-top:10px;font-size:12px;font-family:var(--mono)">
-        <span style="color:var(--green)">â–² FC <span id="total-usd-fc">U$S 0</span></span>
-        <span style="color:var(--red)">â–¼ NC <span id="total-usd-nc">U$S 0</span></span>
-        <span style="color:var(--amber)">â–² ND <span id="total-usd-nd">U$S 0</span></span>
+        <span style="color:var(--green)">▲ FC <span id="total-usd-fc">U$S 0</span></span>
+        <span style="color:var(--red)">▼ NC <span id="total-usd-nc">U$S 0</span></span>
+        <span style="color:var(--amber)">▲ ND <span id="total-usd-nd">U$S 0</span></span>
       </div>
     </div>
   </div>
@@ -1044,7 +1044,7 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
   <div class="chart-row">
     <!-- Facturas por semana -->
     <div class="chart-card">
-      <div class="chart-card-title">Facturas recientes <span id="chart-period">Ãºltimas 8 semanas</span></div>
+      <div class="chart-card-title">Facturas recientes <span id="chart-period">últimas 8 semanas</span></div>
       <div class="spark-bars" id="spark-bars"></div>
       <div class="spark-labels" id="spark-labels"></div>
     </div>
@@ -1063,9 +1063,9 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
       </div>
     </div>
 
-    <!-- DistribuciÃ³n tipo -->
+    <!-- Distribución tipo -->
     <div class="chart-card">
-      <div class="chart-card-title">DistribuciÃ³n <span>por tipo</span></div>
+      <div class="chart-card-title">Distribución <span>por tipo</span></div>
       <div class="donut-wrap">
         <svg class="donut-svg" viewBox="0 0 110 110" id="donut-svg">
           <circle cx="55" cy="55" r="40" fill="none" stroke="var(--blue-pale)" stroke-width="18"/>
@@ -1086,19 +1086,19 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
   <div id="panel-duplicados" style="display:none;margin-bottom:16px">
     <div class="tbl-wrap">
       <div class="tbl-header" style="background:rgba(245,158,11,.06);border-bottom:1px solid rgba(245,158,11,.2)">
-        <div class="tbl-title" style="color:#92400e">ðŸ” Facturas duplicadas bloqueadas</div>
+        <div class="tbl-title" style="color:#92400e">🔁 Facturas duplicadas bloqueadas</div>
         <div class="tbl-count" id="dup-count" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3);color:#92400e">0</div>
         <div class="tbl-actions">
-          <span style="font-size:12px;color:var(--text-dim)">Estas facturas ya existÃ­an y no se subieron a Monday</span>
-          <button class="btn btn-ghost btn-sm" onclick="limpiarDuplicados()">ðŸ—‘ Limpiar lista</button>
-          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('panel-duplicados').style.display='none'">âœ•</button>
+          <span style="font-size:12px;color:var(--text-dim)">Estas facturas ya existían y no se subieron a Monday</span>
+          <button class="btn btn-ghost btn-sm" onclick="limpiarDuplicados()">🗑 Limpiar lista</button>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('panel-duplicados').style.display='none'">✕</button>
         </div>
       </div>
       <table>
         <thead><tr>
-          <th>Proveedor</th><th>NÂ° Factura</th><th>Fecha FC</th>
+          <th>Proveedor</th><th>N° Factura</th><th>Fecha FC</th>
           <th>Importe</th><th>Motivo</th><th>Detectada</th>
-          <th>AcciÃ³n</th>
+          <th>Acción</th>
         </tr></thead>
         <tbody id="dupTable"></tbody>
       </table>
@@ -1108,35 +1108,35 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
   <!-- Filtros -->
   <div class="filters-bar">
     <div class="filter-search">
-      <input type="text" id="filter-search" placeholder="Buscar proveedor, NÂ° factura..." oninput="applyFilters()"/>
+      <input type="text" id="filter-search" placeholder="Buscar proveedor, N° factura..." oninput="applyFilters()"/>
     </div>
     <select class="filter-select" id="filter-moneda" onchange="applyFilters()">
-      <option value="">ðŸ’± Todas las monedas</option>
+      <option value="">💱 Todas las monedas</option>
       <option value="ARS">ARS</option>
       <option value="USD">USD</option>
     </select>
     <select class="filter-select" id="filter-tipo" onchange="applyFilters()">
-      <option value="">ðŸ“„ Todos los tipos</option>
+      <option value="">📄 Todos los tipos</option>
       <option value="FACTURA">Factura</option>
-      <option value="NC">Nota de CrÃ©dito</option>
-      <option value="ND">Nota de DÃ©bito</option>
+      <option value="NC">Nota de Crédito</option>
+      <option value="ND">Nota de Débito</option>
     </select>
     <select class="filter-select" id="filter-origen" onchange="applyFilters()">
-      <option value="">ðŸŒ Todos los orÃ­genes</option>
-      <option value="manual">âœ‹ Manual</option>
-      <option value="drive">â˜ Drive</option>
+      <option value="">🌐 Todos los orígenes</option>
+      <option value="manual">✋ Manual</option>
+      <option value="drive">☁ Drive</option>
     </select>
     <div class="filter-sep"></div>
     <div class="filter-chip active" id="chip-all" onclick="setEstadoFilter('',this)">
       Todas <span class="count" id="chip-all-count">0</span>
     </div>
     <div class="filter-chip" id="chip-proc" onclick="setEstadoFilter('procesado',this)">
-      âœ… Procesadas <span class="count" id="chip-proc-count">0</span>
+      ✅ Procesadas <span class="count" id="chip-proc-count">0</span>
     </div>
     <div class="filter-chip" id="chip-pend" onclick="setEstadoFilter('pendiente',this)">
-      â³ Pendientes <span class="count" id="chip-pend-count">0</span>
+      ⏳ Pendientes <span class="count" id="chip-pend-count">0</span>
     </div>
-    <button class="btn btn-ghost btn-sm" onclick="clearFilters()">âœ• Limpiar</button>
+    <button class="btn btn-ghost btn-sm" onclick="clearFilters()">✕ Limpiar</button>
   </div>
 
   <!-- Tabla -->
@@ -1145,48 +1145,48 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
       <div class="tbl-title">Facturas</div>
       <div class="tbl-count" id="tbl-count">0 resultados</div>
       <div class="tbl-actions">
-        <button class="btn btn-ghost btn-sm" onclick="sortTable('proveedor')">Aâ€“Z</button>
+        <button class="btn btn-ghost btn-sm" onclick="sortTable('proveedor')">A–Z</button>
         <button class="btn btn-ghost btn-sm" onclick="sortTable('fechaFactura')">Por fecha</button>
         <button class="btn btn-ghost btn-sm" onclick="sortTable('importe')">Por importe</button>
         <div style="width:1px;height:18px;background:var(--border-mid)"></div>
-        <button class="btn btn-ghost btn-sm" id="btnSelectMode" onclick="toggleSelectMode()">â˜‘ Seleccionar</button>
-        <button class="btn btn-sm" id="btnDeleteSelected" onclick="borrarSeleccionados()" style="display:none;background:var(--red);color:#fff">ðŸ—‘ Borrar seleccionados</button>
+        <button class="btn btn-ghost btn-sm" id="btnSelectMode" onclick="toggleSelectMode()">☑ Seleccionar</button>
+        <button class="btn btn-sm" id="btnDeleteSelected" onclick="borrarSeleccionados()" style="display:none;background:var(--red);color:#fff">🗑 Borrar seleccionados</button>
       </div>
     </div>
     <table>
       <thead>
         <tr>
-          <th onclick="sortTable('proveedor')">Proveedor / Tipo <span class="sort-icon">â†•</span></th>
+          <th onclick="sortTable('proveedor')">Proveedor / Tipo <span class="sort-icon">↕</span></th>
           <th>Origen</th>
-          <th onclick="sortTable('fechaFactura')">Fecha FC <span class="sort-icon">â†•</span></th>
-          <th onclick="sortTable('fechaRecibida')">Recibida <span class="sort-icon">â†•</span></th>
-          <th onclick="sortTable('vencimiento')">Vencimiento <span class="sort-icon">â†•</span></th>
-          <th onclick="sortTable('importe')">Importe <span class="sort-icon">â†•</span></th>
-          <th>NÂ° Factura</th>
+          <th onclick="sortTable('fechaFactura')">Fecha FC <span class="sort-icon">↕</span></th>
+          <th onclick="sortTable('fechaRecibida')">Recibida <span class="sort-icon">↕</span></th>
+          <th onclick="sortTable('vencimiento')">Vencimiento <span class="sort-icon">↕</span></th>
+          <th onclick="sortTable('importe')">Importe <span class="sort-icon">↕</span></th>
+          <th>N° Factura</th>
           <th>Estado</th>
         </tr>
       </thead>
       <tbody id="facturaTable">
-        <tr><td colspan="8"><div class="empty-state"><div class="icon">ðŸ“­</div><p>No hay facturas procesadas todavÃ­a.</p></div></td></tr>
+        <tr><td colspan="8"><div class="empty-state"><div class="icon">📭</div><p>No hay facturas procesadas todavía.</p></div></td></tr>
       </tbody>
     </table>
   </div>
 
 </div><!-- /tab-dashboard -->
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ══════════════════════════════════════════════════════
      PROCESAR PDFs
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<!-- â•â• PROCESAR â•â• -->
+══════════════════════════════════════════════════════ -->
+<!-- ══ PROCESAR ══ -->
   <div id="tab-procesar" class="panel">
     <div class="sec-header"><span class="sec-title">Procesar PDFs</span></div>
     <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()"
          ondragover="event.preventDefault();this.classList.add('drag-over')"
          ondragleave="this.classList.remove('drag-over')"
          ondrop="handleDrop(event)">
-      <div class="upload-icon">ðŸ“„</div>
-      <div class="upload-title">ArrastrÃ¡ tus PDFs acÃ¡</div>
-      <div class="upload-sub">o hacÃ© click para seleccionar Â· MÃºltiples archivos OK</div>
+      <div class="upload-icon">📄</div>
+      <div class="upload-title">Arrastrá tus PDFs acá</div>
+      <div class="upload-sub">o hacé click para seleccionar · Múltiples archivos OK</div>
       <input type="file" id="fileInput" multiple accept=".pdf" style="display:none" onchange="handleFiles(this.files)"/>
     </div>
 
@@ -1201,50 +1201,50 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
         <span class="sec-title">Resultados</span>
         <span class="chip" id="resultCount">0 facturas</span>
         <div style="margin-left:auto" class="btn-row">
-          <button class="btn btn-outline" onclick="resetProcesador()">â†© Nuevo lote</button>
-          <button class="btn btn-primary" onclick="enviarTodosAMonday()">ðŸš€ Enviar todos a Monday</button>
+          <button class="btn btn-outline" onclick="resetProcesador()">↩ Nuevo lote</button>
+          <button class="btn btn-primary" onclick="enviarTodosAMonday()">🚀 Enviar todos a Monday</button>
         </div>
       </div>
       <div class="result-grid" id="resultGrid"></div>
     </div>
   </div>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ══════════════════════════════════════════════════════
      GOOGLE DRIVE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<!-- â•â• GOOGLE DRIVE (Apps Script + Sheet) â•â• -->
+══════════════════════════════════════════════════════ -->
+<!-- ══ GOOGLE DRIVE (Apps Script + Sheet) ══ -->
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ══════════════════════════════════════════════════════
      DRIVE / SHEET
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+══════════════════════════════════════════════════════ -->
   <div id="tab-drive" class="panel">
-    <div class="alert alert-blue">â˜ï¸ <strong>Sin ngrok ni API keys.</strong> Apps Script escribe los IDs de PDFs nuevos en una Google Sheet pÃºblica. El servidor los descarga directamente de Drive.</div>
+    <div class="alert alert-blue">☁️ <strong>Sin ngrok ni API keys.</strong> Apps Script escribe los IDs de PDFs nuevos en una Google Sheet pública. El servidor los descarga directamente de Drive.</div>
 
     <div class="drive-status-bar">
       <div class="ddot idle" id="driveDot"></div>
       <div class="drive-status-text" id="driveStatusLabel">Sin configurar</div>
       <span class="chip" id="drivePendCount">0 en cola</span>
-      <button class="btn btn-outline btn-sm" onclick="syncSheetAhora()">ðŸ”„ Sincronizar ahora</button>
+      <button class="btn btn-outline btn-sm" onclick="syncSheetAhora()">🔄 Sincronizar ahora</button>
     </div>
 
     <div class="grid-2" style="margin-bottom:16px">
 
       <!-- Paso 1: Sheet config -->
       <div class="card">
-        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">1 Â· Configurar Google Sheet</span></div>
-        <div class="alert alert-yellow" style="font-size:12px">HacÃ© esto con tu <strong>cuenta Gmail personal</strong></div>
+        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">1 · Configurar Google Sheet</span></div>
+        <div class="alert alert-yellow" style="font-size:12px">Hacé esto con tu <strong>cuenta Gmail personal</strong></div>
         <div class="steps" style="margin-bottom:16px">
           <div class="step">
             <div class="step-num">A</div>
-            <div class="step-body"><p>AbrÃ­ <code>sheets.google.com</code> con tu Gmail personal y creÃ¡ una Sheet nueva.</p></div>
+            <div class="step-body"><p>Abrí <code>sheets.google.com</code> con tu Gmail personal y creá una Sheet nueva.</p></div>
           </div>
           <div class="step">
             <div class="step-num">B</div>
-            <div class="step-body"><p>HacÃ© click en <strong>Compartir</strong> â†’ "Cualquier persona con el link" â†’ rol <strong>Editor</strong>.</p></div>
+            <div class="step-body"><p>Hacé click en <strong>Compartir</strong> → "Cualquier persona con el link" → rol <strong>Editor</strong>.</p></div>
           </div>
           <div class="step">
             <div class="step-num">C</div>
-            <div class="step-body"><p>CopiÃ¡ el ID de la URL: <code>docs.google.com/spreadsheets/d/<strong>ESTE_ID</strong>/edit</code></p></div>
+            <div class="step-body"><p>Copiá el ID de la URL: <code>docs.google.com/spreadsheets/d/<strong>ESTE_ID</strong>/edit</code></p></div>
           </div>
         </div>
         <div class="form-group">
@@ -1252,7 +1252,7 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
           <input type="text" id="cfg-sheet-id" placeholder="1BxiMVs0XRA5nFMdKvBdBZjgm..."/>
         </div>
         <div class="form-group">
-          <label>Sync automÃ¡tico cada</label>
+          <label>Sync automático cada</label>
           <select id="cfg-drive-interval">
             <option value="30">30 segundos</option>
             <option value="60" selected>1 minuto</option>
@@ -1262,34 +1262,34 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
         </div>
         <div class="form-group" style="display:flex;align-items:center;gap:10px">
           <input type="checkbox" id="cfg-drive-autosend" style="width:auto"/>
-          <label for="cfg-drive-autosend" style="margin:0;text-transform:none;font-size:13px;color:var(--text)">Enviar a Monday automÃ¡ticamente</label>
+          <label for="cfg-drive-autosend" style="margin:0;text-transform:none;font-size:13px;color:var(--text)">Enviar a Monday automáticamente</label>
         </div>
-        <button class="btn btn-primary" onclick="guardarDriveConfig()">ðŸ’¾ Guardar y activar sync</button>
+        <button class="btn btn-primary" onclick="guardarDriveConfig()">💾 Guardar y activar sync</button>
       </div>
 
       <!-- Paso 2: Apps Script -->
       <div class="card">
-        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">2 Â· Configurar Apps Script</span></div>
-        <div class="alert alert-blue" style="font-size:12px">HacÃ© esto con tu <strong>cuenta UalÃ¡</strong></div>
+        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">2 · Configurar Apps Script</span></div>
+        <div class="alert alert-blue" style="font-size:12px">Hacé esto con tu <strong>cuenta Ualá</strong></div>
         <div class="steps" style="margin-bottom:16px">
           <div class="step">
             <div class="step-num">1</div>
-            <div class="step-body"><h4>DescargÃ¡ el script</h4><p>UsÃ¡ el botÃ³n de abajo y pegalo en <code>script.google.com</code></p></div>
+            <div class="step-body"><h4>Descargá el script</h4><p>Usá el botón de abajo y pegalo en <code>script.google.com</code></p></div>
           </div>
           <div class="step">
             <div class="step-num">2</div>
-            <div class="step-body"><h4>CompletÃ¡ SHEET_ID</h4><p>En la lÃ­nea 15 del script, pegÃ¡ el ID de tu Sheet personal.</p></div>
+            <div class="step-body"><h4>Completá SHEET_ID</h4><p>En la línea 15 del script, pegá el ID de tu Sheet personal.</p></div>
           </div>
           <div class="step">
             <div class="step-num">3</div>
-            <div class="step-body"><h4>EjecutÃ¡ setupTrigger()</h4><p>SeleccionÃ¡ <code>setupTrigger</code> en el dropdown y apretÃ¡ â–¶ Ejecutar. AceptÃ¡ los permisos.</p></div>
+            <div class="step-body"><h4>Ejecutá setupTrigger()</h4><p>Seleccioná <code>setupTrigger</code> en el dropdown y apretá ▶ Ejecutar. Aceptá los permisos.</p></div>
           </div>
           <div class="step">
             <div class="step-num">4</div>
-            <div class="step-body"><h4>Listo</h4><p>El script va a detectar PDFs nuevos y escribirlos en tu Sheet. El servidor los descarga automÃ¡ticamente.</p></div>
+            <div class="step-body"><h4>Listo</h4><p>El script va a detectar PDFs nuevos y escribirlos en tu Sheet. El servidor los descarga automáticamente.</p></div>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="descargarScript()">â¬‡ Descargar Apps Script (.gs)</button>
+        <button class="btn btn-primary" onclick="descargarScript()">⬇ Descargar Apps Script (.gs)</button>
       </div>
     </div>
 
@@ -1297,21 +1297,21 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
       <div class="card">
         <div class="sec-header" style="margin-bottom:12px"><span class="sec-title">Controles</span></div>
         <div class="btn-row">
-          <button class="btn btn-coral" id="driveBtnAuto" onclick="toggleDrivePolling()">â–¶ Iniciar polling</button>
-          <button class="btn btn-outline" onclick="syncSheetAhora()">ðŸ”„ Sync manual</button>
-          <button class="btn btn-ghost" onclick="resetDriveHistory()">ðŸ—‘ Resetear historial</button>
+          <button class="btn btn-coral" id="driveBtnAuto" onclick="toggleDrivePolling()">▶ Iniciar polling</button>
+          <button class="btn btn-outline" onclick="syncSheetAhora()">🔄 Sync manual</button>
+          <button class="btn btn-ghost" onclick="resetDriveHistory()">🗑 Resetear historial</button>
         </div>
         <div style="margin-top:12px;padding:12px;background:var(--surface2);border-radius:var(--r-sm);border:1px solid var(--border)">
           <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Flujo</div>
           <p style="font-size:12px;color:var(--text-mid);line-height:1.7">
-            Apps Script (UalÃ¡) detecta PDFs â†’ escribe chunks en Sheet pÃºblica â†’ servidor Python reensambla PDFs â†’ procesa con GPT-4o â†’ envÃ­a a Monday â†’ Apps Script mueve a <code>Procesado/fecha</code>.
+            Apps Script (Ualá) detecta PDFs → escribe chunks en Sheet pública → servidor Python reensambla PDFs → procesa con GPT-4o → envía a Monday → Apps Script mueve a <code>Procesado/fecha</code>.
           </p>
         </div>
       </div>
       <div class="card">
         <div class="sec-header" style="margin-bottom:12px"><span class="sec-title">Log de actividad</span></div>
         <div class="drive-log-box" id="driveLog">
-          <div class="dlog info">ConfigurÃ¡ el Sheet ID y guardÃ¡ para activar el sync.</div>
+          <div class="dlog info">Configurá el Sheet ID y guardá para activar el sync.</div>
         </div>
       </div>
     </div>
@@ -1319,14 +1319,14 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
   </div>
 
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ══════════════════════════════════════════════════════
      GMAIL DIRECTO
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+══════════════════════════════════════════════════════ -->
   <div id="tab-gmail" class="panel">
   <div class="card" >
     <div class="sec-header" style="margin-bottom:16px">
-      <span style="font-size:20px">ðŸ“§</span>
-      <span class="sec-title">Gmail â†’ AutoMonday (directo)</span>
+      <span style="font-size:20px">📧</span>
+      <span class="sec-title">Gmail → AutoMonday (directo)</span>
       <span class="chip" style="background:rgba(234,67,53,.1);color:#EA4335;border-color:rgba(234,67,53,.2)">sin Drive</span>
       <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
         <div class="ddot idle" id="gmailDot"></div>
@@ -1335,14 +1335,14 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
     </div>
 
     <div class="alert alert-blue" style="margin-bottom:16px;font-size:12px">
-      ðŸ“Œ Este flujo usa <strong>GmailDirecto.gs</strong>. El script de Apps Script escanea Gmail cada 1 min, filtra por asunto/nombre de PDF, y la IA valida que sea una factura antes de subirla a Monday.
+      📌 Este flujo usa <strong>GmailDirecto.gs</strong>. El script de Apps Script escanea Gmail cada 1 min, filtra por asunto/nombre de PDF, y la IA valida que sea una factura antes de subirla a Monday.
     </div>
 
     <div class="grid-2" style="margin-bottom:16px">
       <div>
         <!-- Rango de fechas -->
         <div class="form-group">
-          <label>Rango de bÃºsqueda de emails</label>
+          <label>Rango de búsqueda de emails</label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
             <div>
               <div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-bottom:4px">DESDE</div>
@@ -1355,47 +1355,47 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
           </div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
             <button class="btn btn-ghost btn-sm" onclick="setGmailRango('hoy')" style="font-size:11px">Hoy</button>
-            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('semana')" style="font-size:11px">Ãšltima semana</button>
-            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('mes')" style="font-size:11px">Ãšltimo mes</button>
-            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('mes3')" style="font-size:11px">Ãšltimos 3 meses</button>
+            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('semana')" style="font-size:11px">Última semana</button>
+            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('mes')" style="font-size:11px">Último mes</button>
+            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('mes3')" style="font-size:11px">Últimos 3 meses</button>
           </div>
-          <div style="font-size:11px;color:var(--text-dim)">âš ï¸ Sin rango definido va a buscar en todo el historial.</div>
+          <div style="font-size:11px;color:var(--text-dim)">?? Sin rango definido va a buscar en todo el historial.</div>
         </div>
 
         <div class="form-group">
           <label>Query Gmail generado</label>
           <div style="display:flex;gap:6px">
-            <input type="text" id="cfg-gmail-query" placeholder="Se genera automÃ¡ticamente del rango..." style="font-family:var(--mono);font-size:11px;flex:1" readonly/>
-            <button class="btn btn-ghost btn-sm" onclick="regenerarGmailQuery()" title="Regenerar query">ðŸ”„</button>
+            <input type="text" id="cfg-gmail-query" placeholder="Se genera automáticamente del rango..." style="font-family:var(--mono);font-size:11px;flex:1" readonly/>
+            <button class="btn btn-ghost btn-sm" onclick="regenerarGmailQuery()" title="Regenerar query">🔄</button>
           </div>
-          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Se actualiza solo al cambiar el rango. PodÃ©s editarlo manualmente si necesitÃ¡s.</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Se actualiza solo al cambiar el rango. Podés editarlo manualmente si necesitás.</div>
         </div>
         <div class="form-group">
-          <label>Palabras clave â€” asunto del email</label>
+          <label>Palabras clave — asunto del email</label>
           <input type="text" id="cfg-gmail-subject-kw" placeholder="factura, FC, CFE, nota de credito, nota de debito"/>
-          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Separadas por coma. Si el asunto contiene alguna â†’ pasa el filtro.</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Separadas por coma. Si el asunto contiene alguna → pasa el filtro.</div>
         </div>
         <div class="form-group">
-          <label>Palabras clave â€” nombre del PDF adjunto</label>
+          <label>Palabras clave — nombre del PDF adjunto</label>
           <input type="text" id="cfg-gmail-filename-kw" placeholder="factura, FC_, CFE_, invoice, nota"/>
-          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Separadas por coma. Si el nombre del PDF contiene alguna â†’ pasa el filtro.</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Separadas por coma. Si el nombre del PDF contiene alguna → pasa el filtro.</div>
         </div>
       </div>
       <div>
         <div class="form-group">
-          <label>ValidaciÃ³n por IA antes de subir a Monday</label>
+          <label>Validación por IA antes de subir a Monday</label>
           <select id="cfg-gmail-ai-validate">
-            <option value="si">âœ… SÃ­ â€” la IA confirma que es factura (recomendado)</option>
-            <option value="no">âš¡ No â€” confiar solo en los filtros de texto</option>
+            <option value="si">✅ Sí — la IA confirma que es factura (recomendado)</option>
+            <option value="no">⚡ No — confiar solo en los filtros de texto</option>
           </select>
-          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Si la IA detecta que es una OC, orden de pago u otro doc â†’ lo rechaza con etiqueta "No es factura".</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Si la IA detecta que es una OC, orden de pago u otro doc → lo rechaza con etiqueta "No es factura".</div>
         </div>
         <div class="form-group">
           <label>URL del Web App (Apps Script)</label>
           <input type="text" id="cfg-gmail-script-url" value="https://script.google.com/a/macros/uala.com.ar/s/AKfycbzjwcpy5U1xblnRaSoiB22VStcqgoEeSQva3LnvtS67bUgtr4xTR3fiTrk7V7IuO3IC/exec" readonly style="font-size:10px;opacity:.75;cursor:default" style="font-family:var(--mono);font-size:11px"/>
           <div style="font-size:11px;color:var(--text-dim);margin-top:4px">
-            Opcional. Si la configurÃ¡s, el rango de fechas se sincroniza al script automÃ¡ticamente al guardar.
-            <br>Apps Script â†’ Implementar â†’ Web App â†’ Cualquier persona â†’ copiar URL.
+            Opcional. Si la configurás, el rango de fechas se sincroniza al script automáticamente al guardar.
+            <br>Apps Script → Implementar → Web App → Cualquier persona → copiar URL.
           </div>
         </div>
 
@@ -1414,7 +1414,7 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
           <div style="font-size:11px;color:var(--text-dim);margin-top:4px">"En Cola" al detectar el email. "Procesado" cuando Monday confirma la carga.</div>
         </div>
         <div class="form-group">
-          <label>Polling automÃ¡tico en la app</label>
+          <label>Polling automático en la app</label>
           <select id="cfg-gmail-interval">
             <option value="30">Cada 30 segundos</option>
             <option value="60" selected>Cada 1 minuto</option>
@@ -1425,34 +1425,34 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
     </div>
 
     <div class="btn-row" style="margin-bottom:8px">
-      <button class="btn btn-primary" onclick="guardarGmailConfig()">ðŸ’¾ Guardar config Gmail</button>
+      <button class="btn btn-primary" onclick="guardarGmailConfig()">💾 Guardar config Gmail</button>
     </div>
 
     <!-- Escaneo on-demand -->
     <div style="background:var(--blue-pale);border:1.5px solid var(--blue);border-radius:10px;padding:12px 16px;margin-bottom:10px">
       <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:8px;letter-spacing:.05em">ESCANEAR Y PROCESAR</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <button class="btn btn-primary" id="btnEscanearAhora" onclick="escanearAhora()">ðŸ” Escanear y procesar</button>
+        <button class="btn btn-primary" id="btnEscanearAhora" onclick="escanearAhora()">🔍 Escanear y procesar</button>
         <span style="font-size:12px;color:#666">Escanea Gmail, ensambla los PDFs y los manda a Monday en un solo paso.</span>
       </div>
     </div>
 
-    <!-- Trigger automÃ¡tico -->
+    <!-- Trigger automático -->
     <div style="background:#f8f8f8;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;margin-bottom:10px">
-      <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;letter-spacing:.05em">TRIGGER AUTOMÃTICO <span id="trigger-status-badge" style="font-weight:400;color:#999">(estado desconocido)</span></div>
+      <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;letter-spacing:.05em">TRIGGER AUTOMÁTICO <span id="trigger-status-badge" style="font-weight:400;color:#999">(estado desconocido)</span></div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <button class="btn btn-ghost btn-sm" onclick="activarTriggerAuto()">â± Activar auto (cada 5min)</button>
-        <button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="detenerTriggerAuto()">â¹ Detener trigger</button>
-        <span style="font-size:12px;color:#888">El trigger corre en segundo plano en Google aunque la app estÃ© cerrada.</span>
+        <button class="btn btn-ghost btn-sm" onclick="activarTriggerAuto()">⏱ Activar auto (cada 5min)</button>
+        <button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="detenerTriggerAuto()">⏹ Detener trigger</button>
+        <span style="font-size:12px;color:#888">El trigger corre en segundo plano en Google aunque la app esté cerrada.</span>
       </div>
     </div>
 
     <!-- Limpieza y reset -->
     <div style="background:#fff5f5;border:1.5px solid #ffcccc;border-radius:10px;padding:12px 16px;margin-bottom:10px">
-      <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px;letter-spacing:.05em">ðŸ§¹ LIMPIAR Y RESETEAR</div>
+      <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px;letter-spacing:.05em">🧹 LIMPIAR Y RESETEAR</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
-        <button class="btn btn-sm" style="background:var(--red);color:#fff" onclick="limpiarTodo()">ðŸ—‘ Limpiar cola + resetear historial</button>
-        <span style="font-size:12px;color:#888">Borra chunks de la Sheet, limpia la cola del servidor y resetea los IDs procesados. UsÃ¡ si hay mails colgados en EnCola.</span>
+        <button class="btn btn-sm" style="background:var(--red);color:#fff" onclick="limpiarTodo()">🗑 Limpiar cola + resetear historial</button>
+        <span style="font-size:12px;color:#888">Borra chunks de la Sheet, limpia la cola del servidor y resetea los IDs procesados. Usá si hay mails colgados en EnCola.</span>
       </div>
       <div id="reset-progress" style="display:none;font-size:12px;color:var(--red);margin-top:4px"></div>
     </div>
@@ -1463,21 +1463,21 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
     <div style="margin-top:12px">
       <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Log Gmail</div>
       <div class="drive-log-box" id="gmailLog" style="max-height:150px">
-        <div class="dlog info">ConfigurÃ¡ y activÃ¡ el polling para ver actividad.</div>
+        <div class="dlog info">Configurá y activá el polling para ver actividad.</div>
       </div>
     </div>
   </div>
   </div>
 
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     CONFIGURACIÃ“N
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<!-- â•â• CONFIG â•â• -->
+<!-- ══════════════════════════════════════════════════════
+     CONFIGURACIÓN
+══════════════════════════════════════════════════════ -->
+<!-- ══ CONFIG ══ -->
   <div id="tab-configurar" class="panel">
     <div class="grid-2" style="margin-bottom:16px">
       <div class="card">
-        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">ðŸ¤– Proveedor de IA</span></div>
+        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">🤖 Proveedor de IA</span></div>
         <div class="form-group">
           <label>Proveedor</label>
           <select id="cfg-ai-provider" onchange="toggleAIProvider()">
@@ -1494,7 +1494,7 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
             <label>Modelo</label>
             <select id="cfg-claude-model">
               <option value="gpt-4o">gpt-4o (recomendado)</option>
-              <option value="gpt-4o-mini">gpt-4o-mini (mÃ¡s barato)</option>
+              <option value="gpt-4o-mini">gpt-4o-mini (más barato)</option>
             </select>
           </div>
         </div>
@@ -1507,15 +1507,15 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
             <label>Modelo</label>
             <select id="cfg-gemini-model">
               <option value="gemini-1.5-pro">gemini-1.5-pro (recomendado)</option>
-              <option value="gemini-1.5-flash">gemini-1.5-flash (mÃ¡s rÃ¡pido)</option>
-              <option value="gemini-2.0-flash">gemini-2.0-flash (Ãºltimo)</option>
+              <option value="gemini-1.5-flash">gemini-1.5-flash (más rápido)</option>
+              <option value="gemini-2.0-flash">gemini-2.0-flash (último)</option>
             </select>
           </div>
           <div class="alert alert-green" style="font-size:12px;margin-bottom:10px">
-            âœ… Gemini tiene capa gratuita generosa (~1500 req/dÃ­a con Flash)
+            ✅ Gemini tiene capa gratuita generosa (~1500 req/día con Flash)
           </div>
         </div>
-        <button class="btn btn-outline" onclick="testClaude()">ðŸ§ª Probar conexiÃ³n</button>
+        <button class="btn btn-outline" onclick="testClaude()">🧪 Probar conexión</button>
       </div>
       <div class="card">
         <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">Monday.com</span></div>
@@ -1527,13 +1527,13 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
           <label>Board ID</label>
           <input type="text" id="cfg-monday-board" placeholder="Board ID"/>
         </div>
-        <button class="btn btn-outline" onclick="testMonday()">ðŸ§ª Probar conexiÃ³n</button>
+        <button class="btn btn-outline" onclick="testMonday()">🧪 Probar conexión</button>
       </div>
     </div>
 
     <div class="card" style="margin-bottom:16px">
       <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">Columnas del tablero Monday</span></div>
-      <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px">IDs exactos de cada columna (los encontrÃ¡s en el API Playground de Monday)</p>
+      <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px">IDs exactos de cada columna (los encontrás en el API Playground de Monday)</p>
       <div class="grid-2">
         <div class="form-group"><label>Proveedor (name)</label><input type="text" id="col-proveedor" value="name"/></div>
         <div class="form-group"><label>Fecha de FC</label><input type="text" id="col-fecha-factura" placeholder="fecha6"/></div>
@@ -1542,17 +1542,17 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
         <div class="form-group"><label>Importe ARS</label><input type="text" id="col-importe" placeholder="importe_ars"/></div>
         <div class="form-group"><label>Importe USD</label><input type="text" id="col-importe-usd" placeholder="importe_usd"/></div>
         <div class="form-group"><label>Moneda del Doc. (status)</label><input type="text" id="col-moneda" placeholder="estado84"/></div>
-        <div class="form-group"><label>NÂ° Factura</label><input type="text" id="col-nro-factura" placeholder="text_mkw8qc4c"/></div>
+        <div class="form-group"><label>N° Factura</label><input type="text" id="col-nro-factura" placeholder="text_mkw8qc4c"/></div>
         <div class="form-group"><label>TC FC (tipo de cambio)</label><input type="text" id="col-tc" placeholder="n_meros7"/></div>
-        <div class="form-group"><label>FC / RendiciÃ³n (archivo PDF)</label><input type="text" id="col-archivo" placeholder="archivo9"/></div>
+        <div class="form-group"><label>FC / Rendición (archivo PDF)</label><input type="text" id="col-archivo" placeholder="archivo9"/></div>
         <div class="form-group"><label>Sociedad (receptor factura)</label><input type="text" id="col-sociedad" placeholder="text_mm3apr7c"/></div>
       </div>
     </div>
 
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="guardarConfig()">ðŸ’¾ Guardar configuraciÃ³n</button>
-      <button class="btn btn-outline" onclick="cargarConfig()">â†© Restaurar</button>
-      <button class="btn btn-ghost" onclick="verConfigActual()">ðŸ” Ver config guardada</button>
+      <button class="btn btn-primary" onclick="guardarConfig()">💾 Guardar configuración</button>
+      <button class="btn btn-outline" onclick="cargarConfig()">↩ Restaurar</button>
+      <button class="btn btn-ghost" onclick="verConfigActual()">🔍 Ver config guardada</button>
     </div>
     <div id="cfg-msg" style="margin-top:12px"></div>
   </div>
@@ -1566,15 +1566,15 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
         <div style="font-size:12px;color:var(--text-dim);margin-top:2px" id="modal-subtitle"></div>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <button class="btn btn-ghost btn-sm" id="modal-btn-edit" onclick="activarEdicion()" style="display:none">âœ Editar</button>
-        <button class="btn btn-primary btn-sm" id="modal-btn-save" onclick="guardarEdicion()" style="display:none">ðŸ’¾ Guardar y actualizar Monday</button>
-        <button class="modal-close" onclick="closeModal()">Ã—</button>
+        <button class="btn btn-ghost btn-sm" id="modal-btn-edit" onclick="activarEdicion()" style="display:none">✏ Editar</button>
+        <button class="btn btn-primary btn-sm" id="modal-btn-save" onclick="guardarEdicion()" style="display:none">💾 Guardar y actualizar Monday</button>
+        <button class="modal-close" onclick="closeModal()">×</button>
       </div>
     </div>
     <!-- Modal tabs -->
     <div class="modal-tabs">
-      <button class="modal-tab active" onclick="switchModalTab('datos',this)">ðŸ“‹ Datos</button>
-      <button class="modal-tab" onclick="switchModalTab('preview',this)" id="modal-tab-preview">ðŸ” Vista previa PDF</button>
+      <button class="modal-tab active" onclick="switchModalTab('datos',this)">📋 Datos</button>
+      <button class="modal-tab" onclick="switchModalTab('preview',this)" id="modal-tab-preview">🔍 Vista previa PDF</button>
     </div>
     <div id="modal-tab-datos" class="modal-tab-panel active">
       <div id="modal-body"></div>
@@ -1582,8 +1582,8 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
     <div id="modal-tab-preview" class="modal-tab-panel" style="display:none">
       <div id="modal-pdf-wrap">
         <div id="modal-pdf-placeholder" style="text-align:center;padding:40px;color:var(--text-dim)">
-          <div style="font-size:36px;margin-bottom:12px">ðŸ“„</div>
-          <p style="font-size:13px">El PDF estarÃ¡ disponible si fue procesado manualmente en esta sesiÃ³n.<br>Las facturas de Drive se muestran si el servidor local estÃ¡ activo.</p>
+          <div style="font-size:36px;margin-bottom:12px">📄</div>
+          <p style="font-size:13px">El PDF estará disponible si fue procesado manualmente en esta sesión.<br>Las facturas de Drive se muestran si el servidor local está activo.</p>
         </div>
         <canvas id="modal-pdf-canvas" style="display:none;width:100%;border-radius:8px;box-shadow:var(--shadow-md)"></canvas>
         <div id="modal-pdf-pages" style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"></div>
@@ -1595,9 +1595,9 @@ tbody tr.selected { background: rgba(239,68,68,.07) !important; }
 </div><!-- /app -->
 
 <script>
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  STATE
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 let facturas   = JSON.parse(localStorage.getItem('facturas') || '[]');
 let procesadas = [];
 let sortField  = 'fechaFactura';
@@ -1606,9 +1606,9 @@ let filterEstado = '';
 let currentPage = 1;
 const PAGE_SIZE = 50;
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  NAV
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 function showTab(name, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -1618,9 +1618,9 @@ function showTab(name, btn) {
   if (name === 'dashboard') renderDashboard();
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  DASHBOARD
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 // Estado moneda activa en top proveedores
 let provMoneda = 'ARS';
 function setProvMoneda(m) {
@@ -1664,7 +1664,7 @@ function renderDashboard() {
   const viaGmail  = all.filter(f => f._viaGmail);
   const ncnd      = all.filter(f => esNC(f) || esND(f));
 
-  // Separar por moneda y tipo para cÃ¡lculos correctos
+  // Separar por moneda y tipo para cálculos correctos
   const procARS = proc.filter(f => f.moneda === 'ARS');
   const procUSD = proc.filter(f => f.moneda === 'USD');
 
@@ -1713,7 +1713,7 @@ function renderDashboard() {
 
   // Updated label
   if (all.length > 0) {
-    document.getElementById('dash-updated').textContent = 'Actualizado reciÃ©n Â· ' + all.length + ' facturas';
+    document.getElementById('dash-updated').textContent = 'Actualizado recién · ' + all.length + ' facturas';
   }
 
   // Donut
@@ -1771,7 +1771,7 @@ function renderSparkline(all) {
   const labelsEl = document.getElementById('spark-labels');
   if (!barsEl) return;
 
-  // Agrupar por semana (Ãºltimas 8)
+  // Agrupar por semana (últimas 8)
   const weeks = {};
   const now = new Date();
   for (let i = 7; i >= 0; i--) {
@@ -1811,7 +1811,7 @@ function renderProveedores(proc) {
   const moneda = provMoneda || 'ARS';
   const map = {};
   proc.filter(f => f.moneda === moneda).forEach(f => {
-    const k   = f.proveedor || 'â€”';
+    const k   = f.proveedor || '—';
     const imp = Math.abs(parseFloat(f.importe) || 0);
     if (!map[k]) map[k] = {fc:0, nc:0, nd:0};
     if (esNC(f))      map[k].nc += imp;
@@ -1845,9 +1845,9 @@ function renderProveedores(proc) {
   }).join('');
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  FILTROS + TABLA
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 function setEstadoFilter(val, chip) {
   filterEstado = val;
   document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
@@ -1866,8 +1866,8 @@ function applyFilters() {
     if (moneda && f.moneda !== moneda) return false;
     if (tipo) {
       const t = (f.tipoDocumento||'').toUpperCase();
-      if (tipo === 'NC' && !t.includes('NC') && !t.includes('CRÃ‰DITO') && !t.includes('CREDITO')) return false;
-      if (tipo === 'ND' && !t.includes('ND') && !t.includes('DÃ‰BITO') && !t.includes('DEBITO')) return false;
+      if (tipo === 'NC' && !t.includes('NC') && !t.includes('CRÉDITO') && !t.includes('CREDITO')) return false;
+      if (tipo === 'ND' && !t.includes('ND') && !t.includes('DÉBITO') && !t.includes('DEBITO')) return false;
       if (tipo === 'FACTURA' && (t.includes('NC') || t.includes('ND') || t.includes('NOTA'))) return false;
     }
     if (origen === 'drive' && !f._viaDrive) return false;
@@ -1920,7 +1920,7 @@ function clearFilters() {
 function renderTable(data) {
   const tbody = document.getElementById('facturaTable');
   if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="icon">ðŸ”</div><p>No hay resultados con los filtros actuales.</p></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="icon">🔍</div><p>No hay resultados con los filtros actuales.</p></div></td></tr>';
     return;
   }
   // Map back to original index for modal
@@ -1931,8 +1931,8 @@ function renderTable(data) {
     const tipoCls = esNC ? 'badge-tipo-nc' : esND ? 'badge-tipo-nd' : 'badge-tipo-factura';
     const tipoLbl = f.tipoDocumento || 'FACTURA';
     const origenBadge = f._viaDrive
-      ? '<span class="badge badge-origen-drive">â˜ Drive</span>'
-      : '<span class="badge badge-origen-manual">âœ‹ Manual</span>';
+      ? '<span class="badge badge-origen-drive">☁ Drive</span>'
+      : '<span class="badge badge-origen-manual">✋ Manual</span>';
     const imp = parseFloat(f.importe) || 0;
     const impStr = formatImporte(f.importe, f.moneda);
     const negClass = imp < 0 ? 'neg' : '';
@@ -1941,20 +1941,20 @@ function renderTable(data) {
       : '';
     const rowClick = selectMode ? '' : `onclick="openModal(${idx})"`;
     return `<tr class="${f._viaDrive?'row-drive':'row-manual'}${selectMode&&selectedIds.has(idx)?' selected':''}" ${rowClick} data-idx="${idx}">
-      ${cbCell}<td class="td-proveedor"><strong>${f.proveedor||'â€”'}</strong><br><span class="badge ${tipoCls}">${tipoLbl}</span></td>
+      ${cbCell}<td class="td-proveedor"><strong>${f.proveedor||'—'}</strong><br><span class="badge ${tipoCls}">${tipoLbl}</span></td>
       <td>${origenBadge}</td>
-      <td class="muted">${f.fechaFactura||'â€”'}</td>
-      <td class="muted">${f.fechaRecibida||'â€”'}</td>
-      <td class="muted">${f.vencimiento||'â€”'}</td>
+      <td class="muted">${f.fechaFactura||'—'}</td>
+      <td class="muted">${f.fechaRecibida||'—'}</td>
+      <td class="muted">${f.vencimiento||'—'}</td>
       <td class="td-amount ${negClass}">${impStr}</td>
-      <td class="muted">${f.nroFactura||'â€”'}</td>
-      <td><span class="badge badge-estado-${f.estado==='procesado'?'procesado':'pendiente'}">${f.estado==='procesado'?'âœ… Procesado':'â³ Pendiente'}</span></td>
+      <td class="muted">${f.nroFactura||'—'}</td>
+      <td><span class="badge badge-estado-${f.estado==='procesado'?'procesado':'pendiente'}">${f.estado==='procesado'?'✅ Procesado':'⏳ Pendiente'}</span></td>
     </tr>`;
   }).join('');
 }
 
 function exportarCSV() {
-  const rows = [['Proveedor','Tipo','Origen','Fecha FC','Recibida','Vencimiento','Importe','Moneda','NÂ° Factura','Estado']];
+  const rows = [['Proveedor','Tipo','Origen','Fecha FC','Recibida','Vencimiento','Importe','Moneda','N° Factura','Estado']];
   facturas.forEach(f => {
     rows.push([f.proveedor||'',f.tipoDocumento||'FACTURA',f._viaDrive?'Drive':'Manual',
       f.fechaFactura||'',f.fechaRecibida||'',f.vencimiento||'',f.importe||'',f.moneda||'ARS',f.nroFactura||'',f.estado||'']);
@@ -1965,22 +1965,22 @@ function exportarCSV() {
   const a = document.createElement('a'); a.href=url; a.download='automonday_export.csv'; a.click();
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  FORMAT
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 function formatImporte(v, moneda) {
   const n = parseFloat(v);
-  if (isNaN(n)) return 'â€”';
+  if (isNaN(n)) return '—';
   const fmt = Math.abs(n).toLocaleString('es-AR', {minimumFractionDigits:2, maximumFractionDigits:2});
   const prefix = moneda === 'USD' ? 'U$S ' : '$';
   return (n < 0 ? '-' : '') + prefix + fmt;
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  MODAL
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 let modalCurrentIdx = -1;
-let modalPdfPages   = [];  // base64 imgs de la sesiÃ³n actual
+let modalPdfPages   = [];  // base64 imgs de la sesión actual
 let editMode        = false;
 
 function openModal(idx) {
@@ -1991,7 +1991,7 @@ function openModal(idx) {
 
   // Header
   document.getElementById('modal-title').textContent    = f.proveedor || 'Factura';
-  document.getElementById('modal-subtitle').textContent = (f.tipoDocumento||'FACTURA') + ' Â· ' + (f.nroFactura||'sin nÃºmero') + ' Â· ' + (f.fechaFactura||'');
+  document.getElementById('modal-subtitle').textContent = (f.tipoDocumento||'FACTURA') + ' · ' + (f.nroFactura||'sin número') + ' · ' + (f.fechaFactura||'');
   document.getElementById('modal-btn-edit').style.display = f.estado==='procesado' ? '' : 'none';
   document.getElementById('modal-btn-save').style.display = 'none';
 
@@ -2001,7 +2001,7 @@ function openModal(idx) {
   // Datos tab
   renderModalDatos(f, idx, false);
 
-  // PDF tab: buscar en procesadas de la sesiÃ³n
+  // PDF tab: buscar en procesadas de la sesión
   const enSesion = procesadas.find(p => p.archivo === f.archivo && p._pdfPages);
   modalPdfPages = enSesion?._pdfPages || [];
   renderModalPDF(f);
@@ -2012,15 +2012,15 @@ function openModal(idx) {
 function renderModalDatos(f, idx, editable) {
   const campos = [
     ['Tipo',         'tipoDocumento', f.tipoDocumento||'FACTURA'],
-    ['NÂ° Factura',   'nroFactura',    f.nroFactura||''],
+    ['N° Factura',   'nroFactura',    f.nroFactura||''],
     ['Fecha FC',     'fechaFactura',  f.fechaFactura||''],
     ['Recibida',     'fechaRecibida', f.fechaRecibida||''],
     ['Vencimiento',  'vencimiento',   f.vencimiento||''],
     ['Importe',      'importe',       f.importe||0],
     ['Moneda',       'moneda',        f.moneda||'ARS'],
     ['Tipo cambio',  'tipoCambio',    f.tipoCambio||''],
-    ['Origen',       '_origen',       f._viaDrive?'â˜ Drive':'âœ‹ Manual'],
-    ['Estado',       '_estado',       f.estado||'â€”'],
+    ['Origen',       '_origen',       f._viaDrive?'☁ Drive':'✋ Manual'],
+    ['Estado',       '_estado',       f.estado||'—'],
   ];
   const isReadOnly = (key) => key.startsWith('_');
   document.getElementById('modal-body').innerHTML = `
@@ -2030,12 +2030,12 @@ function renderModalDatos(f, idx, editable) {
           <div class="modal-field-label">${lbl}</div>
           ${editable && !isReadOnly(key)
             ? `<input class="modal-field-input" id="medit-${key}" value="${String(val).replace(/"/g,'&quot;')}">`
-            : `<div class="modal-field-val">${key==='importe' ? formatImporte(val,f.moneda) : (val||'â€”')}</div>`}
+            : `<div class="modal-field-val">${key==='importe' ? formatImporte(val,f.moneda) : (val||'—')}</div>`}
         </div>`).join('')}
     </div>
     ${f.estado !== 'procesado' ? `
       <div class="btn-row" style="margin-top:16px">
-        <button class="btn btn-primary" onclick="enviarUnoAMonday(${idx});closeModal()">ðŸš€ Enviar a Monday</button>
+        <button class="btn btn-primary" onclick="enviarUnoAMonday(${idx});closeModal()">🚀 Enviar a Monday</button>
       </div>` : ''}
     ${f.mondayItemId ? `<div style="margin-top:12px;font-size:11px;color:var(--text-dim);font-family:var(--mono)">Monday Item ID: ${f.mondayItemId}</div>` : ''}
   `;
@@ -2056,13 +2056,13 @@ function renderModalPDF(f) {
   const pagesEl     = document.getElementById('modal-pdf-pages');
   if (!f) return;
 
-  // Si tenemos imÃ¡genes de la sesiÃ³n actual
+  // Si tenemos imágenes de la sesión actual
   if (modalPdfPages.length) {
     placeholder.style.display = 'none';
     canvas.style.display = 'none';
     pagesEl.innerHTML = modalPdfPages.map((src, i) => `
       <div style="flex:1;min-width:200px">
-        <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:4px">PÃ¡gina ${i+1}</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:4px">Página ${i+1}</div>
         <img src="data:image/jpeg;base64,${src}" style="width:100%;border-radius:8px;box-shadow:var(--shadow);border:1px solid var(--border)">
       </div>`).join('');
     return;
@@ -2070,7 +2070,7 @@ function renderModalPDF(f) {
 
   // Si hay path de archivo (Drive), intentar cargar via servidor
   if (f._pdfPath) {
-    placeholder.innerHTML = '<div style="font-size:28px;margin-bottom:10px">â³</div><p style="font-size:13px">Cargando PDF del servidor...</p>';
+    placeholder.innerHTML = '<div style="font-size:28px;margin-bottom:10px">⏳</div><p style="font-size:13px">Cargando PDF del servidor...</p>';
     placeholder.style.display = 'block';
     fetch('/get-pdf?path=' + encodeURIComponent(f._pdfPath))
       .then(r => r.ok ? r.blob() : null)
@@ -2080,14 +2080,14 @@ function renderModalPDF(f) {
       })
       .then(buf => renderPDFBuffer(buf))
       .catch(() => {
-        placeholder.innerHTML = '<div style="font-size:28px;margin-bottom:10px">ðŸ“„</div><p style="font-size:13px;color:var(--text-dim)">PDF no disponible â€” el servidor no estÃ¡ activo o el archivo fue movido.</p>';
+        placeholder.innerHTML = '<div style="font-size:28px;margin-bottom:10px">📄</div><p style="font-size:13px;color:var(--text-dim)">PDF no disponible — el servidor no está activo o el archivo fue movido.</p>';
       });
     return;
   }
 
   // Sin PDF disponible
   placeholder.style.display = 'block';
-  placeholder.innerHTML = '<div style="font-size:36px;margin-bottom:12px">ðŸ“„</div><p style="font-size:13px;color:var(--text-dim)">PDF no disponible.<br>Solo se puede previsualizar facturas procesadas en esta sesiÃ³n.</p>';
+  placeholder.innerHTML = '<div style="font-size:36px;margin-bottom:12px">📄</div><p style="font-size:13px;color:var(--text-dim)">PDF no disponible.<br>Solo se puede previsualizar facturas procesadas en esta sesión.</p>';
 }
 
 async function renderPDFBuffer(arrayBuffer) {
@@ -2114,17 +2114,17 @@ async function renderPDFBuffer(arrayBuffer) {
       await page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
       const wrap = document.createElement('div');
       wrap.style.cssText = 'flex:1;min-width:200px';
-      wrap.innerHTML = `<div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:4px">PÃ¡gina ${p}</div>`;
+      wrap.innerHTML = `<div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:4px">Página ${p}</div>`;
       wrap.appendChild(canvas);
       pagesEl.appendChild(wrap);
     }
   } catch(e) {
     placeholder.style.display = 'block';
-    placeholder.innerHTML = `<div style="font-size:28px;margin-bottom:10px">âŒ</div><p style="font-size:13px;color:var(--red)">Error cargando PDF: ${e.message}</p>`;
+    placeholder.innerHTML = `<div style="font-size:28px;margin-bottom:10px">❌</div><p style="font-size:13px;color:var(--red)">Error cargando PDF: ${e.message}</p>`;
   }
 }
 
-// â”€â”€ EdiciÃ³n y reprocesamiento â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Edición y reprocesamiento ────────────────────────────────────
 function activarEdicion() {
   editMode = true;
   const f = facturas[modalCurrentIdx];
@@ -2152,20 +2152,20 @@ async function guardarEdicion() {
   // Guardar localmente
   saveFacturas();
 
-  // Si ya estÃ¡ en Monday, actualizar via API
+  // Si ya está en Monday, actualizar via API
   if (f.mondayItemId && cfg.mondayKey) {
-    document.getElementById('modal-btn-save').textContent = 'â³ Actualizando...';
+    document.getElementById('modal-btn-save').textContent = '⏳ Actualizando...';
     document.getElementById('modal-btn-save').disabled = true;
     try {
       await actualizarItemEnMonday(f, cfg);
-      document.getElementById('modal-btn-save').textContent = 'âœ… Actualizado';
+      document.getElementById('modal-btn-save').textContent = '✅ Actualizado';
       setTimeout(() => {
-        document.getElementById('modal-btn-save').textContent = 'ðŸ’¾ Guardar y actualizar Monday';
+        document.getElementById('modal-btn-save').textContent = '💾 Guardar y actualizar Monday';
         document.getElementById('modal-btn-save').disabled = false;
       }, 2000);
     } catch(e) {
-      alert('Cambios guardados localmente, pero fallÃ³ la actualizaciÃ³n en Monday: ' + e.message);
-      document.getElementById('modal-btn-save').textContent = 'ðŸ’¾ Guardar y actualizar Monday';
+      alert('Cambios guardados localmente, pero falló la actualización en Monday: ' + e.message);
+      document.getElementById('modal-btn-save').textContent = '💾 Guardar y actualizar Monday';
       document.getElementById('modal-btn-save').disabled = false;
     }
   } else {
@@ -2213,9 +2213,9 @@ function closeModal() {
   modalCurrentIdx = -1;
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  SERVER STATUS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 async function checkServer() {
   // Mostrar banner si falta API key
   const _cfg = getConfig();
@@ -2232,9 +2232,9 @@ async function checkServer() {
   }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  PROCESAR PDFs
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 function handleDrop(e) {
   e.preventDefault();
   document.getElementById('uploadZone').classList.remove('drag-over');
@@ -2251,7 +2251,7 @@ function handleFiles(files) {
 async function procesarArchivos(files) {
   const cfg = getConfig();
   if (!cfg.claudeKey) {
-    alert('ConfigurÃ¡ la OpenAI API key en âš™ ConfiguraciÃ³n primero.');
+    alert('Configurá la OpenAI API key en ⚙ Configuración primero.');
     return;
   }
 
@@ -2262,7 +2262,7 @@ async function procesarArchivos(files) {
 
   for (let i = 0; i < files.length; i++) {
     setProgress(((i) / files.length) * 100, `(${i+1}/${files.length}) ${files[i].name}`);
-    log(`ðŸ“„ Procesando: ${files[i].name}...`, 'info');
+    log(`📄 Procesando: ${files[i].name}...`, 'info');
     try {
       const images = await pdfToImages(files[i]);
       const datos  = await extraerDatosConClaude(images, files[i].name, cfg.claudeKey, cfg.claudeModel);
@@ -2270,12 +2270,12 @@ async function procesarArchivos(files) {
       datos.fechaRecibida = datos.fechaRecibida || new Date().toLocaleDateString('es-AR');
       datos.estado      = 'pendiente';
       datos._pdfFile    = files[i];
-      datos._pdfPages   = images;   // guardar imÃ¡genes para preview en modal
+      datos._pdfPages   = images;   // guardar imágenes para preview en modal
       procesadas.push(datos);
       const esNC = /nc|nota.de.cr/i.test(datos.tipoDocumento||'');
-      log(`âœ… ${files[i].name} â†’ ${datos.proveedor||'?'} | ${datos.tipoDocumento||'FACTURA'}${esNC?' (NCâ†’negativo)':''}`, 'ok');
+      log(`✅ ${files[i].name} → ${datos.proveedor||'?'} | ${datos.tipoDocumento||'FACTURA'}${esNC?' (NC→negativo)':''}`, 'ok');
     } catch(e) {
-      log(`âŒ ${files[i].name}: ${e.message}`, 'err');
+      log(`❌ ${files[i].name}: ${e.message}`, 'err');
     }
   }
 
@@ -2341,25 +2341,25 @@ async function pdfToImages(file) {
   return images;
 }
 
-const INVOICE_PROMPT = `Sos un extractor de datos de facturas argentinas. ExtraÃ© los datos y respondÃ© SOLO con JSON vÃ¡lido, sin texto extra ni markdown.
+const INVOICE_PROMPT = `Sos un extractor de datos de facturas argentinas. Extraé los datos y respondé SOLO con JSON válido, sin texto extra ni markdown.
 Campos requeridos:
-- proveedor: string (razÃ³n social del EMISOR de la factura)
-- tipoDocumento: "FACTURA" | "NC" | "ND" (Nota de CrÃ©dito o DÃ©bito)
-- nroFactura: string (nÃºmero completo, ej: "A-0001-00012345")
+- proveedor: string (razón social del EMISOR de la factura)
+- tipoDocumento: "FACTURA" | "NC" | "ND" (Nota de Crédito o Débito)
+- nroFactura: string (número completo, ej: "A-0001-00012345")
 - fechaFactura: string DD/MM/YYYY
 - fechaVencimiento: string DD/MM/YYYY o null
 - importe: number (NEGATIVO si es NC, positivo si es FACTURA o ND)
 - moneda: "ARS" | "USD"
 - tipoCambio: number o null
-- sociedad: string (razÃ³n social del RECEPTOR de la factura, es decir, a quiÃ©n estÃ¡ emitida)
+- sociedad: string (razón social del RECEPTOR de la factura, es decir, a quién está emitida)
 
-REGLA CRÃTICA sobre el campo "proveedor":
+REGLA CRÍTICA sobre el campo "proveedor":
 Una factura tiene DOS partes: el EMISOR (quien emite/vende) y el RECEPTOR (quien recibe/compra).
-El campo "proveedor" debe ser SIEMPRE el EMISOR â€” la empresa que EMITE la factura y cobra el dinero.
-El RECEPTOR en estas facturas es siempre UalÃ¡ / ALAU ARGENTINA S.A.U. / ALAU TECNOLOGIA S.A.U. o variantes similares.
-NUNCA uses como proveedor ninguna de estas razones sociales: "ALAU ARGENTINA", "ALAU ARGENTINA S.A.U.", "ALAU TECNOLOGIA", "ALAU TECNOLOGIA S.A.U.", "UALA", "UalÃ¡".
-Si detectÃ¡s que el nombre que ibas a poner como proveedor es alguna de esas, significa que leÃ­ste mal â€” revisÃ¡ la factura y buscÃ¡ el otro nombre (el EMISOR real).
-En una factura argentina, el EMISOR estÃ¡ en el encabezado/membrete, generalmente arriba a la izquierda o en el centro superior.
+El campo "proveedor" debe ser SIEMPRE el EMISOR — la empresa que EMITE la factura y cobra el dinero.
+El RECEPTOR en estas facturas es siempre Ualá / ALAU ARGENTINA S.A.U. / ALAU TECNOLOGIA S.A.U. o variantes similares.
+NUNCA uses como proveedor ninguna de estas razones sociales: "ALAU ARGENTINA", "ALAU ARGENTINA S.A.U.", "ALAU TECNOLOGIA", "ALAU TECNOLOGIA S.A.U.", "UALA", "Ualá".
+Si detectás que el nombre que ibas a poner como proveedor es alguna de esas, significa que leíste mal — revisá la factura y buscá el otro nombre (el EMISOR real).
+En una factura argentina, el EMISOR está en el encabezado/membrete, generalmente arriba a la izquierda o en el centro superior.
 
 Otras reglas: Si es NC: importe SIEMPRE negativo. ARS: solo importe ARS. USD: importe USD + tipoCambio si disponible.`;
 
@@ -2388,7 +2388,7 @@ async function extraerDatosConClaude(images, fileName, apiKey, model) {
   // OpenAI
   model = model || 'gpt-4o';
   const content = [
-    {type:'text', text:`ExtraÃ© los datos de esta factura: ${fileName}`},
+    {type:'text', text:`Extraé los datos de esta factura: ${fileName}`},
     ...images.map(img => ({type:'image_url', image_url:{url:`data:image/jpeg;base64,${img}`, detail:'high'}}))
   ];
   const resp = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -2407,7 +2407,7 @@ async function extraerDatosConClaude(images, fileName, apiKey, model) {
 async function extraerConGemini(images, fileName, apiKey, model) {
   model = model || 'gemini-1.5-pro';
   const parts = [
-    {text: INVOICE_PROMPT + `\n\nAnalizÃ¡ esta factura: ${fileName}`},
+    {text: INVOICE_PROMPT + `\n\nAnalizá esta factura: ${fileName}`},
     ...images.map(img => ({inline_data:{mime_type:'image/jpeg', data:img}}))
   ];
   const resp = await fetch(
@@ -2424,7 +2424,7 @@ async function extraerConGemini(images, fileName, apiKey, model) {
   if (!resp.ok) { const err=await resp.json(); throw new Error(err.error?.message||`Gemini ${resp.status}`); }
   const data = await resp.json();
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error('Gemini no devolviÃ³ respuesta');
+  if (!text) throw new Error('Gemini no devolvió respuesta');
   return parseInvoiceJSON(text.trim());
 }
 
@@ -2443,17 +2443,17 @@ function renderResultados() {
         <span class="badge ${tipoCls}">${f.tipoDocumento||'FACTURA'}</span>
       </div>
       <div class="result-fields">
-        <div class="result-field"><div class="result-field-label">Fecha FC</div><div class="result-field-val">${f.fechaFactura||'â€”'}</div></div>
-        <div class="result-field"><div class="result-field-label">Vencimiento</div><div class="result-field-val">${f.vencimiento||'â€”'}</div></div>
+        <div class="result-field"><div class="result-field-label">Fecha FC</div><div class="result-field-val">${f.fechaFactura||'—'}</div></div>
+        <div class="result-field"><div class="result-field-label">Vencimiento</div><div class="result-field-val">${f.vencimiento||'—'}</div></div>
         <div class="result-field"><div class="result-field-label">Importe</div><div class="result-field-val" style="${f.importe<0?'color:var(--red)':''}">${formatImporte(f.importe,f.moneda)}</div></div>
-        <div class="result-field"><div class="result-field-label">NÂ° Factura</div><div class="result-field-val">${f.nroFactura||'â€”'}</div></div>
+        <div class="result-field"><div class="result-field-label">N° Factura</div><div class="result-field-val">${f.nroFactura||'—'}</div></div>
       </div>
       <div class="result-card-footer">
         ${f.estado==='duplicado'
-          ? '<span style="font-family:var(--mono);font-size:11px;background:rgba(245,158,11,.15);color:#92400e;border:1px solid rgba(245,158,11,.3);padding:3px 9px;border-radius:100px">ðŸ” Duplicado bloqueado</span>'
-          : `<span class="badge badge-estado-${f.estado==='procesado'?'procesado':'pendiente'}">${f.estado==='procesado'?'âœ… Procesado':'â³ Pendiente'}</span>`}
+          ? '<span style="font-family:var(--mono);font-size:11px;background:rgba(245,158,11,.15);color:#92400e;border:1px solid rgba(245,158,11,.3);padding:3px 9px;border-radius:100px">🔁 Duplicado bloqueado</span>'
+          : `<span class="badge badge-estado-${f.estado==='procesado'?'procesado':'pendiente'}">${f.estado==='procesado'?'✅ Procesado':'⏳ Pendiente'}</span>`}
         ${f.estado==='pendiente'?`<button class="btn btn-primary btn-sm" onclick="enviarUnoAMonday(${i})">Enviar</button>`:''}
-        ${f.estado==='duplicado'?`<button class="btn btn-ghost btn-sm" onclick="forzarDesdeResult(${i})" title="Subir igual ignorando duplicado">âš  Forzar</button>`:''}
+        ${f.estado==='duplicado'?`<button class="btn btn-ghost btn-sm" onclick="forzarDesdeResult(${i})" title="Subir igual ignorando duplicado">? Forzar</button>`:''}
       </div>
     </div>`;
   }).join('');
@@ -2467,26 +2467,26 @@ async function enviarUnoAMonday(idx) {
   // Chequeo duplicado
   if (esDuplicado(f)) {
     const clave = claveFact(f);
-    const motivo = `Duplicado: ${f.nroFactura ? 'NÂ° ' + f.nroFactura : 'misma fecha e importe'}`;
+    const motivo = `Duplicado: ${f.nroFactura ? 'N° ' + f.nroFactura : 'misma fecha e importe'}`;
     registrarDuplicado(f, motivo);
     f.estado = 'duplicado';
     renderResultados();
-    log(`ðŸ” DUPLICADO bloqueado: ${f.proveedor} ${f.nroFactura||''} â€” ya existe en el historial`, 'err');
+    log(`🔁 DUPLICADO bloqueado: ${f.proveedor} ${f.nroFactura||''} — ya existe en el historial`, 'err');
     renderDashboard();
     return;
   }
 
   try {
-    log(`ðŸš€ Enviando ${f.proveedor||f.archivo}...`, 'info');
+    log(`🚀 Enviando ${f.proveedor||f.archivo}...`, 'info');
     await crearItemEnMonday(f, cfg);
     f.estado = 'procesado';
-    // _pdfPages no se serializa (base64 pesa mucho), se mantiene solo en memoria de sesiÃ³n
+    // _pdfPages no se serializa (base64 pesa mucho), se mantiene solo en memoria de sesión
     facturas.push({...f, _pdfFile: undefined, _pdfPages: undefined});
     saveFacturas();
     renderResultados();
-    log(`âœ… ${f.proveedor} enviado OK`, 'ok');
+    log(`✅ ${f.proveedor} enviado OK`, 'ok');
   } catch(e) {
-    log(`âŒ ${e.message}`, 'err');
+    log(`❌ ${e.message}`, 'err');
     alert('Error: ' + e.message);
   }
 }
@@ -2501,13 +2501,13 @@ async function enviarTodosAMonday() {
 }
 
 async function crearItemEnMonday(f, cfg) {
-  if (!cfg.mondayKey || !cfg.mondayBoard) throw new Error('ConfigurÃ¡ Monday API key y Board ID');
+  if (!cfg.mondayKey || !cfg.mondayBoard) throw new Error('Configurá Monday API key y Board ID');
   const cols = cfg.cols || {};
   
   // Validar que al menos hay algunas columnas configuradas
   const colsConfiguradas = Object.values(cols).filter(v => v && v.trim()).length;
   if (colsConfiguradas === 0) {
-    throw new Error('No hay columnas configuradas. AndÃ¡ a âš™ ConfiguraciÃ³n â†’ Columnas y guardÃ¡ los IDs.');
+    throw new Error('No hay columnas configuradas. Andá a ⚙ Configuración → Columnas y guardá los IDs.');
   }
   const esNC = /nc|nota.de.cr/i.test(f.tipoDocumento||'');
   const importe = esNC ? -Math.abs(parseFloat(f.importe)||0) : parseFloat(f.importe)||0;
@@ -2528,7 +2528,7 @@ async function crearItemEnMonday(f, cfg) {
   if (f.moneda === 'ARS') { if (cols.importeARS) colVals[cols.importeARS] = importe; }
   else                    { if (cols.importeUSD) colVals[cols.importeUSD] = importe; if (f.tipoCambio && cols.tc) colVals[cols.tc] = parseFloat(f.tipoCambio)||0; }
 
-  // Debug: mostrar quÃ© columnas se van a enviar
+  // Debug: mostrar qué columnas se van a enviar
   console.log('[AutoMonday] colVals a enviar:', JSON.stringify(colVals, null, 2));
   console.log('[AutoMonday] cols config:', JSON.stringify(cols, null, 2));
 
@@ -2543,18 +2543,20 @@ async function crearItemEnMonday(f, cfg) {
   if (data.errors) throw new Error(data.errors[0].message);
   const itemId = data.data.create_item.id;
 
-  // Guardar el Monday Item ID en el objeto factura (para poder editarlo despuÃ©s)
+  // Guardar el Monday Item ID en el objeto factura (para poder editarlo después)
   f.mondayItemId = itemId;
 
-  // Adjuntar PDF: primero _pdfFile (subida manual), luego _pdfBase64 (vÃ­a Gmail/Drive)
+  // Adjuntar PDF: primero _pdfFile (subida manual), luego _pdfBase64 (vía Gmail/Drive)
   if (cols.archivo) {
     if (f._pdfFile) {
-      try { await adjuntarPDFAMonday(itemId, cols.archivo, f._pdfFile, cfg.mondayKey); }
-      catch(e) { console.warn('PDF adjunto (file) fallÃ³:', e.message); }
+      await adjuntarPDFAMonday(itemId, cols.archivo, f._pdfFile, cfg.mondayKey);
     } else if (f._pdfBase64) {
-      try { await adjuntarPDFAMonday(itemId, cols.archivo, f._pdfBase64, cfg.mondayKey, f.archivo || 'factura.pdf'); }
-      catch(e) { console.warn('PDF adjunto (base64) fallÃ³:', e.message); }
+      await adjuntarPDFAMonday(itemId, cols.archivo, f._pdfBase64, cfg.mondayKey, f.archivo || 'factura.pdf');
+    } else {
+      throw new Error('No hay PDF disponible para adjuntar');
     }
+  } else {
+    throw new Error('Falta configurar la columna Archivo PDF en Monday');
   }
   return itemId;
 }
@@ -2563,7 +2565,7 @@ async function adjuntarPDFAMonday(itemId, columnId, fileOrBase64, apiKey, fileNa
   // Aceptar File object O string base64
   let fileObj;
   if (typeof fileOrBase64 === 'string') {
-    // Es base64 â†’ convertir a Blob/File
+    // Es base64 → convertir a Blob/File
     try {
       const binary = atob(fileOrBase64);
       const bytes  = new Uint8Array(binary.length);
@@ -2581,29 +2583,30 @@ async function adjuntarPDFAMonday(itemId, columnId, fileOrBase64, apiKey, fileNa
   fd.append('apiKey',   apiKey);
   fd.append('file',     fileObj, fileObj.name || fileName || 'factura.pdf');
   const r = await fetch('/upload', {method:'POST', body:fd});
-  if (!r.ok) throw new Error('Upload fallÃ³: ' + r.status);
-  const data = await r.json();
+  let data = {};
+  try { data = await r.json(); } catch {}
+  if (!r.ok) throw new Error(data.error || ('Upload falló: HTTP ' + r.status));
   if (data.error) throw new Error(data.error);
 }
 
 async function forzarDesdeResult(idx) {
   const f = procesadas[idx];
   if (!f) return;
-  if (!confirm(`Â¿Subir "${f.proveedor}" a Monday ignorando el duplicado?`)) return;
+  if (!confirm(`¿Subir "${f.proveedor}" a Monday ignorando el duplicado?`)) return;
   const cfg = getConfig();
   try {
     await crearItemEnMonday(f, cfg);
     f.estado = 'procesado';
     facturas.push({...f, _pdfFile: undefined});
     saveFacturas();
-    // Eliminar de duplicados si estaba ahÃ­
+    // Eliminar de duplicados si estaba ahí
     duplicados = duplicados.filter(d => claveFact(d) !== claveFact(f));
     saveDuplicados();
     renderResultados();
     renderDashboard();
-    log(`âœ… Subida forzada OK: ${f.proveedor}`, 'ok');
+    log(`✅ Subida forzada OK: ${f.proveedor}`, 'ok');
   } catch(e) {
-    log('âŒ ' + e.message, 'err');
+    log('❌ ' + e.message, 'err');
     alert('Error: ' + e.message);
   }
 }
@@ -2617,11 +2620,11 @@ function resetProcesador() {
   document.getElementById('fileInput').value = '';
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  CONFIG
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// Columnas por defecto del tablero Monday de UalÃ¡
-// Estos valores se usan si el localStorage no tiene nada guardado todavÃ­a
+// ═══════════════════════════════════════════════════════════════════
+// Columnas por defecto del tablero Monday de Ualá
+// Estos valores se usan si el localStorage no tiene nada guardado todavía
 const DEFAULT_COLS = {
   colFechaFactura:  'fecha6',
   colFechaRecibida: 'fecha9',
@@ -2638,7 +2641,7 @@ const DEFAULT_COLS = {
 
 function getConfig() {
   const c = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
-  // Para cada campo: primero localStorage, si vacÃ­o usa el default hardcodeado
+  // Para cada campo: primero localStorage, si vacío usa el default hardcodeado
   const d = DEFAULT_COLS;
   return {
     aiProvider: c.aiProvider || 'openai',
@@ -2690,13 +2693,13 @@ function guardarConfig() {
   const prev = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
   Object.assign(cfg, {sheetId:prev.sheetId||'', driveInterval:prev.driveInterval||60, driveAutoSend:prev.driveAutoSend||false});
   localStorage.setItem('facturAutoConfig', JSON.stringify(cfg));
-  // TambiÃ©n guardar en el servidor para que persista entre file:// y http://
+  // También guardar en el servidor para que persista entre file:// y http://
   fetch('/save-config', {
     method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify(cfg)
   }).catch(()=>{});
   const msg = document.getElementById('cfg-msg');
-  msg.innerHTML = '<div class="alert alert-green">âœ… ConfiguraciÃ³n guardada</div>';
+  msg.innerHTML = '<div class="alert alert-green">✅ Configuración guardada</div>';
   setTimeout(()=>msg.innerHTML='', 3000);
 }
 
@@ -2710,9 +2713,9 @@ function cargarConfig() {
   if (s('cfg-gemini-key'))       s('cfg-gemini-key').value       = cfg.geminiKey || '';
   if (s('cfg-gemini-model'))     s('cfg-gemini-model').value     = cfg.geminiModel || 'gemini-1.5-pro';
   if (s('cfg-monday-key'))       s('cfg-monday-key').value       = cfg.mondayKey || '';
-  // Board ID: localStorage primero, si vacÃ­o usa default
+  // Board ID: localStorage primero, si vacío usa default
   if (s('cfg-monday-board'))     s('cfg-monday-board').value     = cfg.mondayBoard || d.mondayBoard;
-  // Columnas: localStorage primero, si vacÃ­o usa default hardcodeado
+  // Columnas: localStorage primero, si vacío usa default hardcodeado
   if (s('col-fecha-factura'))    s('col-fecha-factura').value    = cfg.colFechaFactura  || d.colFechaFactura;
   if (s('col-fecha-recibida'))   s('col-fecha-recibida').value   = cfg.colFechaRecibida || d.colFechaRecibida;
   if (s('col-vencimiento'))      s('col-vencimiento').value      = cfg.colVencimiento   || d.colVencimiento;
@@ -2780,7 +2783,7 @@ function toggleAIProvider() {
   } else {
     oa.style.display = '';
     gm.style.display = 'none';
-    // Actualizar label segÃºn proveedor
+    // Actualizar label según proveedor
     const lbl = oa.querySelector('label');
     if (lbl) lbl.textContent = prov === 'claude' ? 'Anthropic API Key' : 'OpenAI API Key';
     const modelInput = document.getElementById('cfg-claude-model');
@@ -2794,24 +2797,24 @@ async function testClaude() {
   const prov = document.getElementById('cfg-ai-provider')?.value || 'openai';
   if (prov === 'gemini') {
     const key = document.getElementById('cfg-gemini-key')?.value.trim();
-    if (!key) { alert('IngresÃ¡ la Gemini API key primero'); return; }
+    if (!key) { alert('Ingresá la Gemini API key primero'); return; }
     const model = document.getElementById('cfg-gemini-model')?.value || 'gemini-1.5-flash';
     try {
       const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
         method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({contents:[{parts:[{text:'RespondÃ© solo: OK'}]}]})
+        body: JSON.stringify({contents:[{parts:[{text:'Respondé solo: OK'}]}]})
       });
       const d = await r.json();
-      if (d.candidates) alert('âœ… Gemini conectado OK Â· modelo: ' + model);
-      else alert('âŒ ' + (d.error?.message || JSON.stringify(d)));
-    } catch(e) { alert('âŒ Error: ' + e.message); }
+      if (d.candidates) alert('✅ Gemini conectado OK · modelo: ' + model);
+      else alert('❌ ' + (d.error?.message || JSON.stringify(d)));
+    } catch(e) { alert('❌ Error: ' + e.message); }
   } else {
     const key = document.getElementById('cfg-claude-key').value.trim();
-    if (!key) { alert('IngresÃ¡ la OpenAI API key primero'); return; }
+    if (!key) { alert('Ingresá la OpenAI API key primero'); return; }
     try {
       const r = await fetch('https://api.openai.com/v1/models', {headers:{'Authorization':`Bearer ${key}`}});
-      alert(r.ok ? 'âœ… OpenAI conectado OK' : 'âŒ API key invÃ¡lida');
-    } catch(e) { alert('âŒ Error: ' + e.message); }
+      alert(r.ok ? '✅ OpenAI conectado OK' : '❌ API key inválida');
+    } catch(e) { alert('❌ Error: ' + e.message); }
   }
 }
 
@@ -2819,34 +2822,34 @@ function verConfigActual() {
   const c = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
   const msg = document.getElementById('cfg-msg');
   const colsInfo = [
-    ['Fecha FC',      c.colFechaFactura  || 'âŒ VACÃO'],
-    ['Recibida',      c.colFechaRecibida || 'âŒ VACÃO'],
-    ['Vencimiento',   c.colVencimiento   || 'âŒ VACÃO'],
-    ['Importe ARS',   c.colImporte       || 'âŒ VACÃO'],
-    ['Importe USD',   c.colImporteUSD    || 'âŒ VACÃO'],
-    ['Moneda',        c.colMoneda        || 'âŒ VACÃO'],
-    ['NÂ° Factura',    c.colNroFactura    || 'âŒ VACÃO'],
-    ['Tipo Cambio',   c.colTC            || 'âŒ VACÃO'],
-    ['Archivo PDF',   c.colArchivo       || 'âŒ VACÃO'],
+    ['Fecha FC',      c.colFechaFactura  || '❌ VACÍO'],
+    ['Recibida',      c.colFechaRecibida || '❌ VACÍO'],
+    ['Vencimiento',   c.colVencimiento   || '❌ VACÍO'],
+    ['Importe ARS',   c.colImporte       || '❌ VACÍO'],
+    ['Importe USD',   c.colImporteUSD    || '❌ VACÍO'],
+    ['Moneda',        c.colMoneda        || '❌ VACÍO'],
+    ['N° Factura',    c.colNroFactura    || '❌ VACÍO'],
+    ['Tipo Cambio',   c.colTC            || '❌ VACÍO'],
+    ['Archivo PDF',   c.colArchivo       || '❌ VACÍO'],
   ];
   const rows = colsInfo.map(([k,v]) =>
     `<tr><td style="padding:4px 10px;color:var(--text-mid);font-family:var(--mono);font-size:12px">${k}</td>
-     <td style="padding:4px 10px;font-family:var(--mono);font-size:12px;color:${v.startsWith('âŒ')?'var(--red)':'var(--green)'}">${v}</td></tr>`
+     <td style="padding:4px 10px;font-family:var(--mono);font-size:12px;color:${v.startsWith('❌')?'var(--red)':'var(--green)'}">${v}</td></tr>`
   ).join('');
   msg.innerHTML = `
     <div class="alert alert-blue" style="padding:14px">
-      <strong>ðŸ“‹ Config actual en localStorage:</strong><br><br>
-      <b>Board ID:</b> <code>${c.mondayBoard||'âŒ VACÃO'}</code><br>
-      <b>OpenAI Key:</b> <code>${c.claudeKey ? 'âœ… configurada' : 'âŒ VACÃO'}</code><br><br>
+      <strong>📋 Config actual en localStorage:</strong><br><br>
+      <b>Board ID:</b> <code>${c.mondayBoard||'❌ VACÍO'}</code><br>
+      <b>OpenAI Key:</b> <code>${c.claudeKey ? '✅ configurada' : '❌ VACÍO'}</code><br><br>
       <b>Columnas:</b>
       <table style="margin-top:8px">${rows}</table>
-      <br><small style="color:var(--text-dim)">Si ves âŒ VACÃO, completÃ¡ los campos arriba y apretÃ¡ ðŸ’¾ Guardar.</small>
+      <br><small style="color:var(--text-dim)">Si ves ❌ VACÍO, completá los campos arriba y apretá 💾 Guardar.</small>
     </div>`;
 }
 
 async function testMonday() {
   const key = document.getElementById('cfg-monday-key').value.trim();
-  if (!key) { alert('IngresÃ¡ la API key primero'); return; }
+  if (!key) { alert('Ingresá la API key primero'); return; }
   try {
     const r = await fetch('https://api.monday.com/v2', {
       method:'POST',
@@ -2854,14 +2857,14 @@ async function testMonday() {
       body: JSON.stringify({query:'{ me { name } }'})
     });
     const d = await r.json();
-    if (d.data?.me?.name) alert('âœ… Monday conectado como: ' + d.data.me.name);
-    else alert('âŒ ' + JSON.stringify(d.errors?.[0]?.message || d));
-  } catch(e) { alert('âŒ ' + e.message); }
+    if (d.data?.me?.name) alert('✅ Monday conectado como: ' + d.data.me.name);
+    else alert('❌ ' + JSON.stringify(d.errors?.[0]?.message || d));
+  } catch(e) { alert('❌ ' + e.message); }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  GOOGLE DRIVE SYNC (Sheet)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 let drivePollingTimer = null;
 let driveProcessedIds = JSON.parse(localStorage.getItem('driveProcessedIds') || '[]');
 
@@ -2889,7 +2892,7 @@ function updateDriveStatus(state, text) {
 async function guardarDriveConfig() {
   const sheetId  = document.getElementById('cfg-sheet-id')?.value || '';
   const interval = document.getElementById('cfg-drive-interval')?.value || '60';
-  if (!sheetId) { addDriveLog('âš ï¸ IngresÃ¡ el Sheet ID primero', 'warn'); return; }
+  if (!sheetId) { addDriveLog('?? Ingresá el Sheet ID primero', 'warn'); return; }
   const cfg = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
   cfg.sheetId = sheetId; cfg.driveInterval = interval;
   cfg.driveAutoSend = document.getElementById('cfg-drive-autosend')?.checked || false;
@@ -2900,30 +2903,30 @@ async function guardarDriveConfig() {
       body: JSON.stringify({sheetId, syncInterval: parseInt(interval)})
     });
     if (r.ok) {
-      addDriveLog('âœ… ConfiguraciÃ³n guardada. Servidor sincronizarÃ¡ cada ' + interval + 's', 'ok');
-      updateDriveStatus('ok', 'Configurado Â· sync cada ' + interval + 's');
+      addDriveLog('✅ Configuración guardada. Servidor sincronizará cada ' + interval + 's', 'ok');
+      updateDriveStatus('ok', 'Configurado · sync cada ' + interval + 's');
     }
   } catch(e) {
-    addDriveLog('âš ï¸ Config guardada localmente. ReiniciÃ¡ el servidor para aplicar.', 'warn');
+    addDriveLog('?? Config guardada localmente. Reiniciá el servidor para aplicar.', 'warn');
   }
 }
 
 async function syncSheetAhora() {
   updateDriveStatus('syncing', 'Sincronizando...');
-  addDriveLog('ðŸ”„ Solicitando sync manual al servidor...', 'info');
+  addDriveLog('🔄 Solicitando sync manual al servidor...', 'info');
   try {
     const r = await fetch('/sync-sheet', {method:'POST'});
     if (!r.ok) throw new Error('Servidor no disponible');
     const data = await r.json();
     if (data.nuevos > 0) {
-      addDriveLog('ðŸ“‚ ' + data.nuevos + ' PDF(s) nuevos descargados. Revisando cola...', 'ok');
+      addDriveLog('📂 ' + data.nuevos + ' PDF(s) nuevos descargados. Revisando cola...', 'ok');
       await pollDriveQueue();
     } else {
-      addDriveLog('âœ… Sin PDFs nuevos en la Sheet', 'ok');
-      updateDriveStatus('ok', 'Sin cambios Â· ' + new Date().toLocaleTimeString('es-AR'));
+      addDriveLog('✅ Sin PDFs nuevos en la Sheet', 'ok');
+      updateDriveStatus('ok', 'Sin cambios · ' + new Date().toLocaleTimeString('es-AR'));
     }
   } catch(e) {
-    addDriveLog('âŒ ' + e.message, 'err');
+    addDriveLog('❌ ' + e.message, 'err');
     updateDriveStatus('error', 'Error servidor');
   }
 }
@@ -2937,12 +2940,12 @@ async function pollDriveQueue() {
     const cola = data.queue || [];
     document.getElementById('drivePendCount').textContent = cola.length + ' en cola';
     if (cola.length === 0) {
-      updateDriveStatus('ok', 'Sin PDFs nuevos Â· ' + new Date().toLocaleTimeString('es-AR'));
+      updateDriveStatus('ok', 'Sin PDFs nuevos · ' + new Date().toLocaleTimeString('es-AR'));
       return;
     }
-    addDriveLog('ðŸ“‚ ' + cola.length + ' PDF(s) para procesar', 'info');
+    addDriveLog('📂 ' + cola.length + ' PDF(s) para procesar', 'info');
     for (const item of cola) {
-      addDriveLog('ðŸ“„ Procesando: ' + item.fileName + '...', 'info');
+      addDriveLog('📄 Procesando: ' + item.fileName + '...', 'info');
       try {
         const pdfR = await fetch('/get-pdf?path=' + encodeURIComponent(item.path));
         if (!pdfR.ok) throw new Error('No se pudo leer el PDF');
@@ -2957,14 +2960,14 @@ async function pollDriveQueue() {
         datos._viaDrive = true;
         procesadas.push(datos);
         const esNC = /nc|nota.de.cr/i.test(datos.tipoDocumento||'');
-        addDriveLog('âœ… ' + item.fileName + ' â†’ ' + (datos.proveedor||'?') + ' | ' + (datos.tipoDocumento||'FACTURA') + (esNC?' (NCâ†’neg)':''), 'ok');
+        addDriveLog('✅ ' + item.fileName + ' → ' + (datos.proveedor||'?') + ' | ' + (datos.tipoDocumento||'FACTURA') + (esNC?' (NC→neg)':''), 'ok');
         if (cfg.driveAutoSend && cfg.mondayKey && cfg.mondayBoard) {
           // Chequeo duplicado antes de subir
           if (esDuplicado(datos)) {
-            const motivo = `Duplicado Drive: ${datos.nroFactura ? 'NÂ° ' + datos.nroFactura : 'misma fecha e importe'}`;
+            const motivo = `Duplicado Drive: ${datos.nroFactura ? 'N° ' + datos.nroFactura : 'misma fecha e importe'}`;
             registrarDuplicado(datos, motivo);
             datos.estado = 'duplicado';
-            addDriveLog('ðŸ” DUPLICADO bloqueado: ' + datos.proveedor + ' ' + (datos.nroFactura||''), 'warn');
+            addDriveLog('🔁 DUPLICADO bloqueado: ' + datos.proveedor + ' ' + (datos.nroFactura||''), 'warn');
             renderDashboard();
           } else {
             try {
@@ -2972,21 +2975,21 @@ async function pollDriveQueue() {
               datos.estado = 'procesado';
               facturas.push({...datos, _pdfFile:undefined});
               saveFacturas();
-              addDriveLog('ðŸš€ Enviado a Monday: ' + datos.proveedor, 'ok');
+              addDriveLog('🚀 Enviado a Monday: ' + datos.proveedor, 'ok');
             } catch(e2) {
-              addDriveLog('âŒ Monday: ' + e2.message, 'err');
+              addDriveLog('❌ Monday: ' + e2.message, 'err');
             }
           }
         }
       } catch(e) {
-        addDriveLog('âŒ ' + item.fileName + ': ' + e.message, 'err');
+        addDriveLog('❌ ' + item.fileName + ': ' + e.message, 'err');
       }
     }
     document.getElementById('drivePendCount').textContent = procesadas.filter(f=>f.estado==='pendiente').length + ' pendientes';
-    updateDriveStatus('ok', 'Procesado Â· ' + new Date().toLocaleTimeString('es-AR'));
+    updateDriveStatus('ok', 'Procesado · ' + new Date().toLocaleTimeString('es-AR'));
     renderDashboard();
   } catch(e) {
-    addDriveLog('âŒ ' + e.message, 'err');
+    addDriveLog('❌ ' + e.message, 'err');
     updateDriveStatus('error', 'Error servidor');
   }
 }
@@ -2995,33 +2998,33 @@ function toggleDrivePolling() {
   if (drivePollingTimer) {
     clearInterval(drivePollingTimer);
     drivePollingTimer = null;
-    document.getElementById('driveBtnAuto').textContent = 'â–¶ Iniciar polling';
+    document.getElementById('driveBtnAuto').textContent = '▶ Iniciar polling';
     document.getElementById('driveBtnAuto').className = 'btn btn-coral';
-    addDriveLog('â¹ Polling detenido', 'warn');
+    addDriveLog('⏹ Polling detenido', 'warn');
     updateDriveStatus('idle', 'Polling detenido');
   } else {
     const secs = parseInt(document.getElementById('cfg-drive-interval')?.value || 60);
     pollDriveQueue();
     drivePollingTimer = setInterval(pollDriveQueue, secs * 1000);
-    document.getElementById('driveBtnAuto').textContent = 'â¹ Detener (' + secs + 's)';
+    document.getElementById('driveBtnAuto').textContent = '⏹ Detener (' + secs + 's)';
     document.getElementById('driveBtnAuto').className = 'btn btn-ghost';
-    addDriveLog('â–¶ Polling iniciado cada ' + secs + 's', 'ok');
+    addDriveLog('▶ Polling iniciado cada ' + secs + 's', 'ok');
   }
 }
 
 function resetDriveHistory() {
-  if (confirm('Â¿Resetear historial local?')) {
+  if (confirm('¿Resetear historial local?')) {
     driveProcessedIds = []; saveDriveProcessed();
-    addDriveLog('ðŸ”„ Historial reseteado', 'info');
+    addDriveLog('🔄 Historial reseteado', 'info');
   }
 }
 
 function descargarScript() {
-  alert('DescargÃ¡ el archivo FacturAuto_DriveSync.gs de la misma carpeta que index.html');
+  alert('Descargá el archivo FacturAuto_DriveSync.gs de la misma carpeta que index.html');
 }
 
 function descargarBat() {
-  alert('DescargÃ¡ el archivo AutoMonday.bat de la misma carpeta que index.html');
+  alert('Descargá el archivo AutoMonday.bat de la misma carpeta que index.html');
 }
 
 function descargarMakeScript() {}
@@ -3031,11 +3034,11 @@ function convertirFecha(f) {
   return p.length===3 ? `${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}` : f;
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  DETECTOR DE DUPLICADOS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 
-// Clave Ãºnica de una factura: proveedor + nroFactura normalizados
+// Clave única de una factura: proveedor + nroFactura normalizados
 // Si no hay nroFactura, fallback a proveedor + fecha + importe
 function claveFact(f) {
   const prov = (f.proveedor || '').toUpperCase().trim().replace(/\s+/g,' ');
@@ -3047,7 +3050,7 @@ function claveFact(f) {
   return `${prov}||${fecha}||${imp}`;
 }
 
-// Guardar facturas en localStorage eliminando campos pesados (imÃ¡genes, base64, PDF)
+// Guardar facturas en localStorage eliminando campos pesados (imágenes, base64, PDF)
 function saveFacturas() {
   try {
     const livianas = facturas.map(f => {
@@ -3056,14 +3059,14 @@ function saveFacturas() {
     });
     localStorage.setItem('facturas', JSON.stringify(livianas));
   } catch(e) {
-    // Si sigue llenÃ¡ndose, recortar las mÃ¡s viejas
+    // Si sigue llenándose, recortar las más viejas
     try {
       const recortadas = facturas.slice(-100).map(f => {
         const { _pdfPages, _pdfBase64, _pdfFile, ...resto } = f;
         return resto;
       });
       localStorage.setItem('facturas', JSON.stringify(recortadas));
-      console.warn('localStorage lleno â€” guardadas solo las Ãºltimas 100 facturas');
+      console.warn('localStorage lleno — guardadas solo las últimas 100 facturas');
     } catch(e2) {
       console.error('localStorage lleno, no se pudo guardar:', e2.message);
     }
@@ -3084,9 +3087,9 @@ function saveDuplicados() {
 
 function registrarDuplicado(f, motivo) {
   duplicados.push({
-    proveedor:    f.proveedor || 'â€”',
-    nroFactura:   f.nroFactura || 'â€”',
-    fechaFactura: f.fechaFactura || 'â€”',
+    proveedor:    f.proveedor || '—',
+    nroFactura:   f.nroFactura || '—',
+    fechaFactura: f.fechaFactura || '—',
     importe:      f.importe || 0,
     moneda:       f.moneda || 'ARS',
     motivo:       motivo || 'Ya existe en el historial',
@@ -3111,7 +3114,7 @@ function renderDuplicados() {
   if (!tbody) return;
   countEl.textContent = duplicados.length + (duplicados.length===1?' duplicada':' duplicadas');
   if (!duplicados.length) {
-    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="icon">âœ…</div><p>Sin duplicados detectados.</p></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="icon">✅</div><p>Sin duplicados detectados.</p></div></td></tr>';
     return;
   }
   tbody.innerHTML = [...duplicados].reverse().map((d, i) => `
@@ -3122,12 +3125,12 @@ function renderDuplicados() {
       <td class="td-amount">${formatImporte(d.importe, d.moneda)}</td>
       <td><span style="font-size:11px;color:#92400e;background:rgba(245,158,11,.1);padding:2px 8px;border-radius:100px;font-family:var(--mono)">${d.motivo}</span></td>
       <td class="muted">${d.ts}</td>
-      <td><button class="btn btn-ghost btn-sm" onclick="forzarSubida(${duplicados.length-1-i})" title="Subir igual a Monday ignorando el duplicado">âš  Subir igual</button></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="forzarSubida(${duplicados.length-1-i})" title="Subir igual a Monday ignorando el duplicado">? Subir igual</button></td>
     </tr>`).join('');
 }
 
 function limpiarDuplicados() {
-  if (!confirm('Â¿Limpiar toda la lista de duplicados?')) return;
+  if (!confirm('¿Limpiar toda la lista de duplicados?')) return;
   duplicados = [];
   saveDuplicados();
   renderDuplicados();
@@ -3136,7 +3139,7 @@ function limpiarDuplicados() {
 
 async function forzarSubida(idx) {
   const d = duplicados[idx];
-  if (!confirm(`Â¿Subir "${d.proveedor} ${d.nroFactura}" a Monday igual, ignorando el duplicado?`)) return;
+  if (!confirm(`¿Subir "${d.proveedor} ${d.nroFactura}" a Monday igual, ignorando el duplicado?`)) return;
   const cfg = getConfig();
   try {
     await crearItemEnMonday(d, cfg);
@@ -3148,15 +3151,15 @@ async function forzarSubida(idx) {
     saveDuplicados();
     renderDuplicados();
     renderDashboard();
-    alert('âœ… Subida forzada OK');
+    alert('✅ Subida forzada OK');
   } catch(e) {
-    alert('âŒ ' + e.message);
+    alert('❌ ' + e.message);
   }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-//  SELECCIÃ“N Y BORRADO
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
+//  SELECCIÓN Y BORRADO
+// ═══════════════════════════════════════════════════════════════════
 let selectMode = false;
 let selectedIds = new Set();
 
@@ -3168,12 +3171,12 @@ function toggleSelectMode() {
   const btnDel = document.getElementById('btnDeleteSelected');
   if (selectMode) {
     tbl.classList.add('select-mode');
-    btn.textContent = 'âœ• Cancelar';
+    btn.textContent = '✕ Cancelar';
     btn.style.background = 'var(--surface2)';
     btnDel.style.display = '';
   } else {
     tbl.classList.remove('select-mode');
-    btn.textContent = 'â˜‘ Seleccionar';
+    btn.textContent = '☑ Seleccionar';
     btn.style.background = '';
     btnDel.style.display = 'none';
   }
@@ -3186,7 +3189,7 @@ function toggleRowSelect(idx, checkbox) {
   checkbox.closest('tr').classList.toggle('selected', checkbox.checked);
   const count = selectedIds.size;
   const btn = document.getElementById('btnDeleteSelected');
-  btn.textContent = count > 0 ? `ðŸ—‘ Borrar ${count} factura${count>1?'s':''}` : 'ðŸ—‘ Borrar seleccionados';
+  btn.textContent = count > 0 ? `🗑 Borrar ${count} factura${count>1?'s':''}` : '🗑 Borrar seleccionados';
 }
 
 function selectAll(masterCb) {
@@ -3204,32 +3207,32 @@ function selectAll(masterCb) {
   });
   const count = selectedIds.size;
   const btn = document.getElementById('btnDeleteSelected');
-  btn.textContent = count > 0 ? `ðŸ—‘ Borrar ${count} factura${count>1?'s':''}` : 'ðŸ—‘ Borrar seleccionados';
+  btn.textContent = count > 0 ? `🗑 Borrar ${count} factura${count>1?'s':''}` : '🗑 Borrar seleccionados';
 }
 
 function borrarSeleccionados() {
   if (selectedIds.size === 0) return;
   const count = selectedIds.size;
-  if (!confirm(`Â¿Borrar ${count} factura${count>1?'s':''} del dashboard?
+  if (!confirm(`¿Borrar ${count} factura${count>1?'s':''} del dashboard?
 Esto NO las borra de Monday, solo del historial local.`)) return;
 
-  // Los Ã­ndices son de facturas[], borrar de mayor a menor para no desplazar
+  // Los índices son de facturas[], borrar de mayor a menor para no desplazar
   const sorted = [...selectedIds].sort((a,b) => b-a);
   sorted.forEach(idx => facturas.splice(idx, 1));
   saveFacturas();
   selectedIds.clear();
-  toggleSelectMode(); // salir del modo selecciÃ³n
+  toggleSelectMode(); // salir del modo selección
   renderDashboard();
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-//  GMAIL DIRECTO â€” polling + validaciÃ³n IA
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
+//  GMAIL DIRECTO — polling + validación IA
+// ═══════════════════════════════════════════════════════════════════
 
 window.gmailPollingTimer = null;
 window.gmailActivo = false;  // flag para cancelar el loop interno de pollGmailQueue
 
-// Palabras que indican que un PDF NO es factura â†’ rechazar
+// Palabras que indican que un PDF NO es factura → rechazar
 const PALABRAS_RECHAZAR = [
   'orden de pago','orden de compra',
   'orden_de_pago','orden_de_compra','orden_pago','orden_compra',
@@ -3247,7 +3250,7 @@ const PALABRAS_RECHAZAR = [
 // Palabras que confirman que es factura
 const PALABRAS_FACTURA = [
   'factura','invoice','fc ','fc-','cfe','nota de credito',
-  'nota de crÃ©dito','nota de debito','nota de dÃ©bito','cfe_'
+  'nota de crédito','nota de debito','nota de débito','cfe_'
 ];
 
 async function enviarKeywordsAlScript(keywords) {
@@ -3310,16 +3313,16 @@ async function guardarGmailConfig() {
     labelCola:  document.getElementById('cfg-gmail-label-cola')?.value.trim(),
     labelProc:  document.getElementById('cfg-gmail-label-proc')?.value.trim(),
     interval:   parseInt(document.getElementById('cfg-gmail-interval')?.value || '60'),
-    gmailScriptUrl: 'https://script.google.com/a/macros/uala.com.ar/s/AKfycbzjwcpy5U1xblnRaSoiB22VStcqgoEeSQva3LnvtS67bUgtr4xTR3fiTrk7V7IuO3IC/exec', // hardcodeada â€” no modificar
+    gmailScriptUrl: 'https://script.google.com/a/macros/uala.com.ar/s/AKfycbzjwcpy5U1xblnRaSoiB22VStcqgoEeSQva3LnvtS67bUgtr4xTR3fiTrk7V7IuO3IC/exec', // hardcodeada — no modificar
     desde:      document.getElementById('cfg-gmail-desde')?.value || '',
     hasta:      document.getElementById('cfg-gmail-hasta')?.value || '',
   };
   localStorage.setItem('gmailConfig', JSON.stringify(cfg));
   const msg = document.getElementById('gmail-cfg-msg');
-  msg.innerHTML = '<div class="alert alert-green" style="font-size:12px">âœ… Config Gmail guardada</div>';
+  msg.innerHTML = '<div class="alert alert-green" style="font-size:12px">✅ Config Gmail guardada</div>';
   setTimeout(() => msg.innerHTML = '', 3000);
 
-  // Enviar keywords extra al Apps Script para que las use en el prÃ³ximo escaneo
+  // Enviar keywords extra al Apps Script para que las use en el próximo escaneo
   const kwSubject  = (cfg.subjectKw  || '').split(',').map(k=>k.trim().toLowerCase()).filter(Boolean);
   const kwFilename = (cfg.filenameKw || '').split(',').map(k=>k.trim().toLowerCase()).filter(Boolean);
   const kwExtra    = [...new Set([...kwSubject, ...kwFilename])]; // sin duplicados
@@ -3336,9 +3339,9 @@ async function guardarGmailConfig() {
     }).catch(() => {});
   }
 
-  // El rango se filtra localmente â€” el Apps Script escanea todo y la app filtra por fecha
+  // El rango se filtra localmente — el Apps Script escanea todo y la app filtra por fecha
   if (cfg.desde || cfg.hasta) {
-    addGmailLog('ðŸ“… Rango guardado: ' + (cfg.desde||'sin inicio') + ' â†’ ' + (cfg.hasta||'sin fin'), 'ok');
+    addGmailLog('📅 Rango guardado: ' + (cfg.desde||'sin inicio') + ' → ' + (cfg.hasta||'sin fin'), 'ok');
   }
 }
 
@@ -3377,18 +3380,18 @@ function updateGmailStatus(state, text) {
   if (lbl) lbl.textContent = text;
 }
 
-// â”€â”€ Filtros de texto â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Filtros de texto ─────────────────────────────────────────────
 function pasaFiltroTexto(subject, filename, gmailCfg) {
   const s = (subject  || '').toLowerCase();
   // Normalizar filename: reemplazar guiones y puntos por espacio para matchear mejor
   const f = (filename || '').toLowerCase().replace(/[-_.]/g, ' ');
   const fOrig = (filename || '').toLowerCase();
 
-  // â”€â”€ 1. Chequeo de rechazo explÃ­cito (tiene prioridad) â”€â”€â”€â”€â”€â”€
+  // ── 1. Chequeo de rechazo explícito (tiene prioridad) ──────
   const hayRechazo = PALABRAS_RECHAZAR.some(p => s.includes(p) || f.includes(p) || fOrig.includes(p));
   if (hayRechazo) return false;
 
-  // â”€â”€ 2. Chequeo de aceptaciÃ³n â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── 2. Chequeo de aceptación ────────────────────────────────
   const subjectKws  = gmailCfg.subjectKw.split(',').map(k => k.trim().toLowerCase()).filter(Boolean);
   const filenameKws = gmailCfg.filenameKw.split(',').map(k => k.trim().toLowerCase()).filter(Boolean);
 
@@ -3403,7 +3406,7 @@ function pasaFiltroTexto(subject, filename, gmailCfg) {
     ' nc ',' nd ','_nc_','_nd_','-nc-','-nd-',
     'comprobante electronico','comp elect',
   ];
-  // Asunto exactamente igual a una palabra clave (sin necesitar espacio despuÃ©s)
+  // Asunto exactamente igual a una palabra clave (sin necesitar espacio después)
   const asuntoExacto = ['fc','nc','nd','cfe','factura','invoice'].includes(s.trim());
 
   const subjectOk  = asuntoExacto ||
@@ -3418,33 +3421,33 @@ function pasaFiltroTexto(subject, filename, gmailCfg) {
   return subjectOk || filenameOk;
 }
 
-// â”€â”€ ValidaciÃ³n IA: confirma que el PDF es factura â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Validación IA: confirma que el PDF es factura ────────────────
 async function validarEsFacturaConIA(images, filename, cfg) {
   const appCfg = getConfig();
 
   // Este PDF ya fue pre-filtrado por el Apps Script (keywords).
   // La IA solo confirma que NO sea un falso positivo obvio.
-  const prompt = `Este PDF fue pre-seleccionado como posible factura. ConfirmÃ¡ si es un comprobante de venta/servicio.
+  const prompt = `Este PDF fue pre-seleccionado como posible factura. Confirmá si es un comprobante de venta/servicio.
 
-RespondÃ© SOLO con JSON, sin texto extra:
+Respondé SOLO con JSON, sin texto extra:
 {"esFactura": true, "tipoDocumento": "FACTURA", "motivo": "..."}
 {"esFactura": false, "tipoDocumento": "REMITO", "motivo": "..."}
 
-esFactura=true para: facturas, notas de crÃ©dito/dÃ©bito, invoices, CFE, comprobantes AFIP.
-Facturas de empresas extranjeras (Deel, AWS, etc.) NO tienen CUIT â€” igual son vÃ¡lidas.
+esFactura=true para: facturas, notas de crédito/débito, invoices, CFE, comprobantes AFIP.
+Facturas de empresas extranjeras (Deel, AWS, etc.) NO tienen CUIT — igual son válidas.
 
 esFactura=false SOLO si es claramente: remito, orden de compra/pago, presupuesto, extracto bancario, contrato, recibo de sueldo.
 
-EN DUDA â†’ esFactura=true`;
+EN DUDA → esFactura=true`;
 
   // Determinar proveedor y key
   const proveedor = appCfg.aiProvider || 'openai';
   const claudeKey = appCfg.claudeKey || '';
   const geminiKey = appCfg.geminiKey || '';
 
-  // Sin ninguna key â†’ dejar pasar (la extracciÃ³n principal validarÃ¡)
+  // Sin ninguna key → dejar pasar (la extracción principal validará)
   if (!claudeKey && !geminiKey) {
-    addGmailLog('âš ï¸ Sin API key configurada â€” se asume factura', 'warn');
+    addGmailLog('?? Sin API key configurada — se asume factura', 'warn');
     return { esFactura: true, tipo: 'FACTURA', motivo: 'Sin key' };
   }
 
@@ -3452,7 +3455,7 @@ EN DUDA â†’ esFactura=true`;
     let text = '';
 
     if (proveedor === 'gemini' && geminiKey) {
-      // â”€â”€ Gemini â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ── Gemini ──────────────────────────────────────────────
       const parts = [{text: prompt}, ...images.slice(0,2).map(img => ({
         inline_data: {mime_type: 'image/jpeg', data: img}
       }))];
@@ -3465,7 +3468,7 @@ EN DUDA â†’ esFactura=true`;
       text = d.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
     } else if ((proveedor === 'claude' || proveedor === 'anthropic') && claudeKey) {
-      // â”€â”€ Anthropic Claude â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ── Anthropic Claude ────────────────────────────────────
       const content = [
         {type:'text', text: prompt},
         ...images.slice(0,1).map(img => ({
@@ -3482,7 +3485,7 @@ EN DUDA â†’ esFactura=true`;
       text = d.content?.[0]?.text || '';
 
     } else if (claudeKey) {
-      // â”€â”€ OpenAI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ── OpenAI ──────────────────────────────────────────────
       const content = [
         {type:'text', text: prompt},
         ...images.slice(0,1).map(img => ({
@@ -3500,11 +3503,11 @@ EN DUDA â†’ esFactura=true`;
       text = d.choices?.[0]?.message?.content || '';
     }
 
-    if (!text) throw new Error('Respuesta vacÃ­a de la IA');
+    if (!text) throw new Error('Respuesta vacía de la IA');
 
-    // Parsear JSON â€” buscar el JSON aunque haya texto alrededor
+    // Parsear JSON — buscar el JSON aunque haya texto alrededor
     const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) throw new Error('No encontrÃ© JSON en: ' + text.substring(0,100));
+    if (!jsonMatch) throw new Error('No encontré JSON en: ' + text.substring(0,100));
     const parsed = JSON.parse(jsonMatch[0]);
 
     return {
@@ -3514,13 +3517,13 @@ EN DUDA â†’ esFactura=true`;
     };
 
   } catch(e) {
-    // En caso de error de API â†’ loggear y dejar pasar (no bloquear)
-    addGmailLog('âš ï¸ Error IA (' + filename + '): ' + e.message + ' â€” dejando pasar', 'warn');
+    // En caso de error de API → loggear y dejar pasar (no bloquear)
+    addGmailLog('?? Error IA (' + filename + '): ' + e.message + ' — dejando pasar', 'warn');
     return { esFactura: true, tipo: 'FACTURA', motivo: 'Error API: ' + e.message };
   }
 }
 
-// â”€â”€ Polling: pide al servidor los items de la cola â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Polling: pide al servidor los items de la cola ───────────────
 async function sincronizarRangoAlScript() {
   // Envia el rango al Apps Script via iframe para que lo guarde en Script Properties.
   const cfg = getGmailConfig();
@@ -3556,9 +3559,9 @@ async function pollGmailQueue() {
     if (!r.ok) throw new Error('Servidor no disponible');
     const data = await r.json();
 
-    // Obtener toda la cola â€” incluye Drive y Gmail
+    // Obtener toda la cola — incluye Drive y Gmail
     const todaLaCola = data.queue || data.items || data || [];
-    addGmailLog('ðŸ“¦ Servidor respondiÃ³: ' + (Array.isArray(todaLaCola) ? todaLaCola.length : 0) + ' items en cola total', 'info');
+    addGmailLog('📦 Servidor respondió: ' + (Array.isArray(todaLaCola) ? todaLaCola.length : 0) + ' items en cola total', 'info');
     let cola = Array.isArray(todaLaCola) ? todaLaCola : [];
     // Si hay items de Gmail los filtramos, si no hay ninguno con "gmail_"
     // usamos toda la cola (compatibilidad con servidor viejo)
@@ -3571,12 +3574,12 @@ async function pollGmailQueue() {
     // Si no hay ninguno con prefijo gmail, asumir que todos son de Gmail
     // (servidor viejo que no distingue origen)
 
-    // Filtrar por rango de fechas si estÃ¡ configurado
+    // Filtrar por rango de fechas si está configurado
     if (gmailCfg.desde || gmailCfg.hasta) {
       const desde = gmailCfg.desde ? new Date(gmailCfg.desde) : null;
       const hasta = gmailCfg.hasta ? new Date(gmailCfg.hasta + 'T23:59:59') : null;
       cola = cola.filter(item => {
-        if (!item.fechaRecibida) return true; // sin fecha â†’ dejar pasar
+        if (!item.fechaRecibida) return true; // sin fecha → dejar pasar
         // fechaRecibida viene en dd/MM/yyyy del Apps Script
         const partes = item.fechaRecibida.split('/');
         if (partes.length !== 3) return true;
@@ -3588,23 +3591,23 @@ async function pollGmailQueue() {
     }
 
     if (!cola.length) {
-      updateGmailStatus('ok', 'Sin items Â· ' + new Date().toLocaleTimeString('es-AR'));
-      // DiagnÃ³stico: mostrar quÃ© devolviÃ³ el servidor
-      addGmailLog('ðŸ“­ Cola vacÃ­a â€” el servidor no tiene PDFs listos todavÃ­a', 'info');
-      addGmailLog('   â†’ VerificÃ¡ que el servidor Python estÃ© corriendo y haya sincronizado la Sheet', 'info');
-      addGmailLog('   â†’ En la app: tab Google Drive â†’ "Sincronizar ahora" para forzar lectura de la Sheet', 'info');
+      updateGmailStatus('ok', 'Sin items · ' + new Date().toLocaleTimeString('es-AR'));
+      // Diagnóstico: mostrar qué devolvió el servidor
+      addGmailLog('📭 Cola vacía — el servidor no tiene PDFs listos todavía', 'info');
+      addGmailLog('   → Verificá que el servidor Python esté corriendo y haya sincronizado la Sheet', 'info');
+      addGmailLog('   → En la app: tab Google Drive → "Sincronizar ahora" para forzar lectura de la Sheet', 'info');
       return;
     }
 
-    addGmailLog('ðŸ“§ ' + cola.length + ' PDF(s) de Gmail en el rango ' + (gmailCfg.desde||'?') + ' â†’ ' + (gmailCfg.hasta||'?'), 'info');
+    addGmailLog('📧 ' + cola.length + ' PDF(s) de Gmail en el rango ' + (gmailCfg.desde||'?') + ' → ' + (gmailCfg.hasta||'?'), 'info');
     if (cola.length === 0) {
-      addGmailLog('   â†’ Si esperabas facturas: verificÃ¡ que el Apps Script corriÃ³ y escribiÃ³ en la Sheet', 'warn');
-      addGmailLog('   â†’ Luego hacÃ© "Sincronizar ahora" en el tab Google Drive para que el servidor las levante', 'warn');
+      addGmailLog('   → Si esperabas facturas: verificá que el Apps Script corrió y escribió en la Sheet', 'warn');
+      addGmailLog('   → Luego hacé "Sincronizar ahora" en el tab Google Drive para que el servidor las levante', 'warn');
     }
 
     // Rastrear resultado de cada PDF para etiquetar el thread correctamente
-    // cuando todos los PDFs de un mismo mail estÃ©n procesados
-    const resultadoPorMsg = {}; // msgId â†’ { total, procesados, resultados[] }
+    // cuando todos los PDFs de un mismo mail estén procesados
+    const resultadoPorMsg = {}; // msgId → { total, procesados, resultados[] }
 
     // Pre-agrupar por msgId
     for (const item of cola) {
@@ -3618,15 +3621,15 @@ async function pollGmailQueue() {
 
     for (const item of cola) {
       if (!window.gmailActivo) {
-        addGmailLog('â¹ AnÃ¡lisis cancelado por el usuario', 'warn');
+        addGmailLog('⏹ Análisis cancelado por el usuario', 'warn');
         return;
       }
 
       const msgId = item.fileId.split('_')[1] || item.fileId;
-      addGmailLog('ðŸ” Analizando: ' + item.fileName, 'info');
+      addGmailLog('🔍 Analizando: ' + item.fileName, 'info');
 
-      // El Apps Script ya filtrÃ³ por keywords antes de encolar
-      // AcÃ¡ solo leemos, validamos con IA y subimos a Monday
+      // El Apps Script ya filtró por keywords antes de encolar
+      // Acá solo leemos, validamos con IA y subimos a Monday
 
       // 1. Leer PDF
       let images = [];
@@ -3636,23 +3639,23 @@ async function pollGmailQueue() {
         const blob = await pdfR.blob();
         images = await pdfToImages(new File([blob], item.fileName, {type:'application/pdf'}));
       } catch(e) {
-        addGmailLog(`âŒ No se pudo leer el PDF: ${e.message}`, 'err');
+        addGmailLog(`❌ No se pudo leer el PDF: ${e.message}`, 'err');
         resultadoPorMsg[msgId].done++;
-        // No cambia etiqueta â€” deja EnCola para reintento
+        // No cambia etiqueta — deja EnCola para reintento
         continue;
       }
 
-      // 3. ValidaciÃ³n IA
+      // 3. Validación IA
       if (gmailCfg.aiValidate) {
         const validacion = await validarEsFacturaConIA(images, item.fileName, appCfg);
         if (!validacion.esFactura) {
-          addGmailLog(`â›” IA rechazÃ³: ${item.fileName} â†’ ${validacion.tipo} (${validacion.motivo})`, 'warn');
+          addGmailLog(`⛔ IA rechazó: ${item.fileName} → ${validacion.tipo} (${validacion.motivo})`, 'warn');
           resultadoPorMsg[msgId].estados.push('no_factura');
           resultadoPorMsg[msgId].done++;
           await marcarPDFYEtiquetarSiListo(item, 'no_factura', resultadoPorMsg[msgId]);
           continue;
         }
-        addGmailLog(`âœ… IA confirmÃ³: ${validacion.tipo}`, 'ok');
+        addGmailLog(`✅ IA confirmó: ${validacion.tipo}`, 'ok');
       }
 
       // 4. Extraer datos y subir a Monday
@@ -3665,12 +3668,12 @@ async function pollGmailQueue() {
         datos._pdfBase64    = item.pdfBase64 || null;
         datos._viaGmail     = true;
 
-        if (!window.gmailActivo) { addGmailLog('â¹ Cancelado', 'warn'); return; }
+        if (!window.gmailActivo) { addGmailLog('⏹ Cancelado', 'warn'); return; }
 
-        // Duplicado â†’ Revisado (no EnCola)
+        // Duplicado → Revisado (no EnCola)
         if (esDuplicado(datos)) {
-          addGmailLog(`ðŸ” Duplicado: ${datos.proveedor} ${datos.nroFactura||''}`, 'warn');
-          registrarDuplicado(datos, 'Duplicado vÃ­a Gmail');
+          addGmailLog(`🔁 Duplicado: ${datos.proveedor} ${datos.nroFactura||''}`, 'warn');
+          registrarDuplicado(datos, 'Duplicado vía Gmail');
           resultadoPorMsg[msgId].estados.push('revisado');
           resultadoPorMsg[msgId].done++;
           await marcarPDFYEtiquetarSiListo(item, 'revisado', resultadoPorMsg[msgId]);
@@ -3683,7 +3686,7 @@ async function pollGmailQueue() {
         datos.estado = 'procesado';
         facturas.push({...datos, _pdfFile:undefined, _pdfPages:undefined});
         saveFacturas();
-        addGmailLog(`ðŸš€ Monday OK: ${datos.proveedor} | ${datos.tipoDocumento||'FACTURA'}`, 'ok');
+        addGmailLog(`🚀 Monday OK: ${datos.proveedor} | ${datos.tipoDocumento||'FACTURA'}`, 'ok');
 
         fetch('/mark-processed', {
           method: 'POST', headers: {'Content-Type':'application/json'},
@@ -3696,21 +3699,21 @@ async function pollGmailQueue() {
         renderDashboard();
 
       } catch(e) {
-        addGmailLog(`âŒ Error: ${item.fileName}: ${e.message}`, 'err');
+        addGmailLog(`❌ Error: ${item.fileName}: ${e.message}`, 'err');
         resultadoPorMsg[msgId].done++;
-        // Deja EnCola â€” se reintenta en el prÃ³ximo ciclo
+        // Deja EnCola — se reintenta en el próximo ciclo
       }
     }
 
-    updateGmailStatus('ok', 'Procesado Â· ' + new Date().toLocaleTimeString('es-AR'));
+    updateGmailStatus('ok', 'Procesado · ' + new Date().toLocaleTimeString('es-AR'));
 
   } catch(e) {
-    addGmailLog('âŒ ' + e.message, 'err');
+    addGmailLog('❌ ' + e.message, 'err');
     updateGmailStatus('error', 'Error servidor');
   }
 }
 
-// Determina etiqueta final del thread cuando todos los PDFs del mail estÃ¡n procesados
+// Determina etiqueta final del thread cuando todos los PDFs del mail están procesados
 // Prioridad: procesado > no_factura > revisado
 async function marcarPDFYEtiquetarSiListo(item, estadoPDF, grupo) {
   // Marcar este PDF en el servidor
@@ -3732,12 +3735,12 @@ async function marcarPDFYEtiquetarSiListo(item, estadoPDF, grupo) {
   else                                  etiquetaFinal = 'revisado';
 
   const labels = { procesado: 'AutoMonday/Procesado', no_factura: 'AutoMonday/NoEsFactura', revisado: 'AutoMonday/Revisado' };
-  addGmailLog(`ðŸ· Thread completo â†’ ${labels[etiquetaFinal]}`, 'ok');
+  addGmailLog(`🏷 Thread completo → ${labels[etiquetaFinal]}`, 'ok');
   await notificarServidorEtiqueta(item, etiquetaFinal);
 }
 
-// Notificar al Apps Script quÃ© etiqueta aplicar en Gmail
-// Usa form POST a iframe oculto â€” tÃ©cnica que envÃ­a cookies de sesiÃ³n sin restricciones CORS
+// Notificar al Apps Script qué etiqueta aplicar en Gmail
+// Usa form POST a iframe oculto — técnica que envía cookies de sesión sin restricciones CORS
 async function notificarServidorEtiqueta(item, estado) {
   const gmailCfg  = getGmailConfig();
   const scriptUrl = gmailCfg.gmailScriptUrl;
@@ -3758,11 +3761,11 @@ async function notificarServidorEtiqueta(item, estado) {
   }).catch(() => {});
 
   // 2. Enviar al Apps Script via form POST a iframe oculto
-  //    â†’ el browser envÃ­a las cookies de sesiÃ³n Google (autenticado)
-  //    â†’ Apps Script recibe el POST autenticado y aplica la etiqueta
-  //    â†’ no necesitamos leer la respuesta
+  //    → el browser envía las cookies de sesión Google (autenticado)
+  //    → Apps Script recibe el POST autenticado y aplica la etiqueta
+  //    → no necesitamos leer la respuesta
   if (!scriptUrl) {
-    addGmailLog('âš ï¸ ConfigurÃ¡ la URL del Web App en Config Gmail', 'warn');
+    addGmailLog('?? Configurá la URL del Web App en Config Gmail', 'warn');
     return;
   }
 
@@ -3776,15 +3779,15 @@ async function notificarServidorEtiqueta(item, estado) {
     form.action = scriptUrl;
     form.submit();
 
-    addGmailLog('ðŸ· ' + (labels[estado] || estado) + ' â†’ enviado a Gmail', 'ok');
-    // Esperar un momento para que el iframe procese antes de la prÃ³xima llamada
+    addGmailLog('🏷 ' + (labels[estado] || estado) + ' → enviado a Gmail', 'ok');
+    // Esperar un momento para que el iframe procese antes de la próxima llamada
     await new Promise(r => setTimeout(r, 800));
   } catch(e) {
-    addGmailLog('âš ï¸ Etiqueta no aplicada: ' + e.message, 'warn');
+    addGmailLog('?? Etiqueta no aplicada: ' + e.message, 'warn');
   }
 }
 
-// â”€â”€ Rango de fechas Gmail â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Rango de fechas Gmail ────────────────────────────────────────
 
 function setGmailRango(preset) {
   const hoy   = new Date();
@@ -3821,7 +3824,7 @@ function regenerarGmailQuery() {
     queryFecha += `after:${d} `;
   }
   if (hasta) {
-    // Gmail "before" es exclusivo, sumar 1 dÃ­a
+    // Gmail "before" es exclusivo, sumar 1 día
     const dt = new Date(hasta);
     dt.setDate(dt.getDate() + 1);
     const b = dt.toISOString().split('T')[0].replace(/-/g, '/');
@@ -3847,15 +3850,15 @@ window.gmailActivo = false;  // flag para cancelar el loop interno de pollGmailQ
   }
   const btn = document.getElementById('btnGmailAuto');
   if (btn) {
-    btn.textContent = 'â–¶ Activar Gmail';
+    btn.textContent = '▶ Activar Gmail';
     btn.className = 'btn btn-coral';
   }
-  addGmailLog('â¹ Polling Gmail detenido', 'warn');
+  addGmailLog('⏹ Polling Gmail detenido', 'warn');
   updateGmailStatus('idle', 'Detenido');
 }
 
 function toggleGmailPolling() {
-  // Si ya estÃ¡ corriendo â†’ detener
+  // Si ya está corriendo → detener
   if (window.gmailPollingTimer) {
     detenerGmailPolling();
     return;
@@ -3864,7 +3867,7 @@ function toggleGmailPolling() {
   // Validar que hay API key configurada
   const cfg = getConfig();
   if (!cfg.claudeKey && !cfg.geminiKey) {
-    alert('âš ï¸ No hay API key configurada.\n\nAndÃ¡ a la tab ConfiguraciÃ³n â†’ OpenAI API Key â†’ ingresÃ¡ tu key sk-... â†’ Guardar configuraciÃ³n.\n\nSi ya la ingresaste, guardÃ¡ la config de nuevo â€” puede que se haya perdido al cambiar de URL.');
+    alert('?? No hay API key configurada.\n\nAndá a la tab Configuración → OpenAI API Key → ingresá tu key sk-... → Guardar configuración.\n\nSi ya la ingresaste, guardá la config de nuevo — puede que se haya perdido al cambiar de URL.');
     return;
   }
 
@@ -3872,7 +3875,7 @@ function toggleGmailPolling() {
   const desde = document.getElementById('cfg-gmail-desde')?.value;
   const hasta = document.getElementById('cfg-gmail-hasta')?.value;
   if (!desde && !hasta) {
-    const ok = confirm('Sin rango de fechas el script busca en TODO el historial de Gmail. Â¿Continuar igual?');
+    const ok = confirm('Sin rango de fechas el script busca en TODO el historial de Gmail. ¿Continuar igual?');
     if (!ok) return;
   }
 
@@ -3882,10 +3885,10 @@ function toggleGmailPolling() {
   const secs = getGmailConfig().interval;
   const btn  = document.getElementById('btnGmailAuto');
 
-  addGmailLog('â–¶ Iniciando polling cada ' + secs + 's...', 'ok');
-  addGmailLog('ðŸ“… Rango: ' + (desde || 'sin inicio') + ' â†’ ' + (hasta || 'sin fin'), 'info');
-  updateGmailStatus('ok', 'Activo Â· cada ' + secs + 's');
-  btn.textContent = 'â¹ Detener Gmail (' + secs + 's)';
+  addGmailLog('▶ Iniciando polling cada ' + secs + 's...', 'ok');
+  addGmailLog('📅 Rango: ' + (desde || 'sin inicio') + ' → ' + (hasta || 'sin fin'), 'info');
+  updateGmailStatus('ok', 'Activo · cada ' + secs + 's');
+  btn.textContent = '⏹ Detener Gmail (' + secs + 's)';
   btn.className = 'btn btn-ghost';
 
   window.gmailActivo = true;
@@ -3894,7 +3897,7 @@ function toggleGmailPolling() {
   sincronizarRangoAlScript();
 
   // 2. Disparar UN escaneo Gmail (on-demand, no trigger continuo)
-  addGmailLog('ðŸ“¡ Escaneando Gmail (Ãºnica vez)...', 'info');
+  addGmailLog('📡 Escaneando Gmail (única vez)...', 'info');
   dispararEscaneoGmail();
 
   // 3. Polling cada N segundos solo al servidor Python (sin tocar Gmail)
@@ -3905,66 +3908,66 @@ function toggleGmailPolling() {
 async function resetearServidor() {
   try {
     await fetch('/reset-processed', {method:'POST'});
-    addGmailLog('ðŸ” Servidor reseteado â€” releerÃ¡ todos los PDFs', 'ok');
+    addGmailLog('🔁 Servidor reseteado — releerá todos los PDFs', 'ok');
     await fetch('/sync-sheet', {method:'POST'}).catch(()=>{});
     setTimeout(async () => { await pollGmailQueue(); }, 5000);
-  } catch(e) { addGmailLog('âš ï¸ Error: ' + e.message, 'warn'); }
+  } catch(e) { addGmailLog('?? Error: ' + e.message, 'warn'); }
 }
 
 async function debugSheet() {
   try {
-    addGmailLog('ðŸ”¬ Consultando Sheet via servidor...', 'info');
+    addGmailLog('🔬 Consultando Sheet via servidor...', 'info');
     const r = await fetch('/debug-sheet');
     const d = await r.json();
-    if (d.error) { addGmailLog('âŒ ' + d.error, 'error'); return; }
-    addGmailLog('ðŸ“Š Sheet tiene ' + d.total_filas + ' filas totales', 'ok');
-    if (!d.archivos?.length) { addGmailLog('ðŸ“­ Sheet vacÃ­a', 'warn'); return; }
+    if (d.error) { addGmailLog('❌ ' + d.error, 'error'); return; }
+    addGmailLog('📊 Sheet tiene ' + d.total_filas + ' filas totales', 'ok');
+    if (!d.archivos?.length) { addGmailLog('📭 Sheet vacía', 'warn'); return; }
     d.archivos.forEach(a => {
       const listo = parseInt(a.chunks) >= parseInt(a.total);
-      addGmailLog((listo?'âœ…':'â³') + ' ' + a.nombre + ' â€” chunks: ' + a.chunks + '/' + a.total + ' â€” ' + a.estado, listo?'ok':'warn');
+      addGmailLog((listo?'✅':'⏳') + ' ' + a.nombre + ' — chunks: ' + a.chunks + '/' + a.total + ' — ' + a.estado, listo?'ok':'warn');
     });
-  } catch(e) { addGmailLog('âŒ Error: ' + e.message, 'error'); }
+  } catch(e) { addGmailLog('❌ Error: ' + e.message, 'error'); }
 }
 
 function dispararEscaneoGmail() {
   // Dispara UN escaneo via iframe (autenticado). El script lee solo el rango configurado
-  // y excluye mails ya etiquetados â€” no hay riesgo de re-analizar o quemar quota.
+  // y excluye mails ya etiquetados — no hay riesgo de re-analizar o quemar quota.
   const cfg = getGmailConfig();
-  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+  if (!cfg.gmailScriptUrl) { addGmailLog('?? URL del Web App no configurada', 'warn'); return; }
   const form    = document.getElementById('apps-script-form');
   const payload = document.getElementById('as-payload');
-  if (!form || !payload) { addGmailLog('âš ï¸ Form no encontrado', 'warn'); return; }
+  if (!form || !payload) { addGmailLog('?? Form no encontrado', 'warn'); return; }
   payload.value = JSON.stringify({ action: 'scan' });
   form.action   = cfg.gmailScriptUrl;
   form.submit();
-  addGmailLog('ðŸ“¡ Escaneo Gmail disparado â€” resultados en Sheet en ~30s', 'info');
-  // Sincronizar Sheet con el servidor Python despuÃ©s de que el script termine
+  addGmailLog('📡 Escaneo Gmail disparado — resultados en Sheet en ~30s', 'info');
+  // Sincronizar Sheet con el servidor Python después de que el script termine
   setTimeout(async () => {
     await fetch('/sync-sheet', {method:'POST'}).catch(()=>{});
-    addGmailLog('ðŸ”„ Sheet sincronizada con servidor', 'info');
+    addGmailLog('🔄 Sheet sincronizada con servidor', 'info');
     setTimeout(() => pollGmailQueue(), 3000);
   }, 30000);
 }
 
 async function limpiarTodo() {
   const ok = confirm(
-    'âš ï¸ Esto va a:\n' +
+    '?? Esto va a:\n' +
     '1. Borrar todos los chunks de la Sheet (limpiarColaCompleta)\n' +
     '2. Resetear el historial de IDs procesados\n' +
     '3. Limpiar la cola del servidor Python\n\n' +
-    'Los mails con etiqueta EnCola van a quedar sin la etiqueta la prÃ³xima vez que se procesen.\n\n' +
-    'Â¿Continuar?'
+    'Los mails con etiqueta EnCola van a quedar sin la etiqueta la próxima vez que se procesen.\n\n' +
+    '¿Continuar?'
   );
   if (!ok) return;
 
   const cfg = getGmailConfig();
-  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+  if (!cfg.gmailScriptUrl) { addGmailLog('?? URL del Web App no configurada', 'warn'); return; }
 
   const progress = document.getElementById('reset-progress');
   const mostrar  = msg => { progress.style.display='block'; progress.textContent = msg; addGmailLog(msg, 'info'); };
 
   // Paso 1: limpiarColaCompleta en Apps Script via iframe
-  mostrar('â³ Paso 1/3: Limpiando chunks de la Sheet...');
+  mostrar('⏳ Paso 1/3: Limpiando chunks de la Sheet...');
   const form    = document.getElementById('apps-script-form');
   const payload = document.getElementById('as-payload');
   payload.value = JSON.stringify({ action: 'limpiarCola' });
@@ -3973,21 +3976,21 @@ async function limpiarTodo() {
   await new Promise(r => setTimeout(r, 3000));
 
   // Paso 2: resetearHistorial en Apps Script via iframe
-  mostrar('â³ Paso 2/3: Reseteando historial de IDs...');
+  mostrar('⏳ Paso 2/3: Reseteando historial de IDs...');
   payload.value = JSON.stringify({ action: 'resetearHistorial' });
   form.action   = cfg.gmailScriptUrl;
   form.submit();
   await new Promise(r => setTimeout(r, 2000));
 
   // Paso 3: limpiar cola del servidor Python
-  mostrar('â³ Paso 3/3: Limpiando cola del servidor...');
+  mostrar('⏳ Paso 3/3: Limpiando cola del servidor...');
   try {
     await fetch('/clear-queue');
     await fetch('/reset-processed', { method: 'POST' }).catch(()=>{});
-  } catch(e) { addGmailLog('âš ï¸ Servidor no respondiÃ³: ' + e.message, 'warn'); }
+  } catch(e) { addGmailLog('?? Servidor no respondió: ' + e.message, 'warn'); }
 
-  mostrar('âœ… Listo. PodÃ©s escanear de nuevo con el rango correcto.');
-  addGmailLog('âœ… Cola limpiada y historial reseteado', 'ok');
+  mostrar('✅ Listo. Podés escanear de nuevo con el rango correcto.');
+  addGmailLog('✅ Cola limpiada y historial reseteado', 'ok');
   setTimeout(() => { progress.style.display = 'none'; }, 8000);
 }
 
@@ -3995,60 +3998,60 @@ async function escanearAhora() {
   const btn = document.getElementById('btnEscanearAhora');
   const cfg = getConfig();
   if (!cfg.claudeKey && !cfg.openaiKey && !cfg.geminiKey) {
-    addGmailLog('âš ï¸ No hay API key configurada â€” andÃ¡ a Config y guardÃ¡ tu key', 'warn');
+    addGmailLog('?? No hay API key configurada — andá a Config y guardá tu key', 'warn');
     return;
   }
-  if (btn) { btn.disabled = true; btn.textContent = 'â³ Paso 1/3: Enviando rango...'; }
-  addGmailLog('ðŸš€ Iniciando escaneo + procesamiento...', 'info');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Paso 1/3: Enviando rango...'; }
+  addGmailLog('🚀 Iniciando escaneo + procesamiento...', 'info');
 
   // Paso 1: sincronizar rango al script
   await sincronizarRangoAlScript();
 
   // Paso 2: disparar escaneo Gmail (el script tarda ~30s en encolar la Sheet)
-  if (btn) btn.textContent = 'â³ Paso 2/3: Escaneando Gmail...';
+  if (btn) btn.textContent = '⏳ Paso 2/3: Escaneando Gmail...';
   dispararEscaneoGmail();
-  addGmailLog('ðŸ“§ Escaneando Gmail... esperando 35s a que los chunks lleguen a la Sheet', 'info');
+  addGmailLog('📧 Escaneando Gmail... esperando 35s a que los chunks lleguen a la Sheet', 'info');
   await new Promise(r => setTimeout(r, 35000));
 
   // Paso 3: sincronizar Sheet con el servidor y procesar cola
-  if (btn) btn.textContent = 'â³ Paso 3/3: Procesando PDFs...';
-  addGmailLog('ðŸ”„ Sincronizando Sheet con servidor...', 'info');
+  if (btn) btn.textContent = '⏳ Paso 3/3: Procesando PDFs...';
+  addGmailLog('🔄 Sincronizando Sheet con servidor...', 'info');
   try { await fetch('/sync-sheet', { method: 'POST' }); } catch(e) {}
   await new Promise(r => setTimeout(r, 3000));
 
-  addGmailLog('ðŸ¤– Procesando cola â†’ Monday...', 'info');
+  addGmailLog('🤖 Procesando cola → Monday...', 'info');
   window.gmailActivo = true;
   await pollGmailQueue();
   window.gmailActivo = false;
 
-  if (btn) { btn.disabled = false; btn.textContent = 'ðŸš€ Escanear y procesar'; }
-  addGmailLog('âœ… Ciclo completo terminado', 'ok');
+  if (btn) { btn.disabled = false; btn.textContent = '🚀 Escanear y procesar'; }
+  addGmailLog('✅ Ciclo completo terminado', 'ok');
 }
 function activarTriggerAuto() {
   const cfg = getGmailConfig();
-  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+  if (!cfg.gmailScriptUrl) { addGmailLog('?? URL del Web App no configurada', 'warn'); return; }
   const form    = document.getElementById('apps-script-form');
   const payload = document.getElementById('as-payload');
   if (!form || !payload) return;
   payload.value = JSON.stringify({ action: 'soloTrigger' });
   form.action   = cfg.gmailScriptUrl;
   form.submit();
-  addGmailLog('â± Trigger automÃ¡tico activado (cada 5min) â€” corre aunque la app estÃ© cerrada', 'ok');
-  document.getElementById('trigger-status-badge').textContent = 'âœ… activo';
+  addGmailLog('⏱ Trigger automático activado (cada 5min) — corre aunque la app esté cerrada', 'ok');
+  document.getElementById('trigger-status-badge').textContent = '✅ activo';
   document.getElementById('trigger-status-badge').style.color = 'var(--green)';
 }
 
 function detenerTriggerAuto() {
   const cfg = getGmailConfig();
-  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+  if (!cfg.gmailScriptUrl) { addGmailLog('?? URL del Web App no configurada', 'warn'); return; }
   const form    = document.getElementById('apps-script-form');
   const payload = document.getElementById('as-payload');
   if (!form || !payload) return;
   payload.value = JSON.stringify({ action: 'detenerTrigger' });
   form.action   = cfg.gmailScriptUrl;
   form.submit();
-  addGmailLog('â¹ Trigger automÃ¡tico detenido â€” el script ya no corre en segundo plano', 'warn');
-  document.getElementById('trigger-status-badge').textContent = 'â¹ detenido';
+  addGmailLog('⏹ Trigger automático detenido — el script ya no corre en segundo plano', 'warn');
+  document.getElementById('trigger-status-badge').textContent = '⏹ detenido';
   document.getElementById('trigger-status-badge').style.color = 'var(--red)';
 }
 
@@ -4057,40 +4060,40 @@ async function forzarEscaneoGmail() {
 }
 
 function descargarGmailScript() {
-  alert('DescargÃ¡ el archivo GmailDirecto.gs de la misma carpeta que index.html');
+  alert('Descargá el archivo GmailDirecto.gs de la misma carpeta que index.html');
 }
 
 async function debugSheet() {
   try {
-    addGmailLog('ðŸ”¬ Consultando Sheet via servidor...', 'info');
+    addGmailLog('🔬 Consultando Sheet via servidor...', 'info');
     const r = await fetch('/debug-sheet');
     const d = await r.json();
-    if (d.error) { addGmailLog('âŒ ' + d.error, 'error'); return; }
-    addGmailLog('ðŸ“Š Sheet tiene ' + d.total_filas + ' filas totales', 'ok');
-    if (!d.archivos?.length) { addGmailLog('ðŸ“­ Sheet vacÃ­a', 'warn'); return; }
+    if (d.error) { addGmailLog('❌ ' + d.error, 'error'); return; }
+    addGmailLog('📊 Sheet tiene ' + d.total_filas + ' filas totales', 'ok');
+    if (!d.archivos?.length) { addGmailLog('📭 Sheet vacía', 'warn'); return; }
     d.archivos.forEach(a => {
       const listo = parseInt(a.chunks) >= parseInt(a.total);
-      addGmailLog((listo?'âœ…':'â³') + ' ' + a.nombre + ' â€” chunks: ' + a.chunks + '/' + a.total + ' â€” ' + a.estado, listo?'ok':'warn');
+      addGmailLog((listo?'✅':'⏳') + ' ' + a.nombre + ' — chunks: ' + a.chunks + '/' + a.total + ' — ' + a.estado, listo?'ok':'warn');
     });
-  } catch(e) { addGmailLog('âŒ Error: ' + e.message, 'error'); }
+  } catch(e) { addGmailLog('❌ Error: ' + e.message, 'error'); }
 }
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 //  INIT
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════
 function init() {
   duplicados = JSON.parse(localStorage.getItem('duplicados') || '[]');
   cargarConfig();
-  cargarConfigDesdeServidor(); // restaurar config del servidor si localStorage estÃ¡ vacÃ­o
+  cargarConfigDesdeServidor(); // restaurar config del servidor si localStorage está vacío
   cargarGmailConfig();
   renderDashboard();
   checkServer();
   setInterval(checkServer, 10000);
-  // Asegurarse que el botÃ³n Gmail arranque en estado "Activar"
+  // Asegurarse que el botón Gmail arranque en estado "Activar"
   window.gmailActivo = false;
   window.gmailPollingTimer = null;
   const btnG = document.getElementById('btnGmailAuto');
-  if (btnG) { btnG.textContent = 'â–¶ Activar Gmail'; btnG.className = 'btn btn-coral'; }
+  if (btnG) { btnG.textContent = '▶ Activar Gmail'; btnG.className = 'btn btn-coral'; }
 }
 
 document.addEventListener('DOMContentLoaded', init);
