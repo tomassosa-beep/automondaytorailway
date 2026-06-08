@@ -1,0 +1,4105 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoMonday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   TOKENS
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+:root {
+  /* â”€â”€ UalÃ¡ Azul marino â”€â”€ */
+  --blue:       #1A1F71;   /* azul marino UalÃ¡ (texto del logo) */
+  --blue-mid:   #252B99;
+  --blue-light: #4A52CC;
+  --blue-pale:  #EEEFFE;
+
+  /* â”€â”€ UalÃ¡ Coral â”€â”€ */
+  --coral:      #F5365C;   /* coral/rosa vibrante UalÃ¡ (la "u" del logo) */
+  --coral-dim:  rgba(245,54,92,.12);
+  --violet:     #2D3494;
+  --violet-dim: rgba(45,52,148,.08);
+
+  /* â”€â”€ SemÃ¡nticos â”€â”€ */
+  --green:      #00C48C;
+  --green-dim:  rgba(0,196,140,.12);
+  --amber:      #F59E0B;
+  --amber-dim:  rgba(245,158,11,.12);
+  --red:        #F5365C;
+  --red-dim:    rgba(245,54,92,.12);
+
+  /* â”€â”€ Neutrals â”€â”€ */
+  --bg:         #F4F5FB;   /* fondo UalÃ¡: blanco con toque azul */
+  --surface:    #FFFFFF;
+  --surface2:   #F0F1FA;
+  --border:     rgba(26,31,113,.1);
+  --border-mid: rgba(26,31,113,.18);
+  --text:       #0F1240;   /* casi negro azulado UalÃ¡ */
+  --text-mid:   #4A5080;
+  --text-dim:   #9096C0;
+
+  --r:    12px;
+  --r-sm: 8px;
+  --r-lg: 18px;
+  --shadow:    0 2px 16px rgba(26,31,113,.08);
+  --shadow-md: 0 4px 24px rgba(26,31,113,.13);
+
+  --font:  'DM Sans', sans-serif;
+  --head:  'Syne', sans-serif;
+  --mono:  'DM Mono', monospace;
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   RESET
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;min-height:100vh;line-height:1.5}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   HEADER
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+header {
+  background: #1A1F71;   /* azul marino UalÃ¡ */
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,.15);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  gap: 20px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-mark svg { width: 36px; height: 22px; }
+.logo-text {
+  font-family: var(--head);
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.3px;
+}
+.logo-text span { color: var(--coral); }
+
+/* Main nav tabs in header */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  padding-left: 20px;
+}
+.nav-tab {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.65);
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.nav-tab:hover { background: rgba(255,255,255,.1); color: #fff; }
+.nav-tab.active { background: rgba(245,54,92,.15); color: #F5365C; font-weight: 700; border-bottom: 2px solid #F5365C; }
+.nav-tab.nav-tab-sm {
+  font-size: 12px;
+  padding: 6px 11px;
+  color: rgba(255,255,255,.5);
+}
+.nav-tab.nav-tab-sm:hover { color: rgba(255,255,255,.8); }
+.nav-tab.nav-tab-sm.active { color: #fff; background: rgba(255,255,255,.12); }
+
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,.2);
+  margin: 0 6px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+.status-dot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,.85);
+  font-family: var(--mono);
+}
+.status-dot .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  animation: pulse-dot 2s infinite;
+}
+.status-dot .dot.offline { background: var(--red); box-shadow: 0 0 6px var(--red); animation: none; }
+@keyframes pulse-dot {
+  0%,100%{opacity:1} 50%{opacity:.5}
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   MAIN LAYOUT
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 28px 60px;
+}
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   DASHBOARD
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.dash-title {
+  font-family: var(--head);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+}
+.dash-subtitle { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+
+/* KPI grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.kpi {
+  background: var(--surface);
+  border-radius: var(--r);
+  padding: 18px 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform .15s, box-shadow .15s;
+}
+.kpi:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.kpi::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--kpi-color, var(--blue));
+}
+.kpi-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-family: var(--mono);
+}
+.kpi-val {
+  font-family: var(--head);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--kpi-color, var(--text));
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.kpi-val.small { font-size: 18px; }
+.kpi-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.kpi-icon {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  font-size: 20px;
+  opacity: .18;
+}
+
+/* Chart row */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 320px;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.chart-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.chart-card-title {
+  font-family: var(--head);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chart-card-title span { font-size: 11px; color: var(--text-dim); font-family: var(--mono); font-weight: 400; }
+
+/* Sparkline bars */
+.spark-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 80px;
+}
+.spark-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: var(--blue-pale);
+  position: relative;
+  cursor: pointer;
+  transition: background .15s;
+  min-height: 4px;
+}
+.spark-bar.filled { background: var(--blue); }
+.spark-bar:hover { background: var(--blue-mid); }
+.spark-bar .tip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.spark-bar:hover .tip { display: block; }
+.spark-labels {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+.spark-labels span {
+  flex: 1;
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Donut chart */
+.donut-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.donut-svg { width: 110px; height: 110px; margin-bottom: 12px; }
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+.donut-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-mid);
+}
+.donut-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.donut-item strong { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--text); }
+
+/* Proveedor ranking */
+.prov-list { display: flex; flex-direction: column; gap: 8px; }
+.prov-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+.prov-rank {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  width: 18px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.prov-name {
+  flex: 1;
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.prov-bar-wrap {
+  width: 80px;
+  height: 6px;
+  background: var(--blue-pale);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.prov-bar-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 10px;
+  transition: width .4s;
+}
+.prov-amount {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-mid);
+  width: 80px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   FILTROS + TABLA
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.filters-bar {
+  background: var(--surface);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.filter-search {
+  flex: 1;
+  min-width: 180px;
+  position: relative;
+}
+.filter-search input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 7px 10px 7px 32px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border .15s;
+}
+.filter-search input:focus { border-color: var(--blue); }
+.filter-search::before {
+  content: 'ðŸ”';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  pointer-events: none;
+}
+.filter-select {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 7px 10px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+}
+.filter-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.filter-chip:hover, .filter-chip.active {
+  background: var(--blue-pale);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.filter-chip .count {
+  background: #1A1F71;
+  color: #fff;
+  border-radius: 100px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-family: var(--mono);
+}
+.filter-chip.active .count { background: var(--blue-mid); }
+.filter-sep { width: 1px; height: 22px; background: var(--border-mid); flex-shrink: 0; }
+
+/* Table */
+.tbl-wrap {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.tbl-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tbl-title {
+  font-family: var(--head);
+  font-size: 13px;
+  font-weight: 700;
+}
+.tbl-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+.tbl-actions { margin-left: auto; display: flex; gap: 8px; }
+table { width: 100%; border-collapse: collapse; }
+thead tr {
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+th:hover { color: var(--text); }
+th .sort-icon { margin-left: 4px; opacity: .4; font-size: 9px; }
+th.sorted .sort-icon { opacity: 1; color: var(--blue); }
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .1s;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--blue-pale); }
+td {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--text);
+  vertical-align: middle;
+}
+td.muted { color: var(--text-dim); font-family: var(--mono); font-size: 12px; }
+.td-proveedor strong { display: block; font-weight: 600; margin-bottom: 2px; }
+.td-amount { font-family: var(--mono); font-weight: 600; }
+.td-amount.neg { color: var(--red); }
+.td-amount.pos { color: var(--green); }
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+.badge-origen-manual {
+  background: var(--blue-pale);
+  color: var(--blue);
+  border: 1px solid rgba(27,79,216,.2);
+}
+.badge-origen-drive {
+  background: var(--violet-dim);
+  color: var(--violet);
+  border: 1px solid rgba(108,99,255,.25);
+}
+.badge-tipo-factura {
+  background: var(--green-dim);
+  color: var(--green);
+  border: 1px solid rgba(0,196,140,.2);
+}
+.badge-tipo-nc {
+  background: var(--red-dim);
+  color: var(--red);
+  border: 1px solid rgba(239,68,68,.2);
+}
+.badge-tipo-nd {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border: 1px solid rgba(245,158,11,.2);
+}
+.badge-estado-procesado {
+  background: var(--green-dim);
+  color: var(--green);
+  border: 1px solid rgba(0,196,140,.2);
+}
+.badge-estado-pendiente {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border: 1px solid rgba(245,158,11,.2);
+}
+
+/* Row border accent */
+tbody tr.row-manual { border-left: 3px solid var(--blue); }
+tbody tr.row-drive  { border-left: 3px solid var(--violet); }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-dim);
+}
+.empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+.empty-state p { font-size: 13px; }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   GENERAL COMPONENTS
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  font-family: var(--mono);
+}
+.form-group input, .form-group select {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 9px 12px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border .15s;
+}
+.form-group input:focus, .form-group select:focus { border-color: var(--blue); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 9px 16px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  text-decoration: none;
+}
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-mid); }
+.btn-primary:active { transform: scale(.98); }
+.btn-coral { background: var(--coral); color: #fff; }
+.btn-coral:hover { filter: brightness(1.1); }
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+}
+.btn-outline:hover { background: var(--blue-pale); }
+.btn-ghost {
+  background: var(--surface2);
+  color: var(--text-mid);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--border); }
+.btn-sm { padding: 6px 11px; font-size: 12px; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.sec-title {
+  font-family: var(--head);
+  font-size: 15px;
+  font-weight: 700;
+}
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+}
+
+.alert {
+  padding: 11px 14px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.alert-blue { background: var(--blue-pale); color: var(--blue); border: 1px solid rgba(27,79,216,.2); }
+.alert-yellow { background: var(--amber-dim); color: #92400e; border: 1px solid rgba(245,158,11,.3); }
+.alert-green { background: var(--green-dim); color: #065f46; border: 1px solid rgba(0,196,140,.3); }
+.alert-red { background: var(--red-dim); color: #991b1b; border: 1px solid rgba(239,68,68,.3); }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   PROCESAR PANEL
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.upload-zone {
+  border: 2px dashed var(--border-mid);
+  border-radius: var(--r-lg);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s;
+  background: var(--surface);
+  margin-bottom: 20px;
+}
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--blue);
+  background: var(--blue-pale);
+}
+.upload-icon { font-size: 40px; margin-bottom: 10px; }
+.upload-title { font-family: var(--head); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.upload-sub { font-size: 13px; color: var(--text-mid); }
+
+/* Progress */
+.progress-card { background: var(--surface); border-radius: var(--r-lg); padding: 24px; border: 1px solid var(--border); margin-bottom: 20px; display: none; }
+.progress-label { font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+.progress-bar { height: 6px; background: var(--blue-pale); border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+.progress-fill { height: 100%; background: var(--blue); border-radius: 10px; transition: width .3s; }
+.log-box { background: #0F1729; border-radius: var(--r-sm); padding: 14px; font-family: var(--mono); font-size: 11px; max-height: 160px; overflow-y: auto; }
+.log-line { color: #8A95B0; margin-bottom: 2px; }
+.log-line.ok { color: #4ade80; }
+.log-line.err { color: #f87171; }
+.log-line.info { color: #60a5fa; }
+
+/* Result cards */
+.result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.result-card { background: var(--surface); border-radius: var(--r); padding: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.result-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; gap: 8px; }
+.result-card-name { font-weight: 700; font-size: 14px; line-height: 1.3; }
+.result-card-file { font-size: 11px; color: var(--text-dim); font-family: var(--mono); margin-top: 2px; }
+.result-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+.result-field { background: var(--surface2); border-radius: 6px; padding: 7px 9px; }
+.result-field-label { font-size: 9.5px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); font-family: var(--mono); margin-bottom: 2px; }
+.result-field-val { font-size: 12px; font-weight: 600; }
+.result-card-footer { display: flex; gap: 6px; justify-content: flex-end; }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   DRIVE PANEL
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ddot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.ddot.idle { background: var(--text-dim); }
+.ddot.ok { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.ddot.error { background: var(--red); }
+.ddot.syncing { background: var(--amber); animation: pulse-dot 1s infinite; }
+
+.drive-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.drive-status-text { color: var(--text-mid); font-family: var(--mono); font-size: 12px; }
+
+.drive-log-box {
+  background: #0F1729;
+  border-radius: var(--r-sm);
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.dlog { color: #8A95B0; margin-bottom: 3px; }
+.dlog.ok { color: #4ade80; }
+.dlog.err { color: #f87171; }
+.dlog.info { color: #60a5fa; }
+.dlog.warn { color: #fbbf24; }
+
+.steps { display: flex; flex-direction: column; gap: 12px; }
+.step { display: flex; gap: 12px; align-items: flex-start; }
+.step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #1A1F71;
+  color: #F5365C;
+  font-family: var(--head);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.step-body h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.step-body p { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
+.step-body code { background: var(--surface2); padding: 1px 5px; border-radius: 4px; font-family: var(--mono); font-size: 11px; }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   MODAL
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Modal XL */
+.modal-xl {
+  max-width: 860px !important;
+  width: 95vw !important;
+}
+.modal-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin: 0 -28px 20px;
+  padding: 0 28px;
+}
+.modal-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all .15s;
+  margin-bottom: -1px;
+}
+.modal-tab:hover { color: var(--text); }
+.modal-tab.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
+.modal-tab-panel { display: none; }
+.modal-tab-panel.active { display: block; }
+
+/* Campos editables en modal */
+.modal-field-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1.5px solid var(--blue);
+  border-radius: var(--r-sm);
+  padding: 6px 10px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  outline: none;
+}
+.modal-field.editing { background: var(--blue-pale); }
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,41,.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+.modal-title { font-family: var(--head); font-size: 17px; font-weight: 800; }
+.modal-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-dim); padding: 0 4px; }
+.modal-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.modal-field { background: var(--surface2); border-radius: 8px; padding: 10px 12px; }
+.modal-field-label { font-size: 10px; text-transform: uppercase; letter-spacing: .7px; color: var(--text-dim); font-family: var(--mono); margin-bottom: 3px; }
+.modal-field-val { font-size: 13px; font-weight: 600; }
+
+/* Select mode */
+.select-mode tbody tr { cursor: default; }
+.select-mode tbody tr:hover { background: var(--blue-pale); }
+tbody tr.selected { background: rgba(239,68,68,.07) !important; }
+.row-checkbox { width: 36px; }
+.row-cb { width: 16px; height: 16px; cursor: pointer; accent-color: var(--red); }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   SCROLLBAR
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 10px; }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   RESPONSIVE
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (max-width: 1100px) {
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+  .chart-row { grid-template-columns: 1fr 1fr; }
+  .chart-row .chart-card:last-child { grid-column: span 2; }
+}
+@media (max-width: 768px) {
+  .app { padding: 16px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .chart-row { grid-template-columns: 1fr; }
+  .chart-row .chart-card:last-child { grid-column: span 1; }
+  .main-nav .nav-tab:not(.active):not(.nav-tab-sm) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="no-key-banner" style="display:none;background:#e53935;color:white;padding:10px 16px;font-size:13px;font-weight:600;text-align:center">
+  âš ï¸ Sin API key configurada â€” andÃ¡ a <b>ConfiguraciÃ³n â†’ OpenAI API Key</b> e ingresÃ¡ tu key sk-...
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <div class="logo-mark">
+        <svg viewBox="0 0 48 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4C6 4 2 9 2 14s4 10 10 10c4 0 7-2 10-6l2-4 2 4c3 4 6 6 10 6 6 0 10-5 10-10S40 4 34 4c-4 0-7 2-10 6l-2 4-2-4C17 6 15 4 12 4z" stroke="#F5365C" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <span class="logo-text">Auto<span style="color:#F5365C">Monday</span></span>
+    </a>
+
+    <nav class="main-nav">
+      <nav class="main-nav">
+        <button class="nav-tab active" onclick="showTab('dashboard',this)">ðŸ“Š Dashboard</button>
+        <button class="nav-tab" onclick="showTab('gmail',this)">ðŸ“§ Gmail</button>
+        <button class="nav-tab" onclick="showTab('procesar',this)">ðŸ“„ Procesar PDFs</button>
+        <button class="nav-tab" onclick="showTab('drive',this)">â˜ï¸ Drive / Sheet</button>
+        <button class="nav-tab nav-tab-sm" onclick="showTab('configurar',this)">âš™ Config</button>
+      </nav>
+    <div class="header-right">
+      <div class="status-dot" id="serverStatus">
+        <div class="dot offline" id="serverDot"></div>
+        <span id="serverLabel">verificando...</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="app">
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     DASHBOARD
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div id="tab-dashboard" class="panel active">
+
+  <div class="dash-header">
+    <div>
+      <div class="dash-title">Dashboard</div>
+      <div class="dash-subtitle" id="dash-updated">Sin datos todavÃ­a</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost btn-sm" onclick="exportarCSV()">â¬‡ Exportar CSV</button>
+      <button class="btn btn-primary btn-sm" onclick="showTab('procesar', document.querySelectorAll('.nav-tab')[1])">+ Procesar PDFs</button>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+    <div class="kpi" style="--kpi-color:var(--blue)">
+      <div class="kpi-icon">ðŸ“‹</div>
+      <div class="kpi-label">Total Facturas</div>
+      <div class="kpi-val" id="kpi-total">0</div>
+      <div class="kpi-sub">registros totales</div>
+    </div>
+    <div class="kpi" style="--kpi-color:var(--green)">
+      <div class="kpi-icon">âœ…</div>
+      <div class="kpi-label">Procesadas</div>
+      <div class="kpi-val" id="kpi-procesadas">0</div>
+      <div class="kpi-sub">en Monday</div>
+    </div>
+    <div class="kpi" style="--kpi-color:var(--amber)">
+      <div class="kpi-icon">â³</div>
+      <div class="kpi-label">Pendientes</div>
+      <div class="kpi-val" id="kpi-pendientes">0</div>
+      <div class="kpi-sub">para revisar</div>
+    </div>
+    <div class="kpi" style="--kpi-color:var(--violet)">
+      <div class="kpi-icon">â˜</div>
+      <div class="kpi-label">Via Drive</div>
+      <div class="kpi-val" id="kpi-drive">0</div>
+      <div class="kpi-sub">auto sincronizadas</div>
+    </div>
+    <div class="kpi" style="--kpi-color:var(--red)">
+      <div class="kpi-icon">â†©</div>
+      <div class="kpi-label">NC / ND</div>
+      <div class="kpi-val" id="kpi-nc">0</div>
+      <div class="kpi-sub">notas de crÃ©dito/dÃ©bito</div>
+    </div>
+    <div class="kpi" style="--kpi-color:#F59E0B;cursor:pointer" onclick="showDuplicados()">
+      <div class="kpi-icon">ðŸ”</div>
+      <div class="kpi-label">Duplicadas</div>
+      <div class="kpi-val" id="kpi-dup" style="color:#F59E0B">0</div>
+      <div class="kpi-sub">no subidas Â· click para ver</div>
+    </div>
+  </div>
+
+  <!-- Charts row -->
+  <!-- Totales ARS + USD -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+    <div class="chart-card" style="padding:18px 22px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-family:var(--head);font-size:13px;font-weight:700">Neto ARS procesado</div>
+        <span style="font-size:10px;font-family:var(--mono);color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:100px">Facturas âˆ’ NC + ND</span>
+      </div>
+      <div style="font-family:var(--head);font-size:32px;font-weight:800;color:var(--blue);letter-spacing:-1px" id="total-ars-neto">$0</div>
+      <div style="display:flex;gap:16px;margin-top:10px;font-size:12px;font-family:var(--mono)">
+        <span style="color:var(--green)">â–² FC <span id="total-ars-fc">$0</span></span>
+        <span style="color:var(--red)">â–¼ NC <span id="total-ars-nc">$0</span></span>
+        <span style="color:var(--amber)">â–² ND <span id="total-ars-nd">$0</span></span>
+      </div>
+    </div>
+    <div class="chart-card" style="padding:18px 22px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-family:var(--head);font-size:13px;font-weight:700">Neto USD procesado</div>
+        <span style="font-size:10px;font-family:var(--mono);color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:100px">Facturas âˆ’ NC + ND</span>
+      </div>
+      <div style="font-family:var(--head);font-size:32px;font-weight:800;color:var(--green);letter-spacing:-1px" id="total-usd-neto">U$S 0</div>
+      <div style="display:flex;gap:16px;margin-top:10px;font-size:12px;font-family:var(--mono)">
+        <span style="color:var(--green)">â–² FC <span id="total-usd-fc">U$S 0</span></span>
+        <span style="color:var(--red)">â–¼ NC <span id="total-usd-nc">U$S 0</span></span>
+        <span style="color:var(--amber)">â–² ND <span id="total-usd-nd">U$S 0</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <!-- Facturas por semana -->
+    <div class="chart-card">
+      <div class="chart-card-title">Facturas recientes <span id="chart-period">Ãºltimas 8 semanas</span></div>
+      <div class="spark-bars" id="spark-bars"></div>
+      <div class="spark-labels" id="spark-labels"></div>
+    </div>
+
+    <!-- Top proveedores con toggle ARS/USD -->
+    <div class="chart-card">
+      <div class="chart-card-title" style="align-items:flex-start">
+        Top proveedores
+        <div style="display:flex;gap:4px;margin-left:auto">
+          <button class="btn btn-ghost btn-sm" id="prov-btn-ars" onclick="setProvMoneda('ARS')" style="font-size:11px;padding:3px 9px;background:var(--blue-pale);color:var(--blue)">ARS</button>
+          <button class="btn btn-ghost btn-sm" id="prov-btn-usd" onclick="setProvMoneda('USD')" style="font-size:11px;padding:3px 9px">USD</button>
+        </div>
+      </div>
+      <div class="prov-list" id="prov-list">
+        <div style="color:var(--text-dim);font-size:12px;text-align:center;padding:20px">Sin datos</div>
+      </div>
+    </div>
+
+    <!-- DistribuciÃ³n tipo -->
+    <div class="chart-card">
+      <div class="chart-card-title">DistribuciÃ³n <span>por tipo</span></div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" viewBox="0 0 110 110" id="donut-svg">
+          <circle cx="55" cy="55" r="40" fill="none" stroke="var(--blue-pale)" stroke-width="18"/>
+          <text x="55" y="59" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="var(--text)" id="donut-center">0</text>
+        </svg>
+        <div class="donut-legend" id="donut-legend">
+          <div class="donut-item"><div class="donut-dot" style="background:var(--green)"></div>Facturas<strong id="dl-factura">0</strong></div>
+          <div class="donut-item"><div class="donut-dot" style="background:var(--red)"></div>NC<strong id="dl-nc">0</strong></div>
+          <div class="donut-item"><div class="donut-dot" style="background:var(--amber)"></div>ND<strong id="dl-nd">0</strong></div>
+          <div class="donut-item"><div class="donut-dot" style="background:var(--blue)"></div>Manual<strong id="dl-manual">0</strong></div>
+          <div class="donut-item"><div class="donut-dot" style="background:var(--violet)"></div>Drive<strong id="dl-drive">0</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel duplicados -->
+  <div id="panel-duplicados" style="display:none;margin-bottom:16px">
+    <div class="tbl-wrap">
+      <div class="tbl-header" style="background:rgba(245,158,11,.06);border-bottom:1px solid rgba(245,158,11,.2)">
+        <div class="tbl-title" style="color:#92400e">ðŸ” Facturas duplicadas bloqueadas</div>
+        <div class="tbl-count" id="dup-count" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3);color:#92400e">0</div>
+        <div class="tbl-actions">
+          <span style="font-size:12px;color:var(--text-dim)">Estas facturas ya existÃ­an y no se subieron a Monday</span>
+          <button class="btn btn-ghost btn-sm" onclick="limpiarDuplicados()">ðŸ—‘ Limpiar lista</button>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('panel-duplicados').style.display='none'">âœ•</button>
+        </div>
+      </div>
+      <table>
+        <thead><tr>
+          <th>Proveedor</th><th>NÂ° Factura</th><th>Fecha FC</th>
+          <th>Importe</th><th>Motivo</th><th>Detectada</th>
+          <th>AcciÃ³n</th>
+        </tr></thead>
+        <tbody id="dupTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filters-bar">
+    <div class="filter-search">
+      <input type="text" id="filter-search" placeholder="Buscar proveedor, NÂ° factura..." oninput="applyFilters()"/>
+    </div>
+    <select class="filter-select" id="filter-moneda" onchange="applyFilters()">
+      <option value="">ðŸ’± Todas las monedas</option>
+      <option value="ARS">ARS</option>
+      <option value="USD">USD</option>
+    </select>
+    <select class="filter-select" id="filter-tipo" onchange="applyFilters()">
+      <option value="">ðŸ“„ Todos los tipos</option>
+      <option value="FACTURA">Factura</option>
+      <option value="NC">Nota de CrÃ©dito</option>
+      <option value="ND">Nota de DÃ©bito</option>
+    </select>
+    <select class="filter-select" id="filter-origen" onchange="applyFilters()">
+      <option value="">ðŸŒ Todos los orÃ­genes</option>
+      <option value="manual">âœ‹ Manual</option>
+      <option value="drive">â˜ Drive</option>
+    </select>
+    <div class="filter-sep"></div>
+    <div class="filter-chip active" id="chip-all" onclick="setEstadoFilter('',this)">
+      Todas <span class="count" id="chip-all-count">0</span>
+    </div>
+    <div class="filter-chip" id="chip-proc" onclick="setEstadoFilter('procesado',this)">
+      âœ… Procesadas <span class="count" id="chip-proc-count">0</span>
+    </div>
+    <div class="filter-chip" id="chip-pend" onclick="setEstadoFilter('pendiente',this)">
+      â³ Pendientes <span class="count" id="chip-pend-count">0</span>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="clearFilters()">âœ• Limpiar</button>
+  </div>
+
+  <!-- Tabla -->
+  <div class="tbl-wrap">
+    <div class="tbl-header">
+      <div class="tbl-title">Facturas</div>
+      <div class="tbl-count" id="tbl-count">0 resultados</div>
+      <div class="tbl-actions">
+        <button class="btn btn-ghost btn-sm" onclick="sortTable('proveedor')">Aâ€“Z</button>
+        <button class="btn btn-ghost btn-sm" onclick="sortTable('fechaFactura')">Por fecha</button>
+        <button class="btn btn-ghost btn-sm" onclick="sortTable('importe')">Por importe</button>
+        <div style="width:1px;height:18px;background:var(--border-mid)"></div>
+        <button class="btn btn-ghost btn-sm" id="btnSelectMode" onclick="toggleSelectMode()">â˜‘ Seleccionar</button>
+        <button class="btn btn-sm" id="btnDeleteSelected" onclick="borrarSeleccionados()" style="display:none;background:var(--red);color:#fff">ðŸ—‘ Borrar seleccionados</button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th onclick="sortTable('proveedor')">Proveedor / Tipo <span class="sort-icon">â†•</span></th>
+          <th>Origen</th>
+          <th onclick="sortTable('fechaFactura')">Fecha FC <span class="sort-icon">â†•</span></th>
+          <th onclick="sortTable('fechaRecibida')">Recibida <span class="sort-icon">â†•</span></th>
+          <th onclick="sortTable('vencimiento')">Vencimiento <span class="sort-icon">â†•</span></th>
+          <th onclick="sortTable('importe')">Importe <span class="sort-icon">â†•</span></th>
+          <th>NÂ° Factura</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody id="facturaTable">
+        <tr><td colspan="8"><div class="empty-state"><div class="icon">ðŸ“­</div><p>No hay facturas procesadas todavÃ­a.</p></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /tab-dashboard -->
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     PROCESAR PDFs
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- â•â• PROCESAR â•â• -->
+  <div id="tab-procesar" class="panel">
+    <div class="sec-header"><span class="sec-title">Procesar PDFs</span></div>
+    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()"
+         ondragover="event.preventDefault();this.classList.add('drag-over')"
+         ondragleave="this.classList.remove('drag-over')"
+         ondrop="handleDrop(event)">
+      <div class="upload-icon">ðŸ“„</div>
+      <div class="upload-title">ArrastrÃ¡ tus PDFs acÃ¡</div>
+      <div class="upload-sub">o hacÃ© click para seleccionar Â· MÃºltiples archivos OK</div>
+      <input type="file" id="fileInput" multiple accept=".pdf" style="display:none" onchange="handleFiles(this.files)"/>
+    </div>
+
+    <div class="progress-card" id="progressSection">
+      <div class="progress-label" id="progressLabel">Procesando...</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="log-box" id="logBox"></div>
+    </div>
+
+    <div id="resultSection" style="display:none">
+      <div class="sec-header">
+        <span class="sec-title">Resultados</span>
+        <span class="chip" id="resultCount">0 facturas</span>
+        <div style="margin-left:auto" class="btn-row">
+          <button class="btn btn-outline" onclick="resetProcesador()">â†© Nuevo lote</button>
+          <button class="btn btn-primary" onclick="enviarTodosAMonday()">ðŸš€ Enviar todos a Monday</button>
+        </div>
+      </div>
+      <div class="result-grid" id="resultGrid"></div>
+    </div>
+  </div>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     GOOGLE DRIVE
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- â•â• GOOGLE DRIVE (Apps Script + Sheet) â•â• -->
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     DRIVE / SHEET
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <div id="tab-drive" class="panel">
+    <div class="alert alert-blue">â˜ï¸ <strong>Sin ngrok ni API keys.</strong> Apps Script escribe los IDs de PDFs nuevos en una Google Sheet pÃºblica. El servidor los descarga directamente de Drive.</div>
+
+    <div class="drive-status-bar">
+      <div class="ddot idle" id="driveDot"></div>
+      <div class="drive-status-text" id="driveStatusLabel">Sin configurar</div>
+      <span class="chip" id="drivePendCount">0 en cola</span>
+      <button class="btn btn-outline btn-sm" onclick="syncSheetAhora()">ðŸ”„ Sincronizar ahora</button>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px">
+
+      <!-- Paso 1: Sheet config -->
+      <div class="card">
+        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">1 Â· Configurar Google Sheet</span></div>
+        <div class="alert alert-yellow" style="font-size:12px">HacÃ© esto con tu <strong>cuenta Gmail personal</strong></div>
+        <div class="steps" style="margin-bottom:16px">
+          <div class="step">
+            <div class="step-num">A</div>
+            <div class="step-body"><p>AbrÃ­ <code>sheets.google.com</code> con tu Gmail personal y creÃ¡ una Sheet nueva.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">B</div>
+            <div class="step-body"><p>HacÃ© click en <strong>Compartir</strong> â†’ "Cualquier persona con el link" â†’ rol <strong>Editor</strong>.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">C</div>
+            <div class="step-body"><p>CopiÃ¡ el ID de la URL: <code>docs.google.com/spreadsheets/d/<strong>ESTE_ID</strong>/edit</code></p></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Google Sheet ID</label>
+          <input type="text" id="cfg-sheet-id" placeholder="1BxiMVs0XRA5nFMdKvBdBZjgm..."/>
+        </div>
+        <div class="form-group">
+          <label>Sync automÃ¡tico cada</label>
+          <select id="cfg-drive-interval">
+            <option value="30">30 segundos</option>
+            <option value="60" selected>1 minuto</option>
+            <option value="120">2 minutos</option>
+            <option value="300">5 minutos</option>
+          </select>
+        </div>
+        <div class="form-group" style="display:flex;align-items:center;gap:10px">
+          <input type="checkbox" id="cfg-drive-autosend" style="width:auto"/>
+          <label for="cfg-drive-autosend" style="margin:0;text-transform:none;font-size:13px;color:var(--text)">Enviar a Monday automÃ¡ticamente</label>
+        </div>
+        <button class="btn btn-primary" onclick="guardarDriveConfig()">ðŸ’¾ Guardar y activar sync</button>
+      </div>
+
+      <!-- Paso 2: Apps Script -->
+      <div class="card">
+        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">2 Â· Configurar Apps Script</span></div>
+        <div class="alert alert-blue" style="font-size:12px">HacÃ© esto con tu <strong>cuenta UalÃ¡</strong></div>
+        <div class="steps" style="margin-bottom:16px">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><h4>DescargÃ¡ el script</h4><p>UsÃ¡ el botÃ³n de abajo y pegalo en <code>script.google.com</code></p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><h4>CompletÃ¡ SHEET_ID</h4><p>En la lÃ­nea 15 del script, pegÃ¡ el ID de tu Sheet personal.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><h4>EjecutÃ¡ setupTrigger()</h4><p>SeleccionÃ¡ <code>setupTrigger</code> en el dropdown y apretÃ¡ â–¶ Ejecutar. AceptÃ¡ los permisos.</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body"><h4>Listo</h4><p>El script va a detectar PDFs nuevos y escribirlos en tu Sheet. El servidor los descarga automÃ¡ticamente.</p></div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="descargarScript()">â¬‡ Descargar Apps Script (.gs)</button>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px">
+      <div class="card">
+        <div class="sec-header" style="margin-bottom:12px"><span class="sec-title">Controles</span></div>
+        <div class="btn-row">
+          <button class="btn btn-coral" id="driveBtnAuto" onclick="toggleDrivePolling()">â–¶ Iniciar polling</button>
+          <button class="btn btn-outline" onclick="syncSheetAhora()">ðŸ”„ Sync manual</button>
+          <button class="btn btn-ghost" onclick="resetDriveHistory()">ðŸ—‘ Resetear historial</button>
+        </div>
+        <div style="margin-top:12px;padding:12px;background:var(--surface2);border-radius:var(--r-sm);border:1px solid var(--border)">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Flujo</div>
+          <p style="font-size:12px;color:var(--text-mid);line-height:1.7">
+            Apps Script (UalÃ¡) detecta PDFs â†’ escribe chunks en Sheet pÃºblica â†’ servidor Python reensambla PDFs â†’ procesa con GPT-4o â†’ envÃ­a a Monday â†’ Apps Script mueve a <code>Procesado/fecha</code>.
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec-header" style="margin-bottom:12px"><span class="sec-title">Log de actividad</span></div>
+        <div class="drive-log-box" id="driveLog">
+          <div class="dlog info">ConfigurÃ¡ el Sheet ID y guardÃ¡ para activar el sync.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     GMAIL DIRECTO
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <div id="tab-gmail" class="panel">
+  <div class="card" >
+    <div class="sec-header" style="margin-bottom:16px">
+      <span style="font-size:20px">ðŸ“§</span>
+      <span class="sec-title">Gmail â†’ AutoMonday (directo)</span>
+      <span class="chip" style="background:rgba(234,67,53,.1);color:#EA4335;border-color:rgba(234,67,53,.2)">sin Drive</span>
+      <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+        <div class="ddot idle" id="gmailDot"></div>
+        <span style="font-size:12px;color:var(--text-dim);font-family:var(--mono)" id="gmailStatusLabel">Sin configurar</span>
+      </div>
+    </div>
+
+    <div class="alert alert-blue" style="margin-bottom:16px;font-size:12px">
+      ðŸ“Œ Este flujo usa <strong>GmailDirecto.gs</strong>. El script de Apps Script escanea Gmail cada 1 min, filtra por asunto/nombre de PDF, y la IA valida que sea una factura antes de subirla a Monday.
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px">
+      <div>
+        <!-- Rango de fechas -->
+        <div class="form-group">
+          <label>Rango de bÃºsqueda de emails</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-bottom:4px">DESDE</div>
+              <input type="date" id="cfg-gmail-desde" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);padding:7px 10px;font-family:var(--font);font-size:13px;color:var(--text);outline:none"/>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-bottom:4px">HASTA</div>
+              <input type="date" id="cfg-gmail-hasta" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);padding:7px 10px;font-family:var(--font);font-size:13px;color:var(--text);outline:none"/>
+            </div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('hoy')" style="font-size:11px">Hoy</button>
+            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('semana')" style="font-size:11px">Ãšltima semana</button>
+            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('mes')" style="font-size:11px">Ãšltimo mes</button>
+            <button class="btn btn-ghost btn-sm" onclick="setGmailRango('mes3')" style="font-size:11px">Ãšltimos 3 meses</button>
+          </div>
+          <div style="font-size:11px;color:var(--text-dim)">âš ï¸ Sin rango definido va a buscar en todo el historial.</div>
+        </div>
+
+        <div class="form-group">
+          <label>Query Gmail generado</label>
+          <div style="display:flex;gap:6px">
+            <input type="text" id="cfg-gmail-query" placeholder="Se genera automÃ¡ticamente del rango..." style="font-family:var(--mono);font-size:11px;flex:1" readonly/>
+            <button class="btn btn-ghost btn-sm" onclick="regenerarGmailQuery()" title="Regenerar query">ðŸ”„</button>
+          </div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Se actualiza solo al cambiar el rango. PodÃ©s editarlo manualmente si necesitÃ¡s.</div>
+        </div>
+        <div class="form-group">
+          <label>Palabras clave â€” asunto del email</label>
+          <input type="text" id="cfg-gmail-subject-kw" placeholder="factura, FC, CFE, nota de credito, nota de debito"/>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Separadas por coma. Si el asunto contiene alguna â†’ pasa el filtro.</div>
+        </div>
+        <div class="form-group">
+          <label>Palabras clave â€” nombre del PDF adjunto</label>
+          <input type="text" id="cfg-gmail-filename-kw" placeholder="factura, FC_, CFE_, invoice, nota"/>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Separadas por coma. Si el nombre del PDF contiene alguna â†’ pasa el filtro.</div>
+        </div>
+      </div>
+      <div>
+        <div class="form-group">
+          <label>ValidaciÃ³n por IA antes de subir a Monday</label>
+          <select id="cfg-gmail-ai-validate">
+            <option value="si">âœ… SÃ­ â€” la IA confirma que es factura (recomendado)</option>
+            <option value="no">âš¡ No â€” confiar solo en los filtros de texto</option>
+          </select>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Si la IA detecta que es una OC, orden de pago u otro doc â†’ lo rechaza con etiqueta "No es factura".</div>
+        </div>
+        <div class="form-group">
+          <label>URL del Web App (Apps Script)</label>
+          <input type="text" id="cfg-gmail-script-url" value="https://script.google.com/a/macros/uala.com.ar/s/AKfycbzjwcpy5U1xblnRaSoiB22VStcqgoEeSQva3LnvtS67bUgtr4xTR3fiTrk7V7IuO3IC/exec" readonly style="font-size:10px;opacity:.75;cursor:default" style="font-family:var(--mono);font-size:11px"/>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">
+            Opcional. Si la configurÃ¡s, el rango de fechas se sincroniza al script automÃ¡ticamente al guardar.
+            <br>Apps Script â†’ Implementar â†’ Web App â†’ Cualquier persona â†’ copiar URL.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Etiquetas Gmail</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-bottom:4px">EN COLA</div>
+              <input type="text" id="cfg-gmail-label-cola" value="AutoMonday/EnCola"/>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-bottom:4px">PROCESADO</div>
+              <input type="text" id="cfg-gmail-label-proc" value="AutoMonday/Procesado"/>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:4px">"En Cola" al detectar el email. "Procesado" cuando Monday confirma la carga.</div>
+        </div>
+        <div class="form-group">
+          <label>Polling automÃ¡tico en la app</label>
+          <select id="cfg-gmail-interval">
+            <option value="30">Cada 30 segundos</option>
+            <option value="60" selected>Cada 1 minuto</option>
+            <option value="120">Cada 2 minutos</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-bottom:8px">
+      <button class="btn btn-primary" onclick="guardarGmailConfig()">ðŸ’¾ Guardar config Gmail</button>
+    </div>
+
+    <!-- Escaneo on-demand -->
+    <div style="background:var(--blue-pale);border:1.5px solid var(--blue);border-radius:10px;padding:12px 16px;margin-bottom:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:8px;letter-spacing:.05em">ESCANEAR Y PROCESAR</div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary" id="btnEscanearAhora" onclick="escanearAhora()">ðŸ” Escanear y procesar</button>
+        <span style="font-size:12px;color:#666">Escanea Gmail, ensambla los PDFs y los manda a Monday en un solo paso.</span>
+      </div>
+    </div>
+
+    <!-- Trigger automÃ¡tico -->
+    <div style="background:#f8f8f8;border:1.5px solid #ddd;border-radius:10px;padding:12px 16px;margin-bottom:10px">
+      <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;letter-spacing:.05em">TRIGGER AUTOMÃTICO <span id="trigger-status-badge" style="font-weight:400;color:#999">(estado desconocido)</span></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="activarTriggerAuto()">â± Activar auto (cada 5min)</button>
+        <button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="detenerTriggerAuto()">â¹ Detener trigger</button>
+        <span style="font-size:12px;color:#888">El trigger corre en segundo plano en Google aunque la app estÃ© cerrada.</span>
+      </div>
+    </div>
+
+    <!-- Limpieza y reset -->
+    <div style="background:#fff5f5;border:1.5px solid #ffcccc;border-radius:10px;padding:12px 16px;margin-bottom:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px;letter-spacing:.05em">ðŸ§¹ LIMPIAR Y RESETEAR</div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+        <button class="btn btn-sm" style="background:var(--red);color:#fff" onclick="limpiarTodo()">ðŸ—‘ Limpiar cola + resetear historial</button>
+        <span style="font-size:12px;color:#888">Borra chunks de la Sheet, limpia la cola del servidor y resetea los IDs procesados. UsÃ¡ si hay mails colgados en EnCola.</span>
+      </div>
+      <div id="reset-progress" style="display:none;font-size:12px;color:var(--red);margin-top:4px"></div>
+    </div>
+
+    <div id="gmail-cfg-msg"></div>
+
+    <!-- Log Gmail -->
+    <div style="margin-top:12px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Log Gmail</div>
+      <div class="drive-log-box" id="gmailLog" style="max-height:150px">
+        <div class="dlog info">ConfigurÃ¡ y activÃ¡ el polling para ver actividad.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     CONFIGURACIÃ“N
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- â•â• CONFIG â•â• -->
+  <div id="tab-configurar" class="panel">
+    <div class="grid-2" style="margin-bottom:16px">
+      <div class="card">
+        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">ðŸ¤– Proveedor de IA</span></div>
+        <div class="form-group">
+          <label>Proveedor</label>
+          <select id="cfg-ai-provider" onchange="toggleAIProvider()">
+            <option value="openai">OpenAI (GPT-4o)</option>
+            <option value="gemini">Google Gemini</option>
+          </select>
+        </div>
+        <div id="ai-openai-fields">
+          <div class="form-group">
+            <label>OpenAI API Key</label>
+            <input type="password" id="cfg-claude-key" placeholder="sk-..."/>
+          </div>
+          <div class="form-group">
+            <label>Modelo</label>
+            <select id="cfg-claude-model">
+              <option value="gpt-4o">gpt-4o (recomendado)</option>
+              <option value="gpt-4o-mini">gpt-4o-mini (mÃ¡s barato)</option>
+            </select>
+          </div>
+        </div>
+        <div id="ai-gemini-fields" style="display:none">
+          <div class="form-group">
+            <label>Gemini API Key</label>
+            <input type="password" id="cfg-gemini-key" placeholder="AIza..."/>
+          </div>
+          <div class="form-group">
+            <label>Modelo</label>
+            <select id="cfg-gemini-model">
+              <option value="gemini-1.5-pro">gemini-1.5-pro (recomendado)</option>
+              <option value="gemini-1.5-flash">gemini-1.5-flash (mÃ¡s rÃ¡pido)</option>
+              <option value="gemini-2.0-flash">gemini-2.0-flash (Ãºltimo)</option>
+            </select>
+          </div>
+          <div class="alert alert-green" style="font-size:12px;margin-bottom:10px">
+            âœ… Gemini tiene capa gratuita generosa (~1500 req/dÃ­a con Flash)
+          </div>
+        </div>
+        <button class="btn btn-outline" onclick="testClaude()">ðŸ§ª Probar conexiÃ³n</button>
+      </div>
+      <div class="card">
+        <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">Monday.com</span></div>
+        <div class="form-group">
+          <label>API Key</label>
+          <input type="password" id="cfg-monday-key" placeholder="eyJhbGci..."/>
+        </div>
+        <div class="form-group">
+          <label>Board ID</label>
+          <input type="text" id="cfg-monday-board" placeholder="Board ID"/>
+        </div>
+        <button class="btn btn-outline" onclick="testMonday()">ðŸ§ª Probar conexiÃ³n</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="sec-header" style="margin-bottom:14px"><span class="sec-title">Columnas del tablero Monday</span></div>
+      <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px">IDs exactos de cada columna (los encontrÃ¡s en el API Playground de Monday)</p>
+      <div class="grid-2">
+        <div class="form-group"><label>Proveedor (name)</label><input type="text" id="col-proveedor" value="name"/></div>
+        <div class="form-group"><label>Fecha de FC</label><input type="text" id="col-fecha-factura" placeholder="fecha6"/></div>
+        <div class="form-group"><label>Recibido</label><input type="text" id="col-fecha-recibida" placeholder="fecha9"/></div>
+        <div class="form-group"><label>FC. Vencimiento</label><input type="text" id="col-vencimiento" placeholder="fecha60"/></div>
+        <div class="form-group"><label>Importe ARS</label><input type="text" id="col-importe" placeholder="importe_ars"/></div>
+        <div class="form-group"><label>Importe USD</label><input type="text" id="col-importe-usd" placeholder="importe_usd"/></div>
+        <div class="form-group"><label>Moneda del Doc. (status)</label><input type="text" id="col-moneda" placeholder="estado84"/></div>
+        <div class="form-group"><label>NÂ° Factura</label><input type="text" id="col-nro-factura" placeholder="text_mkw8qc4c"/></div>
+        <div class="form-group"><label>TC FC (tipo de cambio)</label><input type="text" id="col-tc" placeholder="n_meros7"/></div>
+        <div class="form-group"><label>FC / RendiciÃ³n (archivo PDF)</label><input type="text" id="col-archivo" placeholder="archivo9"/></div>
+        <div class="form-group"><label>Sociedad (receptor factura)</label><input type="text" id="col-sociedad" placeholder="text_mm3apr7c"/></div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="guardarConfig()">ðŸ’¾ Guardar configuraciÃ³n</button>
+      <button class="btn btn-outline" onclick="cargarConfig()">â†© Restaurar</button>
+      <button class="btn btn-ghost" onclick="verConfigActual()">ðŸ” Ver config guardada</button>
+    </div>
+    <div id="cfg-msg" style="margin-top:12px"></div>
+  </div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal modal-xl" id="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modal-title">Detalle</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:2px" id="modal-subtitle"></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-ghost btn-sm" id="modal-btn-edit" onclick="activarEdicion()" style="display:none">âœ Editar</button>
+        <button class="btn btn-primary btn-sm" id="modal-btn-save" onclick="guardarEdicion()" style="display:none">ðŸ’¾ Guardar y actualizar Monday</button>
+        <button class="modal-close" onclick="closeModal()">Ã—</button>
+      </div>
+    </div>
+    <!-- Modal tabs -->
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchModalTab('datos',this)">ðŸ“‹ Datos</button>
+      <button class="modal-tab" onclick="switchModalTab('preview',this)" id="modal-tab-preview">ðŸ” Vista previa PDF</button>
+    </div>
+    <div id="modal-tab-datos" class="modal-tab-panel active">
+      <div id="modal-body"></div>
+    </div>
+    <div id="modal-tab-preview" class="modal-tab-panel" style="display:none">
+      <div id="modal-pdf-wrap">
+        <div id="modal-pdf-placeholder" style="text-align:center;padding:40px;color:var(--text-dim)">
+          <div style="font-size:36px;margin-bottom:12px">ðŸ“„</div>
+          <p style="font-size:13px">El PDF estarÃ¡ disponible si fue procesado manualmente en esta sesiÃ³n.<br>Las facturas de Drive se muestran si el servidor local estÃ¡ activo.</p>
+        </div>
+        <canvas id="modal-pdf-canvas" style="display:none;width:100%;border-radius:8px;box-shadow:var(--shadow-md)"></canvas>
+        <div id="modal-pdf-pages" style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /app -->
+
+<script>
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  STATE
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+let facturas   = JSON.parse(localStorage.getItem('facturas') || '[]');
+let procesadas = [];
+let sortField  = 'fechaFactura';
+let sortDir    = -1;
+let filterEstado = '';
+let currentPage = 1;
+const PAGE_SIZE = 50;
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  NAV
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+function showTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('tab-' + name);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (name === 'dashboard') renderDashboard();
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  DASHBOARD
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// Estado moneda activa en top proveedores
+let provMoneda = 'ARS';
+function setProvMoneda(m) {
+  provMoneda = m;
+  document.getElementById('prov-btn-ars').style.background = m==='ARS' ? 'var(--blue-pale)' : '';
+  document.getElementById('prov-btn-ars').style.color      = m==='ARS' ? 'var(--blue)' : '';
+  document.getElementById('prov-btn-usd').style.background = m==='USD' ? 'var(--blue-pale)' : '';
+  document.getElementById('prov-btn-usd').style.color      = m==='USD' ? 'var(--blue)' : '';
+  renderProveedores(facturas.filter(f=>f.estado==='procesado'));
+}
+
+// Helpers para clasificar tipo de doc
+const esNC = f => /nc|nota.de.cr/i.test(f.tipoDocumento||'');
+const esND = f => /nd|nota.de.d/i.test(f.tipoDocumento||'');
+const esFC = f => !esNC(f) && !esND(f);
+
+// Sumar neto: FC y ND suman, NC resta (ya vienen como negativos pero por las dudas abs)
+function netoImporte(lista) {
+  return lista.reduce((acc, f) => {
+    const imp = parseFloat(f.importe) || 0;
+    if (esNC(f)) return acc - Math.abs(imp);   // NC siempre resta
+    return acc + Math.abs(imp);                 // FC y ND suman
+  }, 0);
+}
+
+function fmtARS(n) {
+  const neg = n < 0;
+  return (neg ? '-' : '') + '$' + Math.abs(n).toLocaleString('es-AR', {minimumFractionDigits:0, maximumFractionDigits:0});
+}
+function fmtUSD(n) {
+  const neg = n < 0;
+  return (neg ? '-' : '') + 'U$S ' + Math.abs(n).toLocaleString('es-AR', {minimumFractionDigits:0, maximumFractionDigits:0});
+}
+
+function renderDashboard() {
+  const all       = facturas;
+  const proc      = all.filter(f => f.estado === 'procesado');
+  const pend      = all.filter(f => f.estado === 'pendiente');
+  const viaDrive  = all.filter(f => f._viaDrive);
+  const viaManual = all.filter(f => !f._viaDrive && !f._viaGmail);
+  const viaGmail  = all.filter(f => f._viaGmail);
+  const ncnd      = all.filter(f => esNC(f) || esND(f));
+
+  // Separar por moneda y tipo para cÃ¡lculos correctos
+  const procARS = proc.filter(f => f.moneda === 'ARS');
+  const procUSD = proc.filter(f => f.moneda === 'USD');
+
+  const arsFC   = procARS.filter(esFC).reduce((a,f) => a + Math.abs(parseFloat(f.importe)||0), 0);
+  const arsNC   = procARS.filter(esNC).reduce((a,f) => a + Math.abs(parseFloat(f.importe)||0), 0);
+  const arsND   = procARS.filter(esND).reduce((a,f) => a + Math.abs(parseFloat(f.importe)||0), 0);
+  const arsNeto = arsFC - arsNC + arsND;
+
+  const usdFC   = procUSD.filter(esFC).reduce((a,f) => a + Math.abs(parseFloat(f.importe)||0), 0);
+  const usdNC   = procUSD.filter(esNC).reduce((a,f) => a + Math.abs(parseFloat(f.importe)||0), 0);
+  const usdND   = procUSD.filter(esND).reduce((a,f) => a + Math.abs(parseFloat(f.importe)||0), 0);
+  const usdNeto = usdFC - usdNC + usdND;
+
+  // KPIs
+  document.getElementById('kpi-total').textContent      = all.length;
+  document.getElementById('kpi-procesadas').textContent = proc.length;
+  document.getElementById('kpi-pendientes').textContent = pend.length;
+  document.getElementById('kpi-drive').textContent      = viaDrive.length;
+  document.getElementById('kpi-nc').textContent         = ncnd.length;
+  document.getElementById('kpi-dup').textContent        = duplicados.length;
+
+  // Totales ARS
+  const elNetoARS = document.getElementById('total-ars-neto');
+  if (elNetoARS) {
+    elNetoARS.textContent = fmtARS(arsNeto);
+    elNetoARS.style.color = arsNeto < 0 ? 'var(--red)' : 'var(--blue)';
+    document.getElementById('total-ars-fc').textContent = fmtARS(arsFC);
+    document.getElementById('total-ars-nc').textContent = fmtARS(arsNC);
+    document.getElementById('total-ars-nd').textContent = fmtARS(arsND);
+  }
+  // Totales USD
+  const elNetoUSD = document.getElementById('total-usd-neto');
+  if (elNetoUSD) {
+    elNetoUSD.textContent = fmtUSD(usdNeto);
+    elNetoUSD.style.color = usdNeto < 0 ? 'var(--red)' : 'var(--green)';
+    document.getElementById('total-usd-fc').textContent = fmtUSD(usdFC);
+    document.getElementById('total-usd-nc').textContent = fmtUSD(usdNC);
+    document.getElementById('total-usd-nd').textContent = fmtUSD(usdND);
+  }
+
+  // Chips counts
+  document.getElementById('chip-all-count').textContent  = all.length;
+  document.getElementById('chip-proc-count').textContent = proc.length;
+  document.getElementById('chip-pend-count').textContent = pend.length;
+  document.getElementById('tbl-count').textContent       = all.length + ' resultados';
+
+  // Updated label
+  if (all.length > 0) {
+    document.getElementById('dash-updated').textContent = 'Actualizado reciÃ©n Â· ' + all.length + ' facturas';
+  }
+
+  // Donut
+  const nFC = all.filter(f => !/nc|nd|nota/i.test(f.tipoDocumento||'')).length;
+  const nNC = all.filter(f => /nc|nota.de.cr/i.test(f.tipoDocumento||'')).length;
+  const nND = all.filter(f => /nd|nota.de.d/i.test(f.tipoDocumento||'')).length;
+  document.getElementById('dl-factura').textContent = nFC;
+  document.getElementById('dl-nc').textContent = nNC;
+  document.getElementById('dl-nd').textContent = nND;
+  document.getElementById('dl-manual').textContent = viaManual.filter(f=>f.estado==='procesado').length;
+  document.getElementById('dl-drive').textContent  = viaDrive.length + viaGmail.length;
+  document.getElementById('donut-center').textContent = all.length;
+  renderDonut(nFC, nNC, nND, viaDrive.length, viaManual.length);
+
+  // Sparkline
+  renderSparkline(all);
+
+  // Top proveedores (ya procesadas)
+  renderProveedores(proc);
+
+  // Tabla
+  applyFilters();
+}
+
+function renderDonut(nFC, nNC, nND, nDrive, nManual) {
+  const svg = document.getElementById('donut-svg');
+  const total = nFC + nNC + nND;
+  if (total === 0) return;
+  const cx = 55, cy = 55, r = 40;
+  const circ = 2 * Math.PI * r;
+  const colors = ['#00C48C','#EF4444','#F59E0B'];
+  const vals = [nFC, nNC, nND];
+  let offset = -circ / 4; // start at top
+  // Remove old arcs
+  svg.querySelectorAll('.donut-arc').forEach(e => e.remove());
+  vals.forEach((v, i) => {
+    if (v === 0) return;
+    const frac = v / total;
+    const dash = frac * circ;
+    const arc = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    arc.setAttribute('class','donut-arc');
+    arc.setAttribute('cx', cx); arc.setAttribute('cy', cy); arc.setAttribute('r', r);
+    arc.setAttribute('fill','none');
+    arc.setAttribute('stroke', colors[i]);
+    arc.setAttribute('stroke-width','18');
+    arc.setAttribute('stroke-dasharray', `${dash} ${circ - dash}`);
+    arc.setAttribute('stroke-dashoffset', -offset);
+    svg.appendChild(arc);
+    offset += dash;
+  });
+}
+
+function renderSparkline(all) {
+  const barsEl   = document.getElementById('spark-bars');
+  const labelsEl = document.getElementById('spark-labels');
+  if (!barsEl) return;
+
+  // Agrupar por semana (Ãºltimas 8)
+  const weeks = {};
+  const now = new Date();
+  for (let i = 7; i >= 0; i--) {
+    const d = new Date(now);
+    d.setDate(d.getDate() - i * 7);
+    const key = `${d.getFullYear()}-W${getWeek(d)}`;
+    weeks[key] = { count: 0, label: weekLabel(d) };
+  }
+  all.forEach(f => {
+    if (!f.fechaFactura) return;
+    const parts = f.fechaFactura.split('/');
+    if (parts.length < 3) return;
+    const d = new Date(parts[2], parts[1]-1, parts[0]);
+    const key = `${d.getFullYear()}-W${getWeek(d)}`;
+    if (weeks[key]) weeks[key].count++;
+  });
+  const vals = Object.values(weeks);
+  const max = Math.max(...vals.map(v => v.count), 1);
+  barsEl.innerHTML = vals.map((w, i) => `
+    <div class="spark-bar ${w.count>0?'filled':''}" style="height:${Math.max((w.count/max)*100,4)}%">
+      <div class="tip">${w.label}: ${w.count}</div>
+    </div>`).join('');
+  labelsEl.innerHTML = vals.map(w => `<span>${w.label}</span>`).join('');
+}
+
+function getWeek(d) {
+  const jan1 = new Date(d.getFullYear(), 0, 1);
+  return Math.ceil(((d - jan1) / 86400000 + jan1.getDay() + 1) / 7);
+}
+function weekLabel(d) {
+  return (d.getDate()) + '/' + (d.getMonth()+1);
+}
+
+function renderProveedores(proc) {
+  const el = document.getElementById('prov-list');
+  if (!el) return;
+  const moneda = provMoneda || 'ARS';
+  const map = {};
+  proc.filter(f => f.moneda === moneda).forEach(f => {
+    const k   = f.proveedor || 'â€”';
+    const imp = Math.abs(parseFloat(f.importe) || 0);
+    if (!map[k]) map[k] = {fc:0, nc:0, nd:0};
+    if (esNC(f))      map[k].nc += imp;
+    else if (esND(f)) map[k].nd += imp;
+    else              map[k].fc += imp;
+  });
+  // Neto por proveedor = FC + ND - NC
+  const sorted = Object.entries(map)
+    .map(([name, v]) => [name, v.fc - v.nc + v.nd, v])
+    .sort((a,b) => b[1]-a[1])
+    .slice(0, 7);
+
+  if (sorted.length === 0) {
+    el.innerHTML = `<div style="color:var(--text-dim);font-size:12px;text-align:center;padding:20px">Sin facturas en ${moneda}</div>`;
+    return;
+  }
+  const maxVal = Math.max(...sorted.map(s => s[1]), 1);
+  const fmt = n => moneda === 'USD'
+    ? 'U$S ' + Math.abs(n).toLocaleString('es-AR',{maximumFractionDigits:0})
+    : '$' + Math.abs(n).toLocaleString('es-AR',{maximumFractionDigits:0});
+
+  el.innerHTML = sorted.map(([name, neto, v], i) => {
+    const hasNC = v.nc > 0;
+    return `
+    <div class="prov-row">
+      <div class="prov-rank">${i+1}</div>
+      <div class="prov-name" title="${name}">${name}${hasNC ? ' <span style="font-size:9px;color:var(--red);font-family:var(--mono)">-NC</span>' : ''}</div>
+      <div class="prov-bar-wrap"><div class="prov-bar-fill" style="width:${Math.max((neto/maxVal)*100,2)}%;background:${moneda==='USD'?'var(--green)':'var(--blue)'}"></div></div>
+      <div class="prov-amount" style="color:${neto<0?'var(--red)':''}">${fmt(neto)}</div>
+    </div>`;
+  }).join('');
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  FILTROS + TABLA
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+function setEstadoFilter(val, chip) {
+  filterEstado = val;
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  if (chip) chip.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const search  = (document.getElementById('filter-search')?.value || '').toLowerCase();
+  const moneda  = document.getElementById('filter-moneda')?.value || '';
+  const tipo    = document.getElementById('filter-tipo')?.value || '';
+  const origen  = document.getElementById('filter-origen')?.value || '';
+
+  let filtered = facturas.filter(f => {
+    if (filterEstado && f.estado !== filterEstado) return false;
+    if (moneda && f.moneda !== moneda) return false;
+    if (tipo) {
+      const t = (f.tipoDocumento||'').toUpperCase();
+      if (tipo === 'NC' && !t.includes('NC') && !t.includes('CRÃ‰DITO') && !t.includes('CREDITO')) return false;
+      if (tipo === 'ND' && !t.includes('ND') && !t.includes('DÃ‰BITO') && !t.includes('DEBITO')) return false;
+      if (tipo === 'FACTURA' && (t.includes('NC') || t.includes('ND') || t.includes('NOTA'))) return false;
+    }
+    if (origen === 'drive' && !f._viaDrive) return false;
+    if (origen === 'manual' && f._viaDrive) return false;
+    if (search) {
+      const hay = (f.proveedor||'') + (f.nroFactura||'') + (f.tipoDocumento||'');
+      if (!hay.toLowerCase().includes(search)) return false;
+    }
+    return true;
+  });
+
+  // Sort
+  filtered.sort((a, b) => {
+    let va = a[sortField] || '';
+    let vb = b[sortField] || '';
+    if (sortField === 'importe') { va = parseFloat(va)||0; vb = parseFloat(vb)||0; }
+    return va < vb ? sortDir : va > vb ? -sortDir : 0;
+  });
+
+  document.getElementById('tbl-count').textContent = filtered.length + ' resultado' + (filtered.length!==1?'s':'');
+  // Agregar/sacar columna checkbox en thead
+  const ths = document.querySelector('#facturaTable').closest('table').querySelector('thead tr');
+  const existsCb = ths.querySelector('.th-cb');
+  if (selectMode && !existsCb) {
+    const th = document.createElement('th');
+    th.className = 'th-cb row-checkbox';
+    th.innerHTML = '<input class="row-cb" type="checkbox" onchange="selectAll(this)">';
+    ths.insertBefore(th, ths.firstChild);
+  } else if (!selectMode && existsCb) {
+    existsCb.remove();
+  }
+  renderTable(filtered);
+}
+
+function sortTable(field) {
+  if (sortField === field) sortDir *= -1;
+  else { sortField = field; sortDir = -1; }
+  document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+  applyFilters();
+}
+
+function clearFilters() {
+  document.getElementById('filter-search').value = '';
+  document.getElementById('filter-moneda').value = '';
+  document.getElementById('filter-tipo').value = '';
+  document.getElementById('filter-origen').value = '';
+  setEstadoFilter('', document.getElementById('chip-all'));
+}
+
+function renderTable(data) {
+  const tbody = document.getElementById('facturaTable');
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="icon">ðŸ”</div><p>No hay resultados con los filtros actuales.</p></div></td></tr>';
+    return;
+  }
+  // Map back to original index for modal
+  tbody.innerHTML = data.map(f => {
+    const idx = facturas.indexOf(f);
+    const esNC = /nc|nota.de.cr/i.test(f.tipoDocumento||'');
+    const esND = /nd|nota.de.d/i.test(f.tipoDocumento||'');
+    const tipoCls = esNC ? 'badge-tipo-nc' : esND ? 'badge-tipo-nd' : 'badge-tipo-factura';
+    const tipoLbl = f.tipoDocumento || 'FACTURA';
+    const origenBadge = f._viaDrive
+      ? '<span class="badge badge-origen-drive">â˜ Drive</span>'
+      : '<span class="badge badge-origen-manual">âœ‹ Manual</span>';
+    const imp = parseFloat(f.importe) || 0;
+    const impStr = formatImporte(f.importe, f.moneda);
+    const negClass = imp < 0 ? 'neg' : '';
+    const cbCell = selectMode
+      ? `<td class="row-checkbox"><input class="row-cb" type="checkbox" onchange="toggleRowSelect(${idx},this)" ${selectedIds.has(idx)?'checked':''}></td>`
+      : '';
+    const rowClick = selectMode ? '' : `onclick="openModal(${idx})"`;
+    return `<tr class="${f._viaDrive?'row-drive':'row-manual'}${selectMode&&selectedIds.has(idx)?' selected':''}" ${rowClick} data-idx="${idx}">
+      ${cbCell}<td class="td-proveedor"><strong>${f.proveedor||'â€”'}</strong><br><span class="badge ${tipoCls}">${tipoLbl}</span></td>
+      <td>${origenBadge}</td>
+      <td class="muted">${f.fechaFactura||'â€”'}</td>
+      <td class="muted">${f.fechaRecibida||'â€”'}</td>
+      <td class="muted">${f.vencimiento||'â€”'}</td>
+      <td class="td-amount ${negClass}">${impStr}</td>
+      <td class="muted">${f.nroFactura||'â€”'}</td>
+      <td><span class="badge badge-estado-${f.estado==='procesado'?'procesado':'pendiente'}">${f.estado==='procesado'?'âœ… Procesado':'â³ Pendiente'}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function exportarCSV() {
+  const rows = [['Proveedor','Tipo','Origen','Fecha FC','Recibida','Vencimiento','Importe','Moneda','NÂ° Factura','Estado']];
+  facturas.forEach(f => {
+    rows.push([f.proveedor||'',f.tipoDocumento||'FACTURA',f._viaDrive?'Drive':'Manual',
+      f.fechaFactura||'',f.fechaRecibida||'',f.vencimiento||'',f.importe||'',f.moneda||'ARS',f.nroFactura||'',f.estado||'']);
+  });
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const url  = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download='automonday_export.csv'; a.click();
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  FORMAT
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+function formatImporte(v, moneda) {
+  const n = parseFloat(v);
+  if (isNaN(n)) return 'â€”';
+  const fmt = Math.abs(n).toLocaleString('es-AR', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const prefix = moneda === 'USD' ? 'U$S ' : '$';
+  return (n < 0 ? '-' : '') + prefix + fmt;
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  MODAL
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+let modalCurrentIdx = -1;
+let modalPdfPages   = [];  // base64 imgs de la sesiÃ³n actual
+let editMode        = false;
+
+function openModal(idx) {
+  modalCurrentIdx = idx;
+  editMode = false;
+  const f = facturas[idx];
+  if (!f) return;
+
+  // Header
+  document.getElementById('modal-title').textContent    = f.proveedor || 'Factura';
+  document.getElementById('modal-subtitle').textContent = (f.tipoDocumento||'FACTURA') + ' Â· ' + (f.nroFactura||'sin nÃºmero') + ' Â· ' + (f.fechaFactura||'');
+  document.getElementById('modal-btn-edit').style.display = f.estado==='procesado' ? '' : 'none';
+  document.getElementById('modal-btn-save').style.display = 'none';
+
+  // Reset tabs
+  switchModalTab('datos', document.querySelector('.modal-tab'));
+
+  // Datos tab
+  renderModalDatos(f, idx, false);
+
+  // PDF tab: buscar en procesadas de la sesiÃ³n
+  const enSesion = procesadas.find(p => p.archivo === f.archivo && p._pdfPages);
+  modalPdfPages = enSesion?._pdfPages || [];
+  renderModalPDF(f);
+
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function renderModalDatos(f, idx, editable) {
+  const campos = [
+    ['Tipo',         'tipoDocumento', f.tipoDocumento||'FACTURA'],
+    ['NÂ° Factura',   'nroFactura',    f.nroFactura||''],
+    ['Fecha FC',     'fechaFactura',  f.fechaFactura||''],
+    ['Recibida',     'fechaRecibida', f.fechaRecibida||''],
+    ['Vencimiento',  'vencimiento',   f.vencimiento||''],
+    ['Importe',      'importe',       f.importe||0],
+    ['Moneda',       'moneda',        f.moneda||'ARS'],
+    ['Tipo cambio',  'tipoCambio',    f.tipoCambio||''],
+    ['Origen',       '_origen',       f._viaDrive?'â˜ Drive':'âœ‹ Manual'],
+    ['Estado',       '_estado',       f.estado||'â€”'],
+  ];
+  const isReadOnly = (key) => key.startsWith('_');
+  document.getElementById('modal-body').innerHTML = `
+    <div class="modal-fields">
+      ${campos.map(([lbl, key, val]) => `
+        <div class="modal-field ${editable && !isReadOnly(key) ? 'editing' : ''}">
+          <div class="modal-field-label">${lbl}</div>
+          ${editable && !isReadOnly(key)
+            ? `<input class="modal-field-input" id="medit-${key}" value="${String(val).replace(/"/g,'&quot;')}">`
+            : `<div class="modal-field-val">${key==='importe' ? formatImporte(val,f.moneda) : (val||'â€”')}</div>`}
+        </div>`).join('')}
+    </div>
+    ${f.estado !== 'procesado' ? `
+      <div class="btn-row" style="margin-top:16px">
+        <button class="btn btn-primary" onclick="enviarUnoAMonday(${idx});closeModal()">ðŸš€ Enviar a Monday</button>
+      </div>` : ''}
+    ${f.mondayItemId ? `<div style="margin-top:12px;font-size:11px;color:var(--text-dim);font-family:var(--mono)">Monday Item ID: ${f.mondayItemId}</div>` : ''}
+  `;
+}
+
+function switchModalTab(name, btn) {
+  document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.modal-tab-panel').forEach(p => { p.style.display='none'; p.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  const panel = document.getElementById('modal-tab-' + name);
+  if (panel) { panel.style.display='block'; panel.classList.add('active'); }
+  if (name === 'preview') renderModalPDF(facturas[modalCurrentIdx]);
+}
+
+function renderModalPDF(f) {
+  const canvas      = document.getElementById('modal-pdf-canvas');
+  const placeholder = document.getElementById('modal-pdf-placeholder');
+  const pagesEl     = document.getElementById('modal-pdf-pages');
+  if (!f) return;
+
+  // Si tenemos imÃ¡genes de la sesiÃ³n actual
+  if (modalPdfPages.length) {
+    placeholder.style.display = 'none';
+    canvas.style.display = 'none';
+    pagesEl.innerHTML = modalPdfPages.map((src, i) => `
+      <div style="flex:1;min-width:200px">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:4px">PÃ¡gina ${i+1}</div>
+        <img src="data:image/jpeg;base64,${src}" style="width:100%;border-radius:8px;box-shadow:var(--shadow);border:1px solid var(--border)">
+      </div>`).join('');
+    return;
+  }
+
+  // Si hay path de archivo (Drive), intentar cargar via servidor
+  if (f._pdfPath) {
+    placeholder.innerHTML = '<div style="font-size:28px;margin-bottom:10px">â³</div><p style="font-size:13px">Cargando PDF del servidor...</p>';
+    placeholder.style.display = 'block';
+    fetch('/get-pdf?path=' + encodeURIComponent(f._pdfPath))
+      .then(r => r.ok ? r.blob() : null)
+      .then(blob => {
+        if (!blob) throw new Error('no disponible');
+        return blob.arrayBuffer();
+      })
+      .then(buf => renderPDFBuffer(buf))
+      .catch(() => {
+        placeholder.innerHTML = '<div style="font-size:28px;margin-bottom:10px">ðŸ“„</div><p style="font-size:13px;color:var(--text-dim)">PDF no disponible â€” el servidor no estÃ¡ activo o el archivo fue movido.</p>';
+      });
+    return;
+  }
+
+  // Sin PDF disponible
+  placeholder.style.display = 'block';
+  placeholder.innerHTML = '<div style="font-size:36px;margin-bottom:12px">ðŸ“„</div><p style="font-size:13px;color:var(--text-dim)">PDF no disponible.<br>Solo se puede previsualizar facturas procesadas en esta sesiÃ³n.</p>';
+}
+
+async function renderPDFBuffer(arrayBuffer) {
+  const placeholder = document.getElementById('modal-pdf-placeholder');
+  const pagesEl     = document.getElementById('modal-pdf-pages');
+  try {
+    if (!window.pdfjsLib) {
+      await new Promise((res,rej)=>{
+        const s=document.createElement('script');
+        s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+        s.onload=res; s.onerror=rej; document.head.appendChild(s);
+      });
+      pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+    const pdf = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+    placeholder.style.display = 'none';
+    pagesEl.innerHTML = '';
+    for (let p = 1; p <= Math.min(pdf.numPages, 5); p++) {
+      const page   = await pdf.getPage(p);
+      const vp     = page.getViewport({scale: 1.5});
+      const canvas = document.createElement('canvas');
+      canvas.width = vp.width; canvas.height = vp.height;
+      canvas.style.cssText = 'width:100%;border-radius:8px;box-shadow:var(--shadow-md);border:1px solid var(--border)';
+      await page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'flex:1;min-width:200px';
+      wrap.innerHTML = `<div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-bottom:4px">PÃ¡gina ${p}</div>`;
+      wrap.appendChild(canvas);
+      pagesEl.appendChild(wrap);
+    }
+  } catch(e) {
+    placeholder.style.display = 'block';
+    placeholder.innerHTML = `<div style="font-size:28px;margin-bottom:10px">âŒ</div><p style="font-size:13px;color:var(--red)">Error cargando PDF: ${e.message}</p>`;
+  }
+}
+
+// â”€â”€ EdiciÃ³n y reprocesamiento â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function activarEdicion() {
+  editMode = true;
+  const f = facturas[modalCurrentIdx];
+  renderModalDatos(f, modalCurrentIdx, true);
+  document.getElementById('modal-btn-edit').style.display = 'none';
+  document.getElementById('modal-btn-save').style.display = '';
+}
+
+async function guardarEdicion() {
+  const f   = facturas[modalCurrentIdx];
+  const cfg = getConfig();
+  const g   = id => document.getElementById('medit-' + id)?.value.trim() || '';
+
+  // Aplicar cambios al objeto
+  const antes = {...f};
+  f.tipoDocumento = g('tipoDocumento') || f.tipoDocumento;
+  f.nroFactura    = g('nroFactura')    || f.nroFactura;
+  f.fechaFactura  = g('fechaFactura')  || f.fechaFactura;
+  f.fechaRecibida = g('fechaRecibida') || f.fechaRecibida;
+  f.vencimiento   = g('vencimiento')   || f.vencimiento;
+  f.importe       = parseFloat(g('importe')) || f.importe;
+  f.moneda        = g('moneda')        || f.moneda;
+  f.tipoCambio    = g('tipoCambio')    || f.tipoCambio;
+
+  // Guardar localmente
+  saveFacturas();
+
+  // Si ya estÃ¡ en Monday, actualizar via API
+  if (f.mondayItemId && cfg.mondayKey) {
+    document.getElementById('modal-btn-save').textContent = 'â³ Actualizando...';
+    document.getElementById('modal-btn-save').disabled = true;
+    try {
+      await actualizarItemEnMonday(f, cfg);
+      document.getElementById('modal-btn-save').textContent = 'âœ… Actualizado';
+      setTimeout(() => {
+        document.getElementById('modal-btn-save').textContent = 'ðŸ’¾ Guardar y actualizar Monday';
+        document.getElementById('modal-btn-save').disabled = false;
+      }, 2000);
+    } catch(e) {
+      alert('Cambios guardados localmente, pero fallÃ³ la actualizaciÃ³n en Monday: ' + e.message);
+      document.getElementById('modal-btn-save').textContent = 'ðŸ’¾ Guardar y actualizar Monday';
+      document.getElementById('modal-btn-save').disabled = false;
+    }
+  } else {
+    // Sin Monday ID: solo guardar local + notificar
+    alert('Datos actualizados localmente. Esta factura no tiene Item ID de Monday, podEs reenviarla desde el dashboard.');
+  }
+
+  editMode = false;
+  renderModalDatos(f, modalCurrentIdx, false);
+  document.getElementById('modal-btn-edit').style.display = '';
+  document.getElementById('modal-btn-save').style.display = 'none';
+  renderDashboard();
+}
+
+async function actualizarItemEnMonday(f, cfg) {
+  const cols    = cfg.cols || {};
+  const esNC    = /nc|nota.de.cr/i.test(f.tipoDocumento||'');
+  const importe = esNC ? -Math.abs(parseFloat(f.importe)||0) : parseFloat(f.importe)||0;
+  const fmtDate = d => { if(!d) return null; const p=d.split('/'); return p.length===3?`${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}`:null; };
+  const colVals = {};
+  if (cols.fechaFactura)  { const dd=fmtDate(f.fechaFactura);  if(dd) colVals[cols.fechaFactura]  = {date:dd}; }
+  if (cols.fechaRecibida) { const dd=fmtDate(f.fechaRecibida); if(dd) colVals[cols.fechaRecibida] = {date:dd}; }
+  if (cols.vencimiento)   { const dd=fmtDate(f.vencimiento);   if(dd) colVals[cols.vencimiento]   = {date:dd}; }
+  if (cols.moneda)        colVals[cols.moneda]    = {label: f.moneda||'ARS'};
+  if (cols.nroFactura)    colVals[cols.nroFactura] = f.nroFactura||'';
+  if (cols.sociedad)      colVals[cols.sociedad]    = f.sociedad||'';
+  if (f.moneda==='ARS')   { if(cols.importeARS) colVals[cols.importeARS] = importe; }
+  else                    { if(cols.importeUSD) colVals[cols.importeUSD] = importe; if(f.tipoCambio&&cols.tc) colVals[cols.tc]=parseFloat(f.tipoCambio)||0; }
+
+  const mutation = `mutation {
+    change_multiple_column_values(item_id: ${f.mondayItemId}, board_id: ${cfg.mondayBoard}, column_values: ${JSON.stringify(JSON.stringify(colVals))}) { id }
+  }`;
+  const r = await fetch('https://api.monday.com/v2', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','Authorization':cfg.mondayKey,'API-Version':'2024-10'},
+    body: JSON.stringify({query: mutation})
+  });
+  const data = await r.json();
+  if (data.errors) throw new Error(data.errors[0].message);
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  editMode = false;
+  modalCurrentIdx = -1;
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  SERVER STATUS
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+async function checkServer() {
+  // Mostrar banner si falta API key
+  const _cfg = getConfig();
+  const _banner = document.getElementById('no-key-banner');
+  if (_banner) _banner.style.display = (!_cfg.claudeKey && !_cfg.geminiKey) ? '' : 'none';
+  try {
+    const r = await fetch('/status', {signal: AbortSignal.timeout(2000)});
+    const ok = r.ok;
+    document.getElementById('serverDot').className = 'dot ' + (ok ? '' : 'offline');
+    document.getElementById('serverLabel').textContent = ok ? 'servidor listo' : 'servidor offline';
+  } catch {
+    document.getElementById('serverDot').className = 'dot offline';
+    document.getElementById('serverLabel').textContent = 'servidor offline';
+  }
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  PROCESAR PDFs
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.remove('drag-over');
+  handleFiles(e.dataTransfer.files);
+}
+
+function handleFiles(files) {
+  const pdfs = Array.from(files).filter(f => f.type === 'application/pdf' || f.name.endsWith('.pdf'));
+  if (!pdfs.length) return;
+  procesadas = [];
+  procesarArchivos(pdfs);
+}
+
+async function procesarArchivos(files) {
+  const cfg = getConfig();
+  if (!cfg.claudeKey) {
+    alert('ConfigurÃ¡ la OpenAI API key en âš™ ConfiguraciÃ³n primero.');
+    return;
+  }
+
+  document.getElementById('uploadZone').style.display = 'none';
+  const progSection = document.getElementById('progressSection');
+  progSection.style.display = 'block';
+  document.getElementById('resultSection').style.display = 'none';
+
+  for (let i = 0; i < files.length; i++) {
+    setProgress(((i) / files.length) * 100, `(${i+1}/${files.length}) ${files[i].name}`);
+    log(`ðŸ“„ Procesando: ${files[i].name}...`, 'info');
+    try {
+      const images = await pdfToImages(files[i]);
+      const datos  = await extraerDatosConClaude(images, files[i].name, cfg.claudeKey, cfg.claudeModel);
+      datos.archivo     = files[i].name;
+      datos.fechaRecibida = datos.fechaRecibida || new Date().toLocaleDateString('es-AR');
+      datos.estado      = 'pendiente';
+      datos._pdfFile    = files[i];
+      datos._pdfPages   = images;   // guardar imÃ¡genes para preview en modal
+      procesadas.push(datos);
+      const esNC = /nc|nota.de.cr/i.test(datos.tipoDocumento||'');
+      log(`âœ… ${files[i].name} â†’ ${datos.proveedor||'?'} | ${datos.tipoDocumento||'FACTURA'}${esNC?' (NCâ†’negativo)':''}`, 'ok');
+    } catch(e) {
+      log(`âŒ ${files[i].name}: ${e.message}`, 'err');
+    }
+  }
+
+  setProgress(100, 'Completado');
+  document.getElementById('resultCount').textContent = procesadas.length + ' facturas';
+  renderResultados();
+  document.getElementById('resultSection').style.display = 'block';
+}
+
+function setProgress(pct, label) {
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = label;
+}
+
+function log(msg, type) {
+  const box = document.getElementById('logBox');
+  const d = document.createElement('div');
+  d.className = 'log-line ' + (type||'');
+  d.textContent = msg;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+async function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = () => rej(new Error('Error leyendo archivo'));
+    r.readAsDataURL(file);
+  });
+}
+
+async function pdfToImages(file) {
+  const base64 = await fileToBase64(file);
+  const raw = atob(base64);
+  const arr = new Uint8Array(raw.length);
+  for (let i=0;i<raw.length;i++) arr[i] = raw.charCodeAt(i);
+  const blob = new Blob([arr], {type:'application/pdf'});
+  const url  = URL.createObjectURL(blob);
+
+  if (!window.pdfjsLib) {
+    await new Promise((res,rej)=>{
+      const s=document.createElement('script');
+      s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+      s.onload=res; s.onerror=rej;
+      document.head.appendChild(s);
+    });
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  const pdf    = await pdfjsLib.getDocument(url).promise;
+  const images = [];
+  const pages  = Math.min(pdf.numPages, 3);
+  for (let p=1;p<=pages;p++) {
+    const page  = await pdf.getPage(p);
+    const vp    = page.getViewport({scale:2});
+    const canvas= document.createElement('canvas');
+    canvas.width=vp.width; canvas.height=vp.height;
+    await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
+    images.push(canvas.toDataURL('image/jpeg', 0.85).split(',')[1]);
+  }
+  URL.revokeObjectURL(url);
+  return images;
+}
+
+const INVOICE_PROMPT = `Sos un extractor de datos de facturas argentinas. ExtraÃ© los datos y respondÃ© SOLO con JSON vÃ¡lido, sin texto extra ni markdown.
+Campos requeridos:
+- proveedor: string (razÃ³n social del EMISOR de la factura)
+- tipoDocumento: "FACTURA" | "NC" | "ND" (Nota de CrÃ©dito o DÃ©bito)
+- nroFactura: string (nÃºmero completo, ej: "A-0001-00012345")
+- fechaFactura: string DD/MM/YYYY
+- fechaVencimiento: string DD/MM/YYYY o null
+- importe: number (NEGATIVO si es NC, positivo si es FACTURA o ND)
+- moneda: "ARS" | "USD"
+- tipoCambio: number o null
+- sociedad: string (razÃ³n social del RECEPTOR de la factura, es decir, a quiÃ©n estÃ¡ emitida)
+
+REGLA CRÃTICA sobre el campo "proveedor":
+Una factura tiene DOS partes: el EMISOR (quien emite/vende) y el RECEPTOR (quien recibe/compra).
+El campo "proveedor" debe ser SIEMPRE el EMISOR â€” la empresa que EMITE la factura y cobra el dinero.
+El RECEPTOR en estas facturas es siempre UalÃ¡ / ALAU ARGENTINA S.A.U. / ALAU TECNOLOGIA S.A.U. o variantes similares.
+NUNCA uses como proveedor ninguna de estas razones sociales: "ALAU ARGENTINA", "ALAU ARGENTINA S.A.U.", "ALAU TECNOLOGIA", "ALAU TECNOLOGIA S.A.U.", "UALA", "UalÃ¡".
+Si detectÃ¡s que el nombre que ibas a poner como proveedor es alguna de esas, significa que leÃ­ste mal â€” revisÃ¡ la factura y buscÃ¡ el otro nombre (el EMISOR real).
+En una factura argentina, el EMISOR estÃ¡ en el encabezado/membrete, generalmente arriba a la izquierda o en el centro superior.
+
+Otras reglas: Si es NC: importe SIEMPRE negativo. ARS: solo importe ARS. USD: importe USD + tipoCambio si disponible.`;
+
+function parseInvoiceJSON(text) {
+  text = text.replace(/```json|```/g,'').trim();
+  const parsed = JSON.parse(text);
+  return {
+    proveedor:    parsed.proveedor || '',
+    tipoDocumento:parsed.tipoDocumento || 'FACTURA',
+    nroFactura:   parsed.nroFactura || '',
+    fechaFactura: parsed.fechaFactura || '',
+    fechaRecibida:'',
+    vencimiento:  parsed.fechaVencimiento || '',
+    importe:      parsed.importe || 0,
+    moneda:       parsed.moneda || 'ARS',
+    tipoCambio:   parsed.tipoCambio || null,
+    sociedad:      parsed.sociedad || '',
+  };
+}
+
+async function extraerDatosConClaude(images, fileName, apiKey, model) {
+  const cfg = getConfig();
+  if (cfg.aiProvider === 'gemini') {
+    return extraerConGemini(images, fileName, cfg.geminiKey, cfg.geminiModel);
+  }
+  // OpenAI
+  model = model || 'gpt-4o';
+  const content = [
+    {type:'text', text:`ExtraÃ© los datos de esta factura: ${fileName}`},
+    ...images.map(img => ({type:'image_url', image_url:{url:`data:image/jpeg;base64,${img}`, detail:'high'}}))
+  ];
+  const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
+    body: JSON.stringify({
+      model, max_tokens:800,
+      messages:[{role:'system',content:INVOICE_PROMPT},{role:'user',content}]
+    })
+  });
+  if (!resp.ok) { const err=await resp.json(); throw new Error(err.error?.message||`OpenAI ${resp.status}`); }
+  const data = await resp.json();
+  return parseInvoiceJSON(data.choices[0].message.content.trim());
+}
+
+async function extraerConGemini(images, fileName, apiKey, model) {
+  model = model || 'gemini-1.5-pro';
+  const parts = [
+    {text: INVOICE_PROMPT + `\n\nAnalizÃ¡ esta factura: ${fileName}`},
+    ...images.map(img => ({inline_data:{mime_type:'image/jpeg', data:img}}))
+  ];
+  const resp = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+    {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        contents:[{parts}],
+        generationConfig:{maxOutputTokens:800, temperature:0.1}
+      })
+    }
+  );
+  if (!resp.ok) { const err=await resp.json(); throw new Error(err.error?.message||`Gemini ${resp.status}`); }
+  const data = await resp.json();
+  const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) throw new Error('Gemini no devolviÃ³ respuesta');
+  return parseInvoiceJSON(text.trim());
+}
+
+function renderResultados() {
+  const grid = document.getElementById('resultGrid');
+  if (!grid) return;
+  grid.innerHTML = procesadas.map((f, i) => {
+    const esNC = /nc|nota.de.cr/i.test(f.tipoDocumento||'');
+    const tipoCls = esNC ? 'badge-tipo-nc' : 'badge-tipo-factura';
+    return `<div class="result-card">
+      <div class="result-card-header">
+        <div>
+          <div class="result-card-name">${f.proveedor||'Sin proveedor'}</div>
+          <div class="result-card-file">${f.archivo}</div>
+        </div>
+        <span class="badge ${tipoCls}">${f.tipoDocumento||'FACTURA'}</span>
+      </div>
+      <div class="result-fields">
+        <div class="result-field"><div class="result-field-label">Fecha FC</div><div class="result-field-val">${f.fechaFactura||'â€”'}</div></div>
+        <div class="result-field"><div class="result-field-label">Vencimiento</div><div class="result-field-val">${f.vencimiento||'â€”'}</div></div>
+        <div class="result-field"><div class="result-field-label">Importe</div><div class="result-field-val" style="${f.importe<0?'color:var(--red)':''}">${formatImporte(f.importe,f.moneda)}</div></div>
+        <div class="result-field"><div class="result-field-label">NÂ° Factura</div><div class="result-field-val">${f.nroFactura||'â€”'}</div></div>
+      </div>
+      <div class="result-card-footer">
+        ${f.estado==='duplicado'
+          ? '<span style="font-family:var(--mono);font-size:11px;background:rgba(245,158,11,.15);color:#92400e;border:1px solid rgba(245,158,11,.3);padding:3px 9px;border-radius:100px">ðŸ” Duplicado bloqueado</span>'
+          : `<span class="badge badge-estado-${f.estado==='procesado'?'procesado':'pendiente'}">${f.estado==='procesado'?'âœ… Procesado':'â³ Pendiente'}</span>`}
+        ${f.estado==='pendiente'?`<button class="btn btn-primary btn-sm" onclick="enviarUnoAMonday(${i})">Enviar</button>`:''}
+        ${f.estado==='duplicado'?`<button class="btn btn-ghost btn-sm" onclick="forzarDesdeResult(${i})" title="Subir igual ignorando duplicado">âš  Forzar</button>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function enviarUnoAMonday(idx) {
+  const f = procesadas[idx];
+  if (!f || f.estado === 'procesado') return;
+  const cfg = getConfig();
+
+  // Chequeo duplicado
+  if (esDuplicado(f)) {
+    const clave = claveFact(f);
+    const motivo = `Duplicado: ${f.nroFactura ? 'NÂ° ' + f.nroFactura : 'misma fecha e importe'}`;
+    registrarDuplicado(f, motivo);
+    f.estado = 'duplicado';
+    renderResultados();
+    log(`ðŸ” DUPLICADO bloqueado: ${f.proveedor} ${f.nroFactura||''} â€” ya existe en el historial`, 'err');
+    renderDashboard();
+    return;
+  }
+
+  try {
+    log(`ðŸš€ Enviando ${f.proveedor||f.archivo}...`, 'info');
+    await crearItemEnMonday(f, cfg);
+    f.estado = 'procesado';
+    // _pdfPages no se serializa (base64 pesa mucho), se mantiene solo en memoria de sesiÃ³n
+    facturas.push({...f, _pdfFile: undefined, _pdfPages: undefined});
+    saveFacturas();
+    renderResultados();
+    log(`âœ… ${f.proveedor} enviado OK`, 'ok');
+  } catch(e) {
+    log(`âŒ ${e.message}`, 'err');
+    alert('Error: ' + e.message);
+  }
+}
+
+async function enviarTodosAMonday() {
+  const pendientes = procesadas.filter(f => f.estado !== 'procesado');
+  for (let i = 0; i < pendientes.length; i++) {
+    const idx = procesadas.indexOf(pendientes[i]);
+    await enviarUnoAMonday(idx);
+  }
+  renderDashboard();
+}
+
+async function crearItemEnMonday(f, cfg) {
+  if (!cfg.mondayKey || !cfg.mondayBoard) throw new Error('ConfigurÃ¡ Monday API key y Board ID');
+  const cols = cfg.cols || {};
+  
+  // Validar que al menos hay algunas columnas configuradas
+  const colsConfiguradas = Object.values(cols).filter(v => v && v.trim()).length;
+  if (colsConfiguradas === 0) {
+    throw new Error('No hay columnas configuradas. AndÃ¡ a âš™ ConfiguraciÃ³n â†’ Columnas y guardÃ¡ los IDs.');
+  }
+  const esNC = /nc|nota.de.cr/i.test(f.tipoDocumento||'');
+  const importe = esNC ? -Math.abs(parseFloat(f.importe)||0) : parseFloat(f.importe)||0;
+
+  const fmtDate = d => {
+    if (!d) return null;
+    const p = d.split('/');
+    return p.length===3 ? `${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}` : null;
+  };
+
+  const colVals = {};
+  if (cols.fechaFactura)  { const dd=fmtDate(f.fechaFactura);  if(dd) colVals[cols.fechaFactura]  = {date:dd}; }
+  if (cols.fechaRecibida) { const dd=fmtDate(f.fechaRecibida); if(dd) colVals[cols.fechaRecibida] = {date:dd}; }
+  if (cols.vencimiento)   { const dd=fmtDate(f.vencimiento);   if(dd) colVals[cols.vencimiento]   = {date:dd}; }
+  if (cols.moneda)        colVals[cols.moneda]   = {label: f.moneda||'ARS'};
+  if (cols.nroFactura)    colVals[cols.nroFactura] = f.nroFactura||'';
+  if (cols.sociedad && f.sociedad) colVals[cols.sociedad] = f.sociedad;
+  if (f.moneda === 'ARS') { if (cols.importeARS) colVals[cols.importeARS] = importe; }
+  else                    { if (cols.importeUSD) colVals[cols.importeUSD] = importe; if (f.tipoCambio && cols.tc) colVals[cols.tc] = parseFloat(f.tipoCambio)||0; }
+
+  // Debug: mostrar quÃ© columnas se van a enviar
+  console.log('[AutoMonday] colVals a enviar:', JSON.stringify(colVals, null, 2));
+  console.log('[AutoMonday] cols config:', JSON.stringify(cols, null, 2));
+
+  const mutation = `mutation { create_item(board_id: ${cfg.mondayBoard}, item_name: "${(f.proveedor||'Proveedor').replace(/"/g,"'")}", column_values: ${JSON.stringify(JSON.stringify(colVals))}) { id } }`;
+  const r = await fetch('https://api.monday.com/v2', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':cfg.mondayKey,'API-Version':'2024-10'},
+    body: JSON.stringify({query: mutation})
+  });
+  const data = await r.json();
+  console.log('[AutoMonday] Monday response:', JSON.stringify(data).slice(0,300));
+  if (data.errors) throw new Error(data.errors[0].message);
+  const itemId = data.data.create_item.id;
+
+  // Guardar el Monday Item ID en el objeto factura (para poder editarlo despuÃ©s)
+  f.mondayItemId = itemId;
+
+  // Adjuntar PDF: primero _pdfFile (subida manual), luego _pdfBase64 (vÃ­a Gmail/Drive)
+  if (cols.archivo) {
+    if (f._pdfFile) {
+      try { await adjuntarPDFAMonday(itemId, cols.archivo, f._pdfFile, cfg.mondayKey); }
+      catch(e) { console.warn('PDF adjunto (file) fallÃ³:', e.message); }
+    } else if (f._pdfBase64) {
+      try { await adjuntarPDFAMonday(itemId, cols.archivo, f._pdfBase64, cfg.mondayKey, f.archivo || 'factura.pdf'); }
+      catch(e) { console.warn('PDF adjunto (base64) fallÃ³:', e.message); }
+    }
+  }
+  return itemId;
+}
+
+async function adjuntarPDFAMonday(itemId, columnId, fileOrBase64, apiKey, fileName) {
+  // Aceptar File object O string base64
+  let fileObj;
+  if (typeof fileOrBase64 === 'string') {
+    // Es base64 â†’ convertir a Blob/File
+    try {
+      const binary = atob(fileOrBase64);
+      const bytes  = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      fileObj = new File([bytes], fileName || 'factura.pdf', {type: 'application/pdf'});
+    } catch(e) {
+      throw new Error('Error convirtiendo base64 a PDF: ' + e.message);
+    }
+  } else {
+    fileObj = fileOrBase64;
+  }
+  const fd = new FormData();
+  fd.append('itemId',   itemId);
+  fd.append('columnId', columnId);
+  fd.append('apiKey',   apiKey);
+  fd.append('file',     fileObj, fileObj.name || fileName || 'factura.pdf');
+  const r = await fetch('/upload', {method:'POST', body:fd});
+  if (!r.ok) throw new Error('Upload fallÃ³: ' + r.status);
+  const data = await r.json();
+  if (data.error) throw new Error(data.error);
+}
+
+async function forzarDesdeResult(idx) {
+  const f = procesadas[idx];
+  if (!f) return;
+  if (!confirm(`Â¿Subir "${f.proveedor}" a Monday ignorando el duplicado?`)) return;
+  const cfg = getConfig();
+  try {
+    await crearItemEnMonday(f, cfg);
+    f.estado = 'procesado';
+    facturas.push({...f, _pdfFile: undefined});
+    saveFacturas();
+    // Eliminar de duplicados si estaba ahÃ­
+    duplicados = duplicados.filter(d => claveFact(d) !== claveFact(f));
+    saveDuplicados();
+    renderResultados();
+    renderDashboard();
+    log(`âœ… Subida forzada OK: ${f.proveedor}`, 'ok');
+  } catch(e) {
+    log('âŒ ' + e.message, 'err');
+    alert('Error: ' + e.message);
+  }
+}
+
+function resetProcesador() {
+  procesadas = [];
+  document.getElementById('uploadZone').style.display = '';
+  document.getElementById('progressSection').style.display = 'none';
+  document.getElementById('resultSection').style.display = 'none';
+  document.getElementById('logBox').innerHTML = '';
+  document.getElementById('fileInput').value = '';
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  CONFIG
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// Columnas por defecto del tablero Monday de UalÃ¡
+// Estos valores se usan si el localStorage no tiene nada guardado todavÃ­a
+const DEFAULT_COLS = {
+  colFechaFactura:  'fecha6',
+  colFechaRecibida: 'fecha9',
+  colVencimiento:   'fecha60',
+  colImporte:       'importe_ars',
+  colImporteUSD:    'importe_usd',
+  colMoneda:        'estado84',
+  colNroFactura:    'text_mkw8qc4c',
+  colTC:            'n_meros7',
+  colArchivo:       'archivo9',
+  colSociedad:      'text_mm3apr7c',
+  mondayBoard:      '',
+};
+
+function getConfig() {
+  const c = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
+  // Para cada campo: primero localStorage, si vacÃ­o usa el default hardcodeado
+  const d = DEFAULT_COLS;
+  return {
+    aiProvider: c.aiProvider || 'openai',
+    claudeKey:  c.claudeKey || '',
+    claudeModel:c.claudeModel || 'gpt-4o',
+    geminiKey:  c.geminiKey || '',
+    geminiModel:c.geminiModel || 'gemini-1.5-pro',
+    mondayKey:  c.mondayKey || '',
+    mondayBoard:c.mondayBoard || d.mondayBoard,
+    sheetId:    c.sheetId || '',
+    driveInterval: c.driveInterval || 60,
+    driveAutoSend: c.driveAutoSend || false,
+    cols: {
+      fechaFactura:  c.colFechaFactura  || d.colFechaFactura,
+      fechaRecibida: c.colFechaRecibida || d.colFechaRecibida,
+      vencimiento:   c.colVencimiento   || d.colVencimiento,
+      importeARS:    c.colImporte       || d.colImporte,
+      importeUSD:    c.colImporteUSD    || d.colImporteUSD,
+      moneda:        c.colMoneda        || d.colMoneda,
+      nroFactura:    c.colNroFactura    || d.colNroFactura,
+      tc:            c.colTC            || d.colTC,
+      archivo:       c.colArchivo       || d.colArchivo,
+      sociedad:      c.colSociedad      || d.colSociedad,
+    }
+  };
+}
+
+function guardarConfig() {
+  const cfg = {
+    aiProvider:      document.getElementById('cfg-ai-provider').value,
+    claudeKey:       document.getElementById('cfg-claude-key').value.trim(),
+    claudeModel:     document.getElementById('cfg-claude-model').value,
+    geminiKey:       document.getElementById('cfg-gemini-key')?.value.trim() || '',
+    geminiModel:     document.getElementById('cfg-gemini-model')?.value || 'gemini-1.5-pro',
+    mondayKey:       document.getElementById('cfg-monday-key').value.trim(),
+    mondayBoard:     document.getElementById('cfg-monday-board').value.trim(),
+    colFechaFactura: document.getElementById('col-fecha-factura').value.trim(),
+    colFechaRecibida:document.getElementById('col-fecha-recibida').value.trim(),
+    colVencimiento:  document.getElementById('col-vencimiento').value.trim(),
+    colImporte:      document.getElementById('col-importe').value.trim(),
+    colImporteUSD:   document.getElementById('col-importe-usd').value.trim(),
+    colMoneda:       document.getElementById('col-moneda').value.trim(),
+    colNroFactura:   document.getElementById('col-nro-factura').value.trim(),
+    colTC:           document.getElementById('col-tc').value.trim(),
+    colArchivo:      document.getElementById('col-archivo').value.trim(),
+    colSociedad:          document.getElementById('col-sociedad').value.trim(),
+  };
+  // Preservar config de drive
+  const prev = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
+  Object.assign(cfg, {sheetId:prev.sheetId||'', driveInterval:prev.driveInterval||60, driveAutoSend:prev.driveAutoSend||false});
+  localStorage.setItem('facturAutoConfig', JSON.stringify(cfg));
+  // TambiÃ©n guardar en el servidor para que persista entre file:// y http://
+  fetch('/save-config', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(cfg)
+  }).catch(()=>{});
+  const msg = document.getElementById('cfg-msg');
+  msg.innerHTML = '<div class="alert alert-green">âœ… ConfiguraciÃ³n guardada</div>';
+  setTimeout(()=>msg.innerHTML='', 3000);
+}
+
+function cargarConfig() {
+  const cfg = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
+  const d   = DEFAULT_COLS;
+  const s   = id => document.getElementById(id);
+  if (s('cfg-ai-provider'))      { s('cfg-ai-provider').value = cfg.aiProvider || 'openai'; toggleAIProvider(); }
+  if (s('cfg-claude-key'))       s('cfg-claude-key').value       = cfg.claudeKey || '';
+  if (s('cfg-claude-model'))     s('cfg-claude-model').value     = cfg.claudeModel || 'gpt-4o';
+  if (s('cfg-gemini-key'))       s('cfg-gemini-key').value       = cfg.geminiKey || '';
+  if (s('cfg-gemini-model'))     s('cfg-gemini-model').value     = cfg.geminiModel || 'gemini-1.5-pro';
+  if (s('cfg-monday-key'))       s('cfg-monday-key').value       = cfg.mondayKey || '';
+  // Board ID: localStorage primero, si vacÃ­o usa default
+  if (s('cfg-monday-board'))     s('cfg-monday-board').value     = cfg.mondayBoard || d.mondayBoard;
+  // Columnas: localStorage primero, si vacÃ­o usa default hardcodeado
+  if (s('col-fecha-factura'))    s('col-fecha-factura').value    = cfg.colFechaFactura  || d.colFechaFactura;
+  if (s('col-fecha-recibida'))   s('col-fecha-recibida').value   = cfg.colFechaRecibida || d.colFechaRecibida;
+  if (s('col-vencimiento'))      s('col-vencimiento').value      = cfg.colVencimiento   || d.colVencimiento;
+  if (s('col-importe'))          s('col-importe').value          = cfg.colImporte       || d.colImporte;
+  if (s('col-importe-usd'))      s('col-importe-usd').value      = cfg.colImporteUSD    || d.colImporteUSD;
+  if (s('col-moneda'))           s('col-moneda').value           = cfg.colMoneda        || d.colMoneda;
+  if (s('col-nro-factura'))      s('col-nro-factura').value      = cfg.colNroFactura    || d.colNroFactura;
+  if (s('col-tc'))               s('col-tc').value               = cfg.colTC            || d.colTC;
+  if (s('col-archivo'))          s('col-archivo').value          = cfg.colArchivo       || d.colArchivo;
+  if (s('col-sociedad'))         s('col-sociedad').value         = cfg.colSociedad      || d.colSociedad;
+  if (s('cfg-sheet-id'))         s('cfg-sheet-id').value         = cfg.sheetId || '';
+  if (s('cfg-drive-interval'))   s('cfg-drive-interval').value   = cfg.driveInterval || 60;
+  if (s('cfg-drive-autosend'))   s('cfg-drive-autosend').checked = cfg.driveAutoSend || false;
+}
+
+async function cargarConfigDesdeServidor() {
+  const local = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
+  const tieneConfigLocal = Object.values(local).some(v => v !== '' && v !== false && v != null);
+  if (tieneConfigLocal) return;
+
+  try {
+    const r = await fetch('/get-config', { cache: 'no-store' });
+    if (!r.ok) return;
+    const serverCfg = await r.json();
+    const cfg = {
+      aiProvider: serverCfg.aiProvider || 'openai',
+      claudeKey: serverCfg.claudeKey || serverCfg.openaiKey || '',
+      claudeModel: serverCfg.claudeModel || 'gpt-4o',
+      geminiKey: serverCfg.geminiKey || '',
+      geminiModel: serverCfg.geminiModel || 'gemini-1.5-pro',
+      mondayKey: serverCfg.mondayKey || '',
+      mondayBoard: serverCfg.mondayBoard || '',
+      sheetId: serverCfg.sheetId || '',
+      driveInterval: serverCfg.syncInterval || serverCfg.driveInterval || 60,
+      driveAutoSend: serverCfg.driveAutoSend || false,
+      colFechaFactura: serverCfg.colFechaFactura || DEFAULT_COLS.colFechaFactura,
+      colFechaRecibida: serverCfg.colFechaRecibida || DEFAULT_COLS.colFechaRecibida,
+      colVencimiento: serverCfg.colVencimiento || DEFAULT_COLS.colVencimiento,
+      colImporte: serverCfg.colImporte || DEFAULT_COLS.colImporte,
+      colImporteUSD: serverCfg.colImporteUSD || DEFAULT_COLS.colImporteUSD,
+      colMoneda: serverCfg.colMoneda || DEFAULT_COLS.colMoneda,
+      colNroFactura: serverCfg.colNroFactura || DEFAULT_COLS.colNroFactura,
+      colTC: serverCfg.colTC || DEFAULT_COLS.colTC,
+      colArchivo: serverCfg.colArchivo || DEFAULT_COLS.colArchivo,
+      colSociedad: serverCfg.colSociedad || DEFAULT_COLS.colSociedad,
+      gmailScriptUrl: serverCfg.gmailScriptUrl || ''
+    };
+    localStorage.setItem('facturAutoConfig', JSON.stringify(cfg));
+    cargarConfig();
+    cargarGmailConfig();
+  } catch (e) {
+    console.warn('[AutoMonday] No se pudo cargar config del servidor:', e);
+  }
+}
+
+function toggleAIProvider() {
+  const prov = document.getElementById('cfg-ai-provider')?.value;
+  const oa = document.getElementById('ai-openai-fields');
+  const gm = document.getElementById('ai-gemini-fields');
+  if (!oa || !gm) return;
+  // Claude reutiliza los campos de OpenAI (misma API key, distinto endpoint)
+  if (prov === 'gemini') {
+    oa.style.display = 'none';
+    gm.style.display = '';
+  } else {
+    oa.style.display = '';
+    gm.style.display = 'none';
+    // Actualizar label segÃºn proveedor
+    const lbl = oa.querySelector('label');
+    if (lbl) lbl.textContent = prov === 'claude' ? 'Anthropic API Key' : 'OpenAI API Key';
+    const modelInput = document.getElementById('cfg-claude-model');
+    if (modelInput && prov === 'claude' && !modelInput.value.includes('claude')) {
+      modelInput.placeholder = 'claude-haiku-4-5-20251001';
+    }
+  }
+}
+
+async function testClaude() {
+  const prov = document.getElementById('cfg-ai-provider')?.value || 'openai';
+  if (prov === 'gemini') {
+    const key = document.getElementById('cfg-gemini-key')?.value.trim();
+    if (!key) { alert('IngresÃ¡ la Gemini API key primero'); return; }
+    const model = document.getElementById('cfg-gemini-model')?.value || 'gemini-1.5-flash';
+    try {
+      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({contents:[{parts:[{text:'RespondÃ© solo: OK'}]}]})
+      });
+      const d = await r.json();
+      if (d.candidates) alert('âœ… Gemini conectado OK Â· modelo: ' + model);
+      else alert('âŒ ' + (d.error?.message || JSON.stringify(d)));
+    } catch(e) { alert('âŒ Error: ' + e.message); }
+  } else {
+    const key = document.getElementById('cfg-claude-key').value.trim();
+    if (!key) { alert('IngresÃ¡ la OpenAI API key primero'); return; }
+    try {
+      const r = await fetch('https://api.openai.com/v1/models', {headers:{'Authorization':`Bearer ${key}`}});
+      alert(r.ok ? 'âœ… OpenAI conectado OK' : 'âŒ API key invÃ¡lida');
+    } catch(e) { alert('âŒ Error: ' + e.message); }
+  }
+}
+
+function verConfigActual() {
+  const c = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
+  const msg = document.getElementById('cfg-msg');
+  const colsInfo = [
+    ['Fecha FC',      c.colFechaFactura  || 'âŒ VACÃO'],
+    ['Recibida',      c.colFechaRecibida || 'âŒ VACÃO'],
+    ['Vencimiento',   c.colVencimiento   || 'âŒ VACÃO'],
+    ['Importe ARS',   c.colImporte       || 'âŒ VACÃO'],
+    ['Importe USD',   c.colImporteUSD    || 'âŒ VACÃO'],
+    ['Moneda',        c.colMoneda        || 'âŒ VACÃO'],
+    ['NÂ° Factura',    c.colNroFactura    || 'âŒ VACÃO'],
+    ['Tipo Cambio',   c.colTC            || 'âŒ VACÃO'],
+    ['Archivo PDF',   c.colArchivo       || 'âŒ VACÃO'],
+  ];
+  const rows = colsInfo.map(([k,v]) =>
+    `<tr><td style="padding:4px 10px;color:var(--text-mid);font-family:var(--mono);font-size:12px">${k}</td>
+     <td style="padding:4px 10px;font-family:var(--mono);font-size:12px;color:${v.startsWith('âŒ')?'var(--red)':'var(--green)'}">${v}</td></tr>`
+  ).join('');
+  msg.innerHTML = `
+    <div class="alert alert-blue" style="padding:14px">
+      <strong>ðŸ“‹ Config actual en localStorage:</strong><br><br>
+      <b>Board ID:</b> <code>${c.mondayBoard||'âŒ VACÃO'}</code><br>
+      <b>OpenAI Key:</b> <code>${c.claudeKey ? 'âœ… configurada' : 'âŒ VACÃO'}</code><br><br>
+      <b>Columnas:</b>
+      <table style="margin-top:8px">${rows}</table>
+      <br><small style="color:var(--text-dim)">Si ves âŒ VACÃO, completÃ¡ los campos arriba y apretÃ¡ ðŸ’¾ Guardar.</small>
+    </div>`;
+}
+
+async function testMonday() {
+  const key = document.getElementById('cfg-monday-key').value.trim();
+  if (!key) { alert('IngresÃ¡ la API key primero'); return; }
+  try {
+    const r = await fetch('https://api.monday.com/v2', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':key,'API-Version':'2024-10'},
+      body: JSON.stringify({query:'{ me { name } }'})
+    });
+    const d = await r.json();
+    if (d.data?.me?.name) alert('âœ… Monday conectado como: ' + d.data.me.name);
+    else alert('âŒ ' + JSON.stringify(d.errors?.[0]?.message || d));
+  } catch(e) { alert('âŒ ' + e.message); }
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  GOOGLE DRIVE SYNC (Sheet)
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+let drivePollingTimer = null;
+let driveProcessedIds = JSON.parse(localStorage.getItem('driveProcessedIds') || '[]');
+
+function saveDriveProcessed() {
+  localStorage.setItem('driveProcessedIds', JSON.stringify(driveProcessedIds));
+}
+
+function addDriveLog(msg, type) {
+  const box = document.getElementById('driveLog');
+  if (!box) return;
+  const d = document.createElement('div');
+  d.className = 'dlog ' + (type || '');
+  d.textContent = new Date().toLocaleTimeString('es-AR') + '  ' + msg;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+function updateDriveStatus(state, text) {
+  const dot = document.getElementById('driveDot');
+  const lbl = document.getElementById('driveStatusLabel');
+  if (dot) dot.className = 'ddot ' + state;
+  if (lbl) lbl.textContent = text;
+}
+
+async function guardarDriveConfig() {
+  const sheetId  = document.getElementById('cfg-sheet-id')?.value || '';
+  const interval = document.getElementById('cfg-drive-interval')?.value || '60';
+  if (!sheetId) { addDriveLog('âš ï¸ IngresÃ¡ el Sheet ID primero', 'warn'); return; }
+  const cfg = JSON.parse(localStorage.getItem('facturAutoConfig') || '{}');
+  cfg.sheetId = sheetId; cfg.driveInterval = interval;
+  cfg.driveAutoSend = document.getElementById('cfg-drive-autosend')?.checked || false;
+  localStorage.setItem('facturAutoConfig', JSON.stringify(cfg));
+  try {
+    const r = await fetch('/save-config', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({sheetId, syncInterval: parseInt(interval)})
+    });
+    if (r.ok) {
+      addDriveLog('âœ… ConfiguraciÃ³n guardada. Servidor sincronizarÃ¡ cada ' + interval + 's', 'ok');
+      updateDriveStatus('ok', 'Configurado Â· sync cada ' + interval + 's');
+    }
+  } catch(e) {
+    addDriveLog('âš ï¸ Config guardada localmente. ReiniciÃ¡ el servidor para aplicar.', 'warn');
+  }
+}
+
+async function syncSheetAhora() {
+  updateDriveStatus('syncing', 'Sincronizando...');
+  addDriveLog('ðŸ”„ Solicitando sync manual al servidor...', 'info');
+  try {
+    const r = await fetch('/sync-sheet', {method:'POST'});
+    if (!r.ok) throw new Error('Servidor no disponible');
+    const data = await r.json();
+    if (data.nuevos > 0) {
+      addDriveLog('ðŸ“‚ ' + data.nuevos + ' PDF(s) nuevos descargados. Revisando cola...', 'ok');
+      await pollDriveQueue();
+    } else {
+      addDriveLog('âœ… Sin PDFs nuevos en la Sheet', 'ok');
+      updateDriveStatus('ok', 'Sin cambios Â· ' + new Date().toLocaleTimeString('es-AR'));
+    }
+  } catch(e) {
+    addDriveLog('âŒ ' + e.message, 'err');
+    updateDriveStatus('error', 'Error servidor');
+  }
+}
+
+async function pollDriveQueue() {
+  const cfg = getConfig();
+  try {
+    const r = await fetch('/poll-drive?clear=false');
+    if (!r.ok) throw new Error('Servidor no disponible');
+    const data = await r.json();
+    const cola = data.queue || [];
+    document.getElementById('drivePendCount').textContent = cola.length + ' en cola';
+    if (cola.length === 0) {
+      updateDriveStatus('ok', 'Sin PDFs nuevos Â· ' + new Date().toLocaleTimeString('es-AR'));
+      return;
+    }
+    addDriveLog('ðŸ“‚ ' + cola.length + ' PDF(s) para procesar', 'info');
+    for (const item of cola) {
+      addDriveLog('ðŸ“„ Procesando: ' + item.fileName + '...', 'info');
+      try {
+        const pdfR = await fetch('/get-pdf?path=' + encodeURIComponent(item.path));
+        if (!pdfR.ok) throw new Error('No se pudo leer el PDF');
+        const blob = await pdfR.blob();
+        const file = new File([blob], item.fileName, {type:'application/pdf'});
+        const images = await pdfToImages(file);
+        const datos  = await extraerDatosConClaude(images, item.fileName, cfg.claudeKey, cfg.claudeModel);
+        datos.archivo = item.fileName;
+        datos.fechaRecibida = item.fechaRecibida || new Date().toLocaleDateString('es-AR');
+        datos.estado  = 'pendiente';
+        datos._pdfFile = file;
+        datos._viaDrive = true;
+        procesadas.push(datos);
+        const esNC = /nc|nota.de.cr/i.test(datos.tipoDocumento||'');
+        addDriveLog('âœ… ' + item.fileName + ' â†’ ' + (datos.proveedor||'?') + ' | ' + (datos.tipoDocumento||'FACTURA') + (esNC?' (NCâ†’neg)':''), 'ok');
+        if (cfg.driveAutoSend && cfg.mondayKey && cfg.mondayBoard) {
+          // Chequeo duplicado antes de subir
+          if (esDuplicado(datos)) {
+            const motivo = `Duplicado Drive: ${datos.nroFactura ? 'NÂ° ' + datos.nroFactura : 'misma fecha e importe'}`;
+            registrarDuplicado(datos, motivo);
+            datos.estado = 'duplicado';
+            addDriveLog('ðŸ” DUPLICADO bloqueado: ' + datos.proveedor + ' ' + (datos.nroFactura||''), 'warn');
+            renderDashboard();
+          } else {
+            try {
+              await crearItemEnMonday(datos, cfg);
+              datos.estado = 'procesado';
+              facturas.push({...datos, _pdfFile:undefined});
+              saveFacturas();
+              addDriveLog('ðŸš€ Enviado a Monday: ' + datos.proveedor, 'ok');
+            } catch(e2) {
+              addDriveLog('âŒ Monday: ' + e2.message, 'err');
+            }
+          }
+        }
+      } catch(e) {
+        addDriveLog('âŒ ' + item.fileName + ': ' + e.message, 'err');
+      }
+    }
+    document.getElementById('drivePendCount').textContent = procesadas.filter(f=>f.estado==='pendiente').length + ' pendientes';
+    updateDriveStatus('ok', 'Procesado Â· ' + new Date().toLocaleTimeString('es-AR'));
+    renderDashboard();
+  } catch(e) {
+    addDriveLog('âŒ ' + e.message, 'err');
+    updateDriveStatus('error', 'Error servidor');
+  }
+}
+
+function toggleDrivePolling() {
+  if (drivePollingTimer) {
+    clearInterval(drivePollingTimer);
+    drivePollingTimer = null;
+    document.getElementById('driveBtnAuto').textContent = 'â–¶ Iniciar polling';
+    document.getElementById('driveBtnAuto').className = 'btn btn-coral';
+    addDriveLog('â¹ Polling detenido', 'warn');
+    updateDriveStatus('idle', 'Polling detenido');
+  } else {
+    const secs = parseInt(document.getElementById('cfg-drive-interval')?.value || 60);
+    pollDriveQueue();
+    drivePollingTimer = setInterval(pollDriveQueue, secs * 1000);
+    document.getElementById('driveBtnAuto').textContent = 'â¹ Detener (' + secs + 's)';
+    document.getElementById('driveBtnAuto').className = 'btn btn-ghost';
+    addDriveLog('â–¶ Polling iniciado cada ' + secs + 's', 'ok');
+  }
+}
+
+function resetDriveHistory() {
+  if (confirm('Â¿Resetear historial local?')) {
+    driveProcessedIds = []; saveDriveProcessed();
+    addDriveLog('ðŸ”„ Historial reseteado', 'info');
+  }
+}
+
+function descargarScript() {
+  alert('DescargÃ¡ el archivo FacturAuto_DriveSync.gs de la misma carpeta que index.html');
+}
+
+function descargarBat() {
+  alert('DescargÃ¡ el archivo AutoMonday.bat de la misma carpeta que index.html');
+}
+
+function descargarMakeScript() {}
+
+function convertirFecha(f) {
+  const p = String(f).split('/');
+  return p.length===3 ? `${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}` : f;
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  DETECTOR DE DUPLICADOS
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+// Clave Ãºnica de una factura: proveedor + nroFactura normalizados
+// Si no hay nroFactura, fallback a proveedor + fecha + importe
+function claveFact(f) {
+  const prov = (f.proveedor || '').toUpperCase().trim().replace(/\s+/g,' ');
+  const nro  = (f.nroFactura || '').replace(/\s/g,'').toUpperCase();
+  if (nro) return `${prov}||${nro}`;
+  // fallback: proveedor + fecha + importe
+  const fecha = (f.fechaFactura || '').replace(/\//g,'-');
+  const imp   = String(Math.abs(parseFloat(f.importe)||0));
+  return `${prov}||${fecha}||${imp}`;
+}
+
+// Guardar facturas en localStorage eliminando campos pesados (imÃ¡genes, base64, PDF)
+function saveFacturas() {
+  try {
+    const livianas = facturas.map(f => {
+      const { _pdfPages, _pdfBase64, _pdfFile, ...resto } = f;
+      return resto;
+    });
+    localStorage.setItem('facturas', JSON.stringify(livianas));
+  } catch(e) {
+    // Si sigue llenÃ¡ndose, recortar las mÃ¡s viejas
+    try {
+      const recortadas = facturas.slice(-100).map(f => {
+        const { _pdfPages, _pdfBase64, _pdfFile, ...resto } = f;
+        return resto;
+      });
+      localStorage.setItem('facturas', JSON.stringify(recortadas));
+      console.warn('localStorage lleno â€” guardadas solo las Ãºltimas 100 facturas');
+    } catch(e2) {
+      console.error('localStorage lleno, no se pudo guardar:', e2.message);
+    }
+  }
+}
+
+function esDuplicado(f) {
+  const clave = claveFact(f);
+  return facturas.some(existing => claveFact(existing) === clave);
+}
+
+// Registrar una factura como duplicada bloqueada
+let duplicados = JSON.parse(localStorage.getItem('duplicados') || '[]');
+
+function saveDuplicados() {
+  localStorage.setItem('duplicados', JSON.stringify(duplicados));
+}
+
+function registrarDuplicado(f, motivo) {
+  duplicados.push({
+    proveedor:    f.proveedor || 'â€”',
+    nroFactura:   f.nroFactura || 'â€”',
+    fechaFactura: f.fechaFactura || 'â€”',
+    importe:      f.importe || 0,
+    moneda:       f.moneda || 'ARS',
+    motivo:       motivo || 'Ya existe en el historial',
+    ts:           new Date().toLocaleString('es-AR'),
+    archivo:      f.archivo || '',
+  });
+  saveDuplicados();
+}
+
+function showDuplicados() {
+  const panel = document.getElementById('panel-duplicados');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  renderDuplicados();
+  if (panel.style.display === 'block') {
+    panel.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function renderDuplicados() {
+  const tbody = document.getElementById('dupTable');
+  const countEl = document.getElementById('dup-count');
+  if (!tbody) return;
+  countEl.textContent = duplicados.length + (duplicados.length===1?' duplicada':' duplicadas');
+  if (!duplicados.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="icon">âœ…</div><p>Sin duplicados detectados.</p></div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = [...duplicados].reverse().map((d, i) => `
+    <tr style="border-left:3px solid #F59E0B">
+      <td><strong>${d.proveedor}</strong></td>
+      <td class="muted">${d.nroFactura}</td>
+      <td class="muted">${d.fechaFactura}</td>
+      <td class="td-amount">${formatImporte(d.importe, d.moneda)}</td>
+      <td><span style="font-size:11px;color:#92400e;background:rgba(245,158,11,.1);padding:2px 8px;border-radius:100px;font-family:var(--mono)">${d.motivo}</span></td>
+      <td class="muted">${d.ts}</td>
+      <td><button class="btn btn-ghost btn-sm" onclick="forzarSubida(${duplicados.length-1-i})" title="Subir igual a Monday ignorando el duplicado">âš  Subir igual</button></td>
+    </tr>`).join('');
+}
+
+function limpiarDuplicados() {
+  if (!confirm('Â¿Limpiar toda la lista de duplicados?')) return;
+  duplicados = [];
+  saveDuplicados();
+  renderDuplicados();
+  renderDashboard();
+}
+
+async function forzarSubida(idx) {
+  const d = duplicados[idx];
+  if (!confirm(`Â¿Subir "${d.proveedor} ${d.nroFactura}" a Monday igual, ignorando el duplicado?`)) return;
+  const cfg = getConfig();
+  try {
+    await crearItemEnMonday(d, cfg);
+    // Mover a facturas normales
+    d.estado = 'procesado';
+    facturas.push({...d});
+    saveFacturas();
+    duplicados.splice(idx, 1);
+    saveDuplicados();
+    renderDuplicados();
+    renderDashboard();
+    alert('âœ… Subida forzada OK');
+  } catch(e) {
+    alert('âŒ ' + e.message);
+  }
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  SELECCIÃ“N Y BORRADO
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+let selectMode = false;
+let selectedIds = new Set();
+
+function toggleSelectMode() {
+  selectMode = !selectMode;
+  selectedIds.clear();
+  const tbl = document.querySelector('.tbl-wrap table');
+  const btn = document.getElementById('btnSelectMode');
+  const btnDel = document.getElementById('btnDeleteSelected');
+  if (selectMode) {
+    tbl.classList.add('select-mode');
+    btn.textContent = 'âœ• Cancelar';
+    btn.style.background = 'var(--surface2)';
+    btnDel.style.display = '';
+  } else {
+    tbl.classList.remove('select-mode');
+    btn.textContent = 'â˜‘ Seleccionar';
+    btn.style.background = '';
+    btnDel.style.display = 'none';
+  }
+  applyFilters(); // re-render con/sin checkboxes
+}
+
+function toggleRowSelect(idx, checkbox) {
+  if (checkbox.checked) selectedIds.add(idx);
+  else selectedIds.delete(idx);
+  checkbox.closest('tr').classList.toggle('selected', checkbox.checked);
+  const count = selectedIds.size;
+  const btn = document.getElementById('btnDeleteSelected');
+  btn.textContent = count > 0 ? `ðŸ—‘ Borrar ${count} factura${count>1?'s':''}` : 'ðŸ—‘ Borrar seleccionados';
+}
+
+function selectAll(masterCb) {
+  const rows = document.querySelectorAll('#facturaTable tr');
+  rows.forEach(tr => {
+    const cb = tr.querySelector('.row-cb');
+    if (!cb) return;
+    cb.checked = masterCb.checked;
+    const idx = parseInt(tr.getAttribute('data-idx'));
+    if (!isNaN(idx)) {
+      if (masterCb.checked) selectedIds.add(idx);
+      else selectedIds.delete(idx);
+      tr.classList.toggle('selected', masterCb.checked);
+    }
+  });
+  const count = selectedIds.size;
+  const btn = document.getElementById('btnDeleteSelected');
+  btn.textContent = count > 0 ? `ðŸ—‘ Borrar ${count} factura${count>1?'s':''}` : 'ðŸ—‘ Borrar seleccionados';
+}
+
+function borrarSeleccionados() {
+  if (selectedIds.size === 0) return;
+  const count = selectedIds.size;
+  if (!confirm(`Â¿Borrar ${count} factura${count>1?'s':''} del dashboard?
+Esto NO las borra de Monday, solo del historial local.`)) return;
+
+  // Los Ã­ndices son de facturas[], borrar de mayor a menor para no desplazar
+  const sorted = [...selectedIds].sort((a,b) => b-a);
+  sorted.forEach(idx => facturas.splice(idx, 1));
+  saveFacturas();
+  selectedIds.clear();
+  toggleSelectMode(); // salir del modo selecciÃ³n
+  renderDashboard();
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  GMAIL DIRECTO â€” polling + validaciÃ³n IA
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+window.gmailPollingTimer = null;
+window.gmailActivo = false;  // flag para cancelar el loop interno de pollGmailQueue
+
+// Palabras que indican que un PDF NO es factura â†’ rechazar
+const PALABRAS_RECHAZAR = [
+  'orden de pago','orden de compra',
+  'orden_de_pago','orden_de_compra','orden_pago','orden_compra',
+  'op_compra','oc_compra',
+  'remito',
+  'presupuesto',
+  'cotizacion','cotizacion',
+  'recibo de sueldo','recibo de haberes','recibo_sueldo',
+  'comprobante de pago',
+  'hoja de ruta',
+  'delivery note','purchase order','payment order',
+  'packing list'
+];
+
+// Palabras que confirman que es factura
+const PALABRAS_FACTURA = [
+  'factura','invoice','fc ','fc-','cfe','nota de credito',
+  'nota de crÃ©dito','nota de debito','nota de dÃ©bito','cfe_'
+];
+
+async function enviarKeywordsAlScript(keywords) {
+  // Apps Script @uala: solo el browser autenticado puede llegar (Python da 401).
+  // Usamos iframe igual que etiquetas. Verificamos via GET status despues.
+  try {
+    const scriptUrl = getGmailConfig().gmailScriptUrl;
+    if (!scriptUrl) { addGmailLog('\u26a0\ufe0f URL del Web App no configurada', 'warn'); return; }
+
+    const form    = document.getElementById('apps-script-form');
+    const payload = document.getElementById('as-payload');
+    if (!form || !payload) { addGmailLog('\u26a0\ufe0f Form no encontrado en DOM', 'warn'); return; }
+    payload.value = JSON.stringify({ action: 'saveKeywords', keywords });
+    form.action   = scriptUrl;
+    form.submit();
+    addGmailLog('\U0001f4e4 Keywords enviadas via iframe: ' + keywords.join(', '), 'info');
+
+    // Verificar 3.5s despues via GET publico (no requiere auth)
+    await new Promise(r => setTimeout(r, 3500));
+    try {
+      const r1 = await fetch(scriptUrl + '?action=status', { cache: 'no-store' });
+      const d1 = await r1.json();
+      const kwSaved = d1.kwExtra || [];
+      if (kwSaved.length > 0) {
+        addGmailLog('\u2705 kw_extra confirmado en Script Properties: ' + kwSaved.join(', '), 'ok');
+      } else {
+        addGmailLog('\u26a0\ufe0f kw_extra sigue vacio despues del submit. Verificar manualmente.', 'warn');
+      }
+    } catch(_) {
+      addGmailLog('\u2139\ufe0f Keywords enviadas. Verificar Script Properties > kw_extra para confirmar.', 'info');
+    }
+  } catch(e) {
+    addGmailLog('\u26a0\ufe0f Error enviando keywords: ' + e.message, 'warn');
+  }
+}
+function getGmailConfig() {
+  const c = JSON.parse(localStorage.getItem('gmailConfig') || '{}');
+  return {
+    query:         c.query         || '',
+    subjectKw:     c.subjectKw     || 'factura,FC,CFE,nota de credito,nota de debito',
+    filenameKw:    c.filenameKw    || 'factura,FC_,CFE_,invoice,nota',
+    aiValidate:    c.aiValidate    !== undefined ? c.aiValidate : true,
+    labelCola:     c.labelCola     || 'AutoMonday/EnCola',
+    labelProc:     c.labelProc     || 'AutoMonday/Procesado',
+    interval:      c.interval      || 60,
+    desde:         c.desde         || '',
+    hasta:         c.hasta         || '',
+    gmailScriptUrl: 'https://script.google.com/a/macros/uala.com.ar/s/AKfycbzjwcpy5U1xblnRaSoiB22VStcqgoEeSQva3LnvtS67bUgtr4xTR3fiTrk7V7IuO3IC/exec',
+  };
+}
+
+async function guardarGmailConfig() {
+  // Regenerar query con fechas actuales antes de guardar
+  regenerarGmailQuery();
+  const cfg = {
+    query:      document.getElementById('cfg-gmail-query')?.value.trim(),
+    subjectKw:  document.getElementById('cfg-gmail-subject-kw')?.value.trim(),
+    filenameKw: document.getElementById('cfg-gmail-filename-kw')?.value.trim(),
+    aiValidate: document.getElementById('cfg-gmail-ai-validate')?.value === 'si',
+    labelCola:  document.getElementById('cfg-gmail-label-cola')?.value.trim(),
+    labelProc:  document.getElementById('cfg-gmail-label-proc')?.value.trim(),
+    interval:   parseInt(document.getElementById('cfg-gmail-interval')?.value || '60'),
+    gmailScriptUrl: 'https://script.google.com/a/macros/uala.com.ar/s/AKfycbzjwcpy5U1xblnRaSoiB22VStcqgoEeSQva3LnvtS67bUgtr4xTR3fiTrk7V7IuO3IC/exec', // hardcodeada â€” no modificar
+    desde:      document.getElementById('cfg-gmail-desde')?.value || '',
+    hasta:      document.getElementById('cfg-gmail-hasta')?.value || '',
+  };
+  localStorage.setItem('gmailConfig', JSON.stringify(cfg));
+  const msg = document.getElementById('gmail-cfg-msg');
+  msg.innerHTML = '<div class="alert alert-green" style="font-size:12px">âœ… Config Gmail guardada</div>';
+  setTimeout(() => msg.innerHTML = '', 3000);
+
+  // Enviar keywords extra al Apps Script para que las use en el prÃ³ximo escaneo
+  const kwSubject  = (cfg.subjectKw  || '').split(',').map(k=>k.trim().toLowerCase()).filter(Boolean);
+  const kwFilename = (cfg.filenameKw || '').split(',').map(k=>k.trim().toLowerCase()).filter(Boolean);
+  const kwExtra    = [...new Set([...kwSubject, ...kwFilename])]; // sin duplicados
+  if (kwExtra.length > 0) {
+    await enviarKeywordsAlScript(kwExtra);
+  }
+
+  // Enviar gmailScriptUrl al servidor Python para que pueda hacer el proxy
+  if (cfg.gmailScriptUrl) {
+    fetch('/save-config', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ gmailScriptUrl: cfg.gmailScriptUrl })
+    }).catch(() => {});
+  }
+
+  // El rango se filtra localmente â€” el Apps Script escanea todo y la app filtra por fecha
+  if (cfg.desde || cfg.hasta) {
+    addGmailLog('ðŸ“… Rango guardado: ' + (cfg.desde||'sin inicio') + ' â†’ ' + (cfg.hasta||'sin fin'), 'ok');
+  }
+}
+
+function cargarGmailConfig() {
+  const c = getGmailConfig();
+  const s = id => document.getElementById(id);
+  if (s('cfg-gmail-query'))      s('cfg-gmail-query').value       = c.query;
+  if (s('cfg-gmail-subject-kw')) s('cfg-gmail-subject-kw').value  = c.subjectKw;
+  if (s('cfg-gmail-filename-kw'))s('cfg-gmail-filename-kw').value = c.filenameKw;
+  if (s('cfg-gmail-ai-validate'))s('cfg-gmail-ai-validate').value = c.aiValidate ? 'si' : 'no';
+  if (s('cfg-gmail-label-cola')) s('cfg-gmail-label-cola').value  = c.labelCola;
+  if (s('cfg-gmail-label-proc')) s('cfg-gmail-label-proc').value  = c.labelProc;
+  if (s('cfg-gmail-interval'))   s('cfg-gmail-interval').value    = c.interval;
+  if (s('cfg-gmail-script-url')) s('cfg-gmail-script-url').value  = 'https://script.google.com/a/macros/uala.com.ar/s/AKfycbzjwcpy5U1xblnRaSoiB22VStcqgoEeSQva3LnvtS67bUgtr4xTR3fiTrk7V7IuO3IC/exec';
+  if (s('cfg-gmail-desde'))      s('cfg-gmail-desde').value        = c.desde || '';
+  if (s('cfg-gmail-hasta'))      s('cfg-gmail-hasta').value        = c.hasta || '';
+  // Regenerar query con las fechas cargadas
+  if (c.desde || c.hasta) regenerarGmailQuery();
+  else if (c.query && s('cfg-gmail-query')) s('cfg-gmail-query').value = c.query;
+}
+
+function addGmailLog(msg, type) {
+  const box = document.getElementById('gmailLog');
+  if (!box) return;
+  const d = document.createElement('div');
+  d.className = 'dlog ' + (type||'');
+  d.textContent = new Date().toLocaleTimeString('es-AR') + '  ' + msg;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+function updateGmailStatus(state, text) {
+  const dot = document.getElementById('gmailDot');
+  const lbl = document.getElementById('gmailStatusLabel');
+  if (dot) dot.className = 'ddot ' + state;
+  if (lbl) lbl.textContent = text;
+}
+
+// â”€â”€ Filtros de texto â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function pasaFiltroTexto(subject, filename, gmailCfg) {
+  const s = (subject  || '').toLowerCase();
+  // Normalizar filename: reemplazar guiones y puntos por espacio para matchear mejor
+  const f = (filename || '').toLowerCase().replace(/[-_.]/g, ' ');
+  const fOrig = (filename || '').toLowerCase();
+
+  // â”€â”€ 1. Chequeo de rechazo explÃ­cito (tiene prioridad) â”€â”€â”€â”€â”€â”€
+  const hayRechazo = PALABRAS_RECHAZAR.some(p => s.includes(p) || f.includes(p) || fOrig.includes(p));
+  if (hayRechazo) return false;
+
+  // â”€â”€ 2. Chequeo de aceptaciÃ³n â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  const subjectKws  = gmailCfg.subjectKw.split(',').map(k => k.trim().toLowerCase()).filter(Boolean);
+  const filenameKws = gmailCfg.filenameKw.split(',').map(k => k.trim().toLowerCase()).filter(Boolean);
+
+  // Palabras adicionales hardcodeadas que siempre aceptamos
+  // (independiente de lo que el usuario configure)
+  const kwsExtra = [
+    'factura','fact ','fact_','fact-',
+    'fc ','fc_','fc-','fc	',
+    'cfe','cfe_','cfe-',
+    'invoice',' inv ','_inv_','-inv-','inv-',
+    'nota de credito','nota de debito','nota credito','nota debito',
+    ' nc ',' nd ','_nc_','_nd_','-nc-','-nd-',
+    'comprobante electronico','comp elect',
+  ];
+  // Asunto exactamente igual a una palabra clave (sin necesitar espacio despuÃ©s)
+  const asuntoExacto = ['fc','nc','nd','cfe','factura','invoice'].includes(s.trim());
+
+  const subjectOk  = asuntoExacto ||
+                     subjectKws.some(kw => s.includes(kw)) ||
+                     kwsExtra.some(kw => s.includes(kw));
+  // Patrones de invoice abreviada: inv_ al inicio o _inv_ en medio
+  const esInvoiceAbrev = /^inv[_\-]|[_\-]inv[_\-]/.test(fOrig);
+  const filenameOk = filenameKws.some(kw => f.includes(kw) || fOrig.includes(kw)) ||
+                     kwsExtra.some(kw => f.includes(kw) || fOrig.includes(kw)) ||
+                     esInvoiceAbrev;
+
+  return subjectOk || filenameOk;
+}
+
+// â”€â”€ ValidaciÃ³n IA: confirma que el PDF es factura â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function validarEsFacturaConIA(images, filename, cfg) {
+  const appCfg = getConfig();
+
+  // Este PDF ya fue pre-filtrado por el Apps Script (keywords).
+  // La IA solo confirma que NO sea un falso positivo obvio.
+  const prompt = `Este PDF fue pre-seleccionado como posible factura. ConfirmÃ¡ si es un comprobante de venta/servicio.
+
+RespondÃ© SOLO con JSON, sin texto extra:
+{"esFactura": true, "tipoDocumento": "FACTURA", "motivo": "..."}
+{"esFactura": false, "tipoDocumento": "REMITO", "motivo": "..."}
+
+esFactura=true para: facturas, notas de crÃ©dito/dÃ©bito, invoices, CFE, comprobantes AFIP.
+Facturas de empresas extranjeras (Deel, AWS, etc.) NO tienen CUIT â€” igual son vÃ¡lidas.
+
+esFactura=false SOLO si es claramente: remito, orden de compra/pago, presupuesto, extracto bancario, contrato, recibo de sueldo.
+
+EN DUDA â†’ esFactura=true`;
+
+  // Determinar proveedor y key
+  const proveedor = appCfg.aiProvider || 'openai';
+  const claudeKey = appCfg.claudeKey || '';
+  const geminiKey = appCfg.geminiKey || '';
+
+  // Sin ninguna key â†’ dejar pasar (la extracciÃ³n principal validarÃ¡)
+  if (!claudeKey && !geminiKey) {
+    addGmailLog('âš ï¸ Sin API key configurada â€” se asume factura', 'warn');
+    return { esFactura: true, tipo: 'FACTURA', motivo: 'Sin key' };
+  }
+
+  try {
+    let text = '';
+
+    if (proveedor === 'gemini' && geminiKey) {
+      // â”€â”€ Gemini â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      const parts = [{text: prompt}, ...images.slice(0,2).map(img => ({
+        inline_data: {mime_type: 'image/jpeg', data: img}
+      }))];
+      const r = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${appCfg.geminiModel||'gemini-1.5-flash'}:generateContent?key=${geminiKey}`,
+        {method:'POST', headers:{'Content-Type':'application/json'},
+         body: JSON.stringify({contents:[{parts}], generationConfig:{maxOutputTokens:300, temperature:0}})});
+      const d = await r.json();
+      if (d.error) throw new Error('Gemini: ' + d.error.message);
+      text = d.candidates?.[0]?.content?.parts?.[0]?.text || '';
+
+    } else if ((proveedor === 'claude' || proveedor === 'anthropic') && claudeKey) {
+      // â”€â”€ Anthropic Claude â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      const content = [
+        {type:'text', text: prompt},
+        ...images.slice(0,1).map(img => ({
+          type: 'image',
+          source: {type: 'base64', media_type: 'image/jpeg', data: img}
+        }))
+      ];
+      const r = await fetch('https://api.anthropic.com/v1/messages',
+        {method:'POST',
+         headers:{'Content-Type':'application/json', 'x-api-key': claudeKey, 'anthropic-version':'2023-06-01'},
+         body: JSON.stringify({model: appCfg.claudeModel||'claude-haiku-4-5-20251001', max_tokens:300, messages:[{role:'user',content}]})});
+      const d = await r.json();
+      if (d.error) throw new Error('Claude: ' + JSON.stringify(d.error));
+      text = d.content?.[0]?.text || '';
+
+    } else if (claudeKey) {
+      // â”€â”€ OpenAI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      const content = [
+        {type:'text', text: prompt},
+        ...images.slice(0,1).map(img => ({
+          type: 'image_url',
+          image_url: {url: `data:image/jpeg;base64,${img}`, detail: 'low'}
+        }))
+      ];
+      const r = await fetch('https://api.openai.com/v1/chat/completions',
+        {method:'POST',
+         headers:{'Content-Type':'application/json', 'Authorization': `Bearer ${claudeKey}`},
+         body: JSON.stringify({model: appCfg.claudeModel||'gpt-4o-mini', max_tokens:300,
+                               messages:[{role:'user', content}]})});
+      const d = await r.json();
+      if (d.error) throw new Error('OpenAI: ' + d.error.message);
+      text = d.choices?.[0]?.message?.content || '';
+    }
+
+    if (!text) throw new Error('Respuesta vacÃ­a de la IA');
+
+    // Parsear JSON â€” buscar el JSON aunque haya texto alrededor
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error('No encontrÃ© JSON en: ' + text.substring(0,100));
+    const parsed = JSON.parse(jsonMatch[0]);
+
+    return {
+      esFactura: !!parsed.esFactura,
+      tipo:      parsed.tipoDocumento || (parsed.esFactura ? 'FACTURA' : 'OTRO'),
+      motivo:    parsed.motivo || ''
+    };
+
+  } catch(e) {
+    // En caso de error de API â†’ loggear y dejar pasar (no bloquear)
+    addGmailLog('âš ï¸ Error IA (' + filename + '): ' + e.message + ' â€” dejando pasar', 'warn');
+    return { esFactura: true, tipo: 'FACTURA', motivo: 'Error API: ' + e.message };
+  }
+}
+
+// â”€â”€ Polling: pide al servidor los items de la cola â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function sincronizarRangoAlScript() {
+  // Envia el rango al Apps Script via iframe para que lo guarde en Script Properties.
+  const cfg = getGmailConfig();
+  const desde = document.getElementById('cfg-gmail-desde')?.value || cfg.desde || '';
+  const hasta  = document.getElementById('cfg-gmail-hasta')?.value  || cfg.hasta  || '';
+  if (!desde && !hasta) {
+    addGmailLog('\u26a0\ufe0f Sin rango definido \u2014 el script buscará en todo el historial', 'warn');
+    return;
+  }
+  const scriptUrl = cfg.gmailScriptUrl;
+  if (!scriptUrl) return;
+  const form    = document.getElementById('apps-script-form');
+  const payload = document.getElementById('as-payload');
+  if (!form || !payload) return;
+  payload.value = JSON.stringify({ action: 'setRango', desde, hasta });
+  form.action   = scriptUrl;
+  form.submit();
+  addGmailLog('\U0001f4e4 Rango enviado al script: ' + desde + ' \u2192 ' + hasta, 'ok');
+  // Dar tiempo al iframe para que el script procese el setRango antes del scan
+  await new Promise(r => setTimeout(r, 2500));
+}
+
+async function pollGmailQueue() {
+  // Si fue detenido mientras esperaba el intervalo, no ejecutar
+  if (!window.gmailActivo) return;
+
+  const gmailCfg = getGmailConfig();
+  const appCfg   = getConfig();
+  updateGmailStatus('syncing', 'Verificando cola...');
+
+  try {
+    const r = await fetch('/poll-drive');
+    if (!r.ok) throw new Error('Servidor no disponible');
+    const data = await r.json();
+
+    // Obtener toda la cola â€” incluye Drive y Gmail
+    const todaLaCola = data.queue || data.items || data || [];
+    addGmailLog('ðŸ“¦ Servidor respondiÃ³: ' + (Array.isArray(todaLaCola) ? todaLaCola.length : 0) + ' items en cola total', 'info');
+    let cola = Array.isArray(todaLaCola) ? todaLaCola : [];
+    // Si hay items de Gmail los filtramos, si no hay ninguno con "gmail_"
+    // usamos toda la cola (compatibilidad con servidor viejo)
+    const colaGmail = cola.filter(item => {
+      const fid = (item.fileId || item.file_id || '').toLowerCase();
+      const fn  = (item.fileName || item.file_name || '').toLowerCase();
+      return fid.startsWith('gmail_') || fn.startsWith('gmail_');
+    });
+    if (colaGmail.length > 0) cola = colaGmail;
+    // Si no hay ninguno con prefijo gmail, asumir que todos son de Gmail
+    // (servidor viejo que no distingue origen)
+
+    // Filtrar por rango de fechas si estÃ¡ configurado
+    if (gmailCfg.desde || gmailCfg.hasta) {
+      const desde = gmailCfg.desde ? new Date(gmailCfg.desde) : null;
+      const hasta = gmailCfg.hasta ? new Date(gmailCfg.hasta + 'T23:59:59') : null;
+      cola = cola.filter(item => {
+        if (!item.fechaRecibida) return true; // sin fecha â†’ dejar pasar
+        // fechaRecibida viene en dd/MM/yyyy del Apps Script
+        const partes = item.fechaRecibida.split('/');
+        if (partes.length !== 3) return true;
+        const fechaItem = new Date(`${partes[2]}-${partes[1]}-${partes[0]}`);
+        if (desde && fechaItem < desde) return false;
+        if (hasta && fechaItem > hasta) return false;
+        return true;
+      });
+    }
+
+    if (!cola.length) {
+      updateGmailStatus('ok', 'Sin items Â· ' + new Date().toLocaleTimeString('es-AR'));
+      // DiagnÃ³stico: mostrar quÃ© devolviÃ³ el servidor
+      addGmailLog('ðŸ“­ Cola vacÃ­a â€” el servidor no tiene PDFs listos todavÃ­a', 'info');
+      addGmailLog('   â†’ VerificÃ¡ que el servidor Python estÃ© corriendo y haya sincronizado la Sheet', 'info');
+      addGmailLog('   â†’ En la app: tab Google Drive â†’ "Sincronizar ahora" para forzar lectura de la Sheet', 'info');
+      return;
+    }
+
+    addGmailLog('ðŸ“§ ' + cola.length + ' PDF(s) de Gmail en el rango ' + (gmailCfg.desde||'?') + ' â†’ ' + (gmailCfg.hasta||'?'), 'info');
+    if (cola.length === 0) {
+      addGmailLog('   â†’ Si esperabas facturas: verificÃ¡ que el Apps Script corriÃ³ y escribiÃ³ en la Sheet', 'warn');
+      addGmailLog('   â†’ Luego hacÃ© "Sincronizar ahora" en el tab Google Drive para que el servidor las levante', 'warn');
+    }
+
+    // Rastrear resultado de cada PDF para etiquetar el thread correctamente
+    // cuando todos los PDFs de un mismo mail estÃ©n procesados
+    const resultadoPorMsg = {}; // msgId â†’ { total, procesados, resultados[] }
+
+    // Pre-agrupar por msgId
+    for (const item of cola) {
+      item.fileId   = item.fileId   || item.file_id   || '';
+      item.fileName = item.fileName || item.file_name || item.name || 'desconocido.pdf';
+      item.fechaRecibida = item.fechaRecibida || item.fecha_recibida || '';
+      const msgId = item.fileId.split('_')[1] || item.fileId;
+      if (!resultadoPorMsg[msgId]) resultadoPorMsg[msgId] = { total: 0, done: 0, estados: [], item };
+      resultadoPorMsg[msgId].total++;
+    }
+
+    for (const item of cola) {
+      if (!window.gmailActivo) {
+        addGmailLog('â¹ AnÃ¡lisis cancelado por el usuario', 'warn');
+        return;
+      }
+
+      const msgId = item.fileId.split('_')[1] || item.fileId;
+      addGmailLog('ðŸ” Analizando: ' + item.fileName, 'info');
+
+      // El Apps Script ya filtrÃ³ por keywords antes de encolar
+      // AcÃ¡ solo leemos, validamos con IA y subimos a Monday
+
+      // 1. Leer PDF
+      let images = [];
+      try {
+        const pdfR = await fetch('/get-pdf?path=' + encodeURIComponent(item.path));
+        if (!pdfR.ok) throw new Error('PDF no disponible');
+        const blob = await pdfR.blob();
+        images = await pdfToImages(new File([blob], item.fileName, {type:'application/pdf'}));
+      } catch(e) {
+        addGmailLog(`âŒ No se pudo leer el PDF: ${e.message}`, 'err');
+        resultadoPorMsg[msgId].done++;
+        // No cambia etiqueta â€” deja EnCola para reintento
+        continue;
+      }
+
+      // 3. ValidaciÃ³n IA
+      if (gmailCfg.aiValidate) {
+        const validacion = await validarEsFacturaConIA(images, item.fileName, appCfg);
+        if (!validacion.esFactura) {
+          addGmailLog(`â›” IA rechazÃ³: ${item.fileName} â†’ ${validacion.tipo} (${validacion.motivo})`, 'warn');
+          resultadoPorMsg[msgId].estados.push('no_factura');
+          resultadoPorMsg[msgId].done++;
+          await marcarPDFYEtiquetarSiListo(item, 'no_factura', resultadoPorMsg[msgId]);
+          continue;
+        }
+        addGmailLog(`âœ… IA confirmÃ³: ${validacion.tipo}`, 'ok');
+      }
+
+      // 4. Extraer datos y subir a Monday
+      try {
+        const datos = await extraerDatosConClaude(images, item.fileName, appCfg.claudeKey, appCfg.claudeModel);
+        datos.archivo       = item.fileName;
+        datos.fechaRecibida = item.fechaRecibida || new Date().toLocaleDateString('es-AR');
+        datos.estado        = 'pendiente';
+        datos._pdfPages     = images;
+        datos._pdfBase64    = item.pdfBase64 || null;
+        datos._viaGmail     = true;
+
+        if (!window.gmailActivo) { addGmailLog('â¹ Cancelado', 'warn'); return; }
+
+        // Duplicado â†’ Revisado (no EnCola)
+        if (esDuplicado(datos)) {
+          addGmailLog(`ðŸ” Duplicado: ${datos.proveedor} ${datos.nroFactura||''}`, 'warn');
+          registrarDuplicado(datos, 'Duplicado vÃ­a Gmail');
+          resultadoPorMsg[msgId].estados.push('revisado');
+          resultadoPorMsg[msgId].done++;
+          await marcarPDFYEtiquetarSiListo(item, 'revisado', resultadoPorMsg[msgId]);
+          renderDashboard();
+          continue;
+        }
+
+        // Subir a Monday
+        await crearItemEnMonday(datos, appCfg);
+        datos.estado = 'procesado';
+        facturas.push({...datos, _pdfFile:undefined, _pdfPages:undefined});
+        saveFacturas();
+        addGmailLog(`ðŸš€ Monday OK: ${datos.proveedor} | ${datos.tipoDocumento||'FACTURA'}`, 'ok');
+
+        fetch('/mark-processed', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ fileId: item.fileId })
+        }).catch(() => {});
+
+        resultadoPorMsg[msgId].estados.push('procesado');
+        resultadoPorMsg[msgId].done++;
+        await marcarPDFYEtiquetarSiListo(item, 'procesado', resultadoPorMsg[msgId]);
+        renderDashboard();
+
+      } catch(e) {
+        addGmailLog(`âŒ Error: ${item.fileName}: ${e.message}`, 'err');
+        resultadoPorMsg[msgId].done++;
+        // Deja EnCola â€” se reintenta en el prÃ³ximo ciclo
+      }
+    }
+
+    updateGmailStatus('ok', 'Procesado Â· ' + new Date().toLocaleTimeString('es-AR'));
+
+  } catch(e) {
+    addGmailLog('âŒ ' + e.message, 'err');
+    updateGmailStatus('error', 'Error servidor');
+  }
+}
+
+// Determina etiqueta final del thread cuando todos los PDFs del mail estÃ¡n procesados
+// Prioridad: procesado > no_factura > revisado
+async function marcarPDFYEtiquetarSiListo(item, estadoPDF, grupo) {
+  // Marcar este PDF en el servidor
+  try {
+    await fetch('/mark-processed', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ fileId: item.fileId, estado: estadoPDF === 'revisado' ? 'revisado' : estadoPDF })
+    });
+  } catch(e) {}
+
+  // Si no terminamos todos los PDFs del mail, esperar
+  if (grupo.done < grupo.total) return;
+
+  // Determinar etiqueta final del thread
+  const estados = grupo.estados;
+  let etiquetaFinal;
+  if (estados.includes('procesado'))    etiquetaFinal = 'procesado';
+  else if (estados.includes('no_factura')) etiquetaFinal = 'no_factura';
+  else                                  etiquetaFinal = 'revisado';
+
+  const labels = { procesado: 'AutoMonday/Procesado', no_factura: 'AutoMonday/NoEsFactura', revisado: 'AutoMonday/Revisado' };
+  addGmailLog(`ðŸ· Thread completo â†’ ${labels[etiquetaFinal]}`, 'ok');
+  await notificarServidorEtiqueta(item, etiquetaFinal);
+}
+
+// Notificar al Apps Script quÃ© etiqueta aplicar en Gmail
+// Usa form POST a iframe oculto â€” tÃ©cnica que envÃ­a cookies de sesiÃ³n sin restricciones CORS
+async function notificarServidorEtiqueta(item, estado) {
+  const gmailCfg  = getGmailConfig();
+  const scriptUrl = gmailCfg.gmailScriptUrl;
+  if (!item.fileId) return;
+
+  const labels = {
+    procesado:  'AutoMonday/Procesado',
+    no_factura: 'AutoMonday/NoEsFactura',
+    revisado:   'AutoMonday/Revisado',
+    en_cola:    'AutoMonday/EnCola',
+  };
+
+  // 1. Limpiar del servidor local
+  fetch('/mark-processed', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ fileId: item.fileId, estado })
+  }).catch(() => {});
+
+  // 2. Enviar al Apps Script via form POST a iframe oculto
+  //    â†’ el browser envÃ­a las cookies de sesiÃ³n Google (autenticado)
+  //    â†’ Apps Script recibe el POST autenticado y aplica la etiqueta
+  //    â†’ no necesitamos leer la respuesta
+  if (!scriptUrl) {
+    addGmailLog('âš ï¸ ConfigurÃ¡ la URL del Web App en Config Gmail', 'warn');
+    return;
+  }
+
+  try {
+    const form = document.getElementById('apps-script-form');
+    const payload = document.getElementById('as-payload');
+    if (!form || !payload) throw new Error('Form no encontrado en DOM');
+
+    // Apps Script recibe e.parameter.payload
+    payload.value = JSON.stringify({ fileId: item.fileId, estado });
+    form.action = scriptUrl;
+    form.submit();
+
+    addGmailLog('ðŸ· ' + (labels[estado] || estado) + ' â†’ enviado a Gmail', 'ok');
+    // Esperar un momento para que el iframe procese antes de la prÃ³xima llamada
+    await new Promise(r => setTimeout(r, 800));
+  } catch(e) {
+    addGmailLog('âš ï¸ Etiqueta no aplicada: ' + e.message, 'warn');
+  }
+}
+
+// â”€â”€ Rango de fechas Gmail â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+function setGmailRango(preset) {
+  const hoy   = new Date();
+  const hasta = hoy.toISOString().split('T')[0];
+  let desde;
+  if (preset === 'hoy') {
+    desde = hasta;
+  } else if (preset === 'semana') {
+    const d = new Date(hoy); d.setDate(d.getDate() - 7);
+    desde = d.toISOString().split('T')[0];
+  } else if (preset === 'mes') {
+    const d = new Date(hoy); d.setMonth(d.getMonth() - 1);
+    desde = d.toISOString().split('T')[0];
+  } else if (preset === 'mes3') {
+    const d = new Date(hoy); d.setMonth(d.getMonth() - 3);
+    desde = d.toISOString().split('T')[0];
+  }
+  const desdeEl = document.getElementById('cfg-gmail-desde');
+  const hastaEl = document.getElementById('cfg-gmail-hasta');
+  if (desdeEl) desdeEl.value = desde;
+  if (hastaEl) hastaEl.value = hasta;
+  regenerarGmailQuery();
+}
+
+function regenerarGmailQuery() {
+  const desde = document.getElementById('cfg-gmail-desde')?.value;
+  const hasta = document.getElementById('cfg-gmail-hasta')?.value;
+  const kwEl  = document.getElementById('cfg-gmail-subject-kw')?.value || '';
+
+  // Convertir fechas a formato Gmail: after:YYYY/MM/DD before:YYYY/MM/DD
+  let queryFecha = '';
+  if (desde) {
+    const d = desde.replace(/-/g, '/');
+    queryFecha += `after:${d} `;
+  }
+  if (hasta) {
+    // Gmail "before" es exclusivo, sumar 1 dÃ­a
+    const dt = new Date(hasta);
+    dt.setDate(dt.getDate() + 1);
+    const b = dt.toISOString().split('T')[0].replace(/-/g, '/');
+    queryFecha += `before:${b} `;
+  }
+
+  // Palabras clave del asunto
+  const kws = kwEl.split(',').map(k => k.trim()).filter(Boolean);
+  const kwQuery = kws.length
+    ? '(' + kws.join(' OR ') + ')'
+    : '(factura OR FC OR CFE OR "nota de credito" OR "nota de debito")';
+
+  const query = `has:attachment filename:pdf ${queryFecha}${kwQuery}`.trim();
+  const el = document.getElementById('cfg-gmail-query');
+  if (el) { el.value = query; el.removeAttribute('readonly'); }
+}
+
+function detenerGmailPolling() {
+  if (window.gmailPollingTimer) {
+    clearInterval(window.gmailPollingTimer);
+    window.gmailPollingTimer = null;
+window.gmailActivo = false;  // flag para cancelar el loop interno de pollGmailQueue
+  }
+  const btn = document.getElementById('btnGmailAuto');
+  if (btn) {
+    btn.textContent = 'â–¶ Activar Gmail';
+    btn.className = 'btn btn-coral';
+  }
+  addGmailLog('â¹ Polling Gmail detenido', 'warn');
+  updateGmailStatus('idle', 'Detenido');
+}
+
+function toggleGmailPolling() {
+  // Si ya estÃ¡ corriendo â†’ detener
+  if (window.gmailPollingTimer) {
+    detenerGmailPolling();
+    return;
+  }
+
+  // Validar que hay API key configurada
+  const cfg = getConfig();
+  if (!cfg.claudeKey && !cfg.geminiKey) {
+    alert('âš ï¸ No hay API key configurada.\n\nAndÃ¡ a la tab ConfiguraciÃ³n â†’ OpenAI API Key â†’ ingresÃ¡ tu key sk-... â†’ Guardar configuraciÃ³n.\n\nSi ya la ingresaste, guardÃ¡ la config de nuevo â€” puede que se haya perdido al cambiar de URL.');
+    return;
+  }
+
+  // Validar rango de fechas antes de arrancar
+  const desde = document.getElementById('cfg-gmail-desde')?.value;
+  const hasta = document.getElementById('cfg-gmail-hasta')?.value;
+  if (!desde && !hasta) {
+    const ok = confirm('Sin rango de fechas el script busca en TODO el historial de Gmail. Â¿Continuar igual?');
+    if (!ok) return;
+  }
+
+  // Guardar config y sincronizar rango al Apps Script antes de arrancar
+  guardarGmailConfig();
+
+  const secs = getGmailConfig().interval;
+  const btn  = document.getElementById('btnGmailAuto');
+
+  addGmailLog('â–¶ Iniciando polling cada ' + secs + 's...', 'ok');
+  addGmailLog('ðŸ“… Rango: ' + (desde || 'sin inicio') + ' â†’ ' + (hasta || 'sin fin'), 'info');
+  updateGmailStatus('ok', 'Activo Â· cada ' + secs + 's');
+  btn.textContent = 'â¹ Detener Gmail (' + secs + 's)';
+  btn.className = 'btn btn-ghost';
+
+  window.gmailActivo = true;
+
+  // 1. Guardar rango en Apps Script
+  sincronizarRangoAlScript();
+
+  // 2. Disparar UN escaneo Gmail (on-demand, no trigger continuo)
+  addGmailLog('ðŸ“¡ Escaneando Gmail (Ãºnica vez)...', 'info');
+  dispararEscaneoGmail();
+
+  // 3. Polling cada N segundos solo al servidor Python (sin tocar Gmail)
+  pollGmailQueue();
+  window.gmailPollingTimer = setInterval(pollGmailQueue, secs * 1000);
+}
+
+async function resetearServidor() {
+  try {
+    await fetch('/reset-processed', {method:'POST'});
+    addGmailLog('ðŸ” Servidor reseteado â€” releerÃ¡ todos los PDFs', 'ok');
+    await fetch('/sync-sheet', {method:'POST'}).catch(()=>{});
+    setTimeout(async () => { await pollGmailQueue(); }, 5000);
+  } catch(e) { addGmailLog('âš ï¸ Error: ' + e.message, 'warn'); }
+}
+
+async function debugSheet() {
+  try {
+    addGmailLog('ðŸ”¬ Consultando Sheet via servidor...', 'info');
+    const r = await fetch('/debug-sheet');
+    const d = await r.json();
+    if (d.error) { addGmailLog('âŒ ' + d.error, 'error'); return; }
+    addGmailLog('ðŸ“Š Sheet tiene ' + d.total_filas + ' filas totales', 'ok');
+    if (!d.archivos?.length) { addGmailLog('ðŸ“­ Sheet vacÃ­a', 'warn'); return; }
+    d.archivos.forEach(a => {
+      const listo = parseInt(a.chunks) >= parseInt(a.total);
+      addGmailLog((listo?'âœ…':'â³') + ' ' + a.nombre + ' â€” chunks: ' + a.chunks + '/' + a.total + ' â€” ' + a.estado, listo?'ok':'warn');
+    });
+  } catch(e) { addGmailLog('âŒ Error: ' + e.message, 'error'); }
+}
+
+function dispararEscaneoGmail() {
+  // Dispara UN escaneo via iframe (autenticado). El script lee solo el rango configurado
+  // y excluye mails ya etiquetados â€” no hay riesgo de re-analizar o quemar quota.
+  const cfg = getGmailConfig();
+  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+  const form    = document.getElementById('apps-script-form');
+  const payload = document.getElementById('as-payload');
+  if (!form || !payload) { addGmailLog('âš ï¸ Form no encontrado', 'warn'); return; }
+  payload.value = JSON.stringify({ action: 'scan' });
+  form.action   = cfg.gmailScriptUrl;
+  form.submit();
+  addGmailLog('ðŸ“¡ Escaneo Gmail disparado â€” resultados en Sheet en ~30s', 'info');
+  // Sincronizar Sheet con el servidor Python despuÃ©s de que el script termine
+  setTimeout(async () => {
+    await fetch('/sync-sheet', {method:'POST'}).catch(()=>{});
+    addGmailLog('ðŸ”„ Sheet sincronizada con servidor', 'info');
+    setTimeout(() => pollGmailQueue(), 3000);
+  }, 30000);
+}
+
+async function limpiarTodo() {
+  const ok = confirm(
+    'âš ï¸ Esto va a:\n' +
+    '1. Borrar todos los chunks de la Sheet (limpiarColaCompleta)\n' +
+    '2. Resetear el historial de IDs procesados\n' +
+    '3. Limpiar la cola del servidor Python\n\n' +
+    'Los mails con etiqueta EnCola van a quedar sin la etiqueta la prÃ³xima vez que se procesen.\n\n' +
+    'Â¿Continuar?'
+  );
+  if (!ok) return;
+
+  const cfg = getGmailConfig();
+  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+
+  const progress = document.getElementById('reset-progress');
+  const mostrar  = msg => { progress.style.display='block'; progress.textContent = msg; addGmailLog(msg, 'info'); };
+
+  // Paso 1: limpiarColaCompleta en Apps Script via iframe
+  mostrar('â³ Paso 1/3: Limpiando chunks de la Sheet...');
+  const form    = document.getElementById('apps-script-form');
+  const payload = document.getElementById('as-payload');
+  payload.value = JSON.stringify({ action: 'limpiarCola' });
+  form.action   = cfg.gmailScriptUrl;
+  form.submit();
+  await new Promise(r => setTimeout(r, 3000));
+
+  // Paso 2: resetearHistorial en Apps Script via iframe
+  mostrar('â³ Paso 2/3: Reseteando historial de IDs...');
+  payload.value = JSON.stringify({ action: 'resetearHistorial' });
+  form.action   = cfg.gmailScriptUrl;
+  form.submit();
+  await new Promise(r => setTimeout(r, 2000));
+
+  // Paso 3: limpiar cola del servidor Python
+  mostrar('â³ Paso 3/3: Limpiando cola del servidor...');
+  try {
+    await fetch('/clear-queue');
+    await fetch('/reset-processed', { method: 'POST' }).catch(()=>{});
+  } catch(e) { addGmailLog('âš ï¸ Servidor no respondiÃ³: ' + e.message, 'warn'); }
+
+  mostrar('âœ… Listo. PodÃ©s escanear de nuevo con el rango correcto.');
+  addGmailLog('âœ… Cola limpiada y historial reseteado', 'ok');
+  setTimeout(() => { progress.style.display = 'none'; }, 8000);
+}
+
+async function escanearAhora() {
+  const btn = document.getElementById('btnEscanearAhora');
+  const cfg = getConfig();
+  if (!cfg.claudeKey && !cfg.openaiKey && !cfg.geminiKey) {
+    addGmailLog('âš ï¸ No hay API key configurada â€” andÃ¡ a Config y guardÃ¡ tu key', 'warn');
+    return;
+  }
+  if (btn) { btn.disabled = true; btn.textContent = 'â³ Paso 1/3: Enviando rango...'; }
+  addGmailLog('ðŸš€ Iniciando escaneo + procesamiento...', 'info');
+
+  // Paso 1: sincronizar rango al script
+  await sincronizarRangoAlScript();
+
+  // Paso 2: disparar escaneo Gmail (el script tarda ~30s en encolar la Sheet)
+  if (btn) btn.textContent = 'â³ Paso 2/3: Escaneando Gmail...';
+  dispararEscaneoGmail();
+  addGmailLog('ðŸ“§ Escaneando Gmail... esperando 35s a que los chunks lleguen a la Sheet', 'info');
+  await new Promise(r => setTimeout(r, 35000));
+
+  // Paso 3: sincronizar Sheet con el servidor y procesar cola
+  if (btn) btn.textContent = 'â³ Paso 3/3: Procesando PDFs...';
+  addGmailLog('ðŸ”„ Sincronizando Sheet con servidor...', 'info');
+  try { await fetch('/sync-sheet', { method: 'POST' }); } catch(e) {}
+  await new Promise(r => setTimeout(r, 3000));
+
+  addGmailLog('ðŸ¤– Procesando cola â†’ Monday...', 'info');
+  window.gmailActivo = true;
+  await pollGmailQueue();
+  window.gmailActivo = false;
+
+  if (btn) { btn.disabled = false; btn.textContent = 'ðŸš€ Escanear y procesar'; }
+  addGmailLog('âœ… Ciclo completo terminado', 'ok');
+}
+function activarTriggerAuto() {
+  const cfg = getGmailConfig();
+  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+  const form    = document.getElementById('apps-script-form');
+  const payload = document.getElementById('as-payload');
+  if (!form || !payload) return;
+  payload.value = JSON.stringify({ action: 'soloTrigger' });
+  form.action   = cfg.gmailScriptUrl;
+  form.submit();
+  addGmailLog('â± Trigger automÃ¡tico activado (cada 5min) â€” corre aunque la app estÃ© cerrada', 'ok');
+  document.getElementById('trigger-status-badge').textContent = 'âœ… activo';
+  document.getElementById('trigger-status-badge').style.color = 'var(--green)';
+}
+
+function detenerTriggerAuto() {
+  const cfg = getGmailConfig();
+  if (!cfg.gmailScriptUrl) { addGmailLog('âš ï¸ URL del Web App no configurada', 'warn'); return; }
+  const form    = document.getElementById('apps-script-form');
+  const payload = document.getElementById('as-payload');
+  if (!form || !payload) return;
+  payload.value = JSON.stringify({ action: 'detenerTrigger' });
+  form.action   = cfg.gmailScriptUrl;
+  form.submit();
+  addGmailLog('â¹ Trigger automÃ¡tico detenido â€” el script ya no corre en segundo plano', 'warn');
+  document.getElementById('trigger-status-badge').textContent = 'â¹ detenido';
+  document.getElementById('trigger-status-badge').style.color = 'var(--red)';
+}
+
+async function forzarEscaneoGmail() {
+  escanearAhora();
+}
+
+function descargarGmailScript() {
+  alert('DescargÃ¡ el archivo GmailDirecto.gs de la misma carpeta que index.html');
+}
+
+async function debugSheet() {
+  try {
+    addGmailLog('ðŸ”¬ Consultando Sheet via servidor...', 'info');
+    const r = await fetch('/debug-sheet');
+    const d = await r.json();
+    if (d.error) { addGmailLog('âŒ ' + d.error, 'error'); return; }
+    addGmailLog('ðŸ“Š Sheet tiene ' + d.total_filas + ' filas totales', 'ok');
+    if (!d.archivos?.length) { addGmailLog('ðŸ“­ Sheet vacÃ­a', 'warn'); return; }
+    d.archivos.forEach(a => {
+      const listo = parseInt(a.chunks) >= parseInt(a.total);
+      addGmailLog((listo?'âœ…':'â³') + ' ' + a.nombre + ' â€” chunks: ' + a.chunks + '/' + a.total + ' â€” ' + a.estado, listo?'ok':'warn');
+    });
+  } catch(e) { addGmailLog('âŒ Error: ' + e.message, 'error'); }
+}
+
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  INIT
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+function init() {
+  duplicados = JSON.parse(localStorage.getItem('duplicados') || '[]');
+  cargarConfig();
+  cargarConfigDesdeServidor(); // restaurar config del servidor si localStorage estÃ¡ vacÃ­o
+  cargarGmailConfig();
+  renderDashboard();
+  checkServer();
+  setInterval(checkServer, 10000);
+  // Asegurarse que el botÃ³n Gmail arranque en estado "Activar"
+  window.gmailActivo = false;
+  window.gmailPollingTimer = null;
+  const btnG = document.getElementById('btnGmailAuto');
+  if (btnG) { btnG.textContent = 'â–¶ Activar Gmail'; btnG.className = 'btn btn-coral'; }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+  <!-- iframe oculto para form POST autenticado al Apps Script -->
+  <iframe id="apps-script-frame" name="apps-script-frame" style="display:none" title="apps-script"></iframe>
+  <form id="apps-script-form" method="POST" target="apps-script-frame" style="display:none">
+    <input type="hidden" id="as-payload" name="payload" value="">
+  </form>
+</body>
+</html>
+
